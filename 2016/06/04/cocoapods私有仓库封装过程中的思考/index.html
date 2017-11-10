@@ -1,0 +1,912 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="背景：随着公司相关APP项目的开展，公用框架的创建与维护越发显得迫切起来。因为工作中经常接触使用cocoapods,也知道她其实可以搞定这件事，所以就首当其冲的选择了基于cocoapods的封装方案。  Why 给工作中封装的组件一个沉淀的地方。 为新项目的开展提供高效的支撑。 框架代码单独维护，功能点升级更新快捷。 一定程度督促自己代码的组织与优化。  知识储备搭建的过程大致参考了这篇教程：使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cocoapods私有仓库封装过程中的思考">
+<meta property="og:url" content="/2016/06/04/cocoapods私有仓库封装过程中的思考/index.html">
+<meta property="og:site_name" content="The  Force  Awakens
+">
+<meta property="og:description" content="背景：随着公司相关APP项目的开展，公用框架的创建与维护越发显得迫切起来。因为工作中经常接触使用cocoapods,也知道她其实可以搞定这件事，所以就首当其冲的选择了基于cocoapods的封装方案。  Why 给工作中封装的组件一个沉淀的地方。 为新项目的开展提供高效的支撑。 框架代码单独维护，功能点升级更新快捷。 一定程度督促自己代码的组织与优化。  知识储备搭建的过程大致参考了这篇教程：使">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://alithink.com/img/2cocoapods/1.png">
+<meta property="og:image" content="http://alithink.com/img/2cocoapods/2.png">
+<meta property="og:updated_time" content="2017-11-10T01:18:12.434Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cocoapods私有仓库封装过程中的思考">
+<meta name="twitter:description" content="背景：随着公司相关APP项目的开展，公用框架的创建与维护越发显得迫切起来。因为工作中经常接触使用cocoapods,也知道她其实可以搞定这件事，所以就首当其冲的选择了基于cocoapods的封装方案。  Why 给工作中封装的组件一个沉淀的地方。 为新项目的开展提供高效的支撑。 框架代码单独维护，功能点升级更新快捷。 一定程度督促自己代码的组织与优化。  知识储备搭建的过程大致参考了这篇教程：使">
+<meta name="twitter:image" content="http://alithink.com/img/2cocoapods/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2016/06/04/cocoapods私有仓库封装过程中的思考/"/>
+
+
+
+
+
+  <title> cocoapods私有仓库封装过程中的思考 | The  Force  Awakens
+ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ddd5ea8fb6af25af228cf11a240076e8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">The  Force  Awakens
+</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-desktop"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="/2016/06/04/cocoapods私有仓库封装过程中的思考/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="AliThink">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="The  Force  Awakens
+">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="The  Force  Awakens
+" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                cocoapods私有仓库封装过程中的思考
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-04T21:33:11+08:00">
+              2016-06-04
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-11-10T09:18:12+08:00">
+              2017-11-10
+            </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>背景：随着公司相关APP项目的开展，公用框架的创建与维护越发显得迫切起来。因为工作中经常接触使用cocoapods,也知道她其实可以搞定这件事，所以就首当其冲的选择了基于cocoapods的封装方案。</p>
+</blockquote>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><ul>
+<li>给工作中封装的组件一个沉淀的地方。</li>
+<li>为新项目的开展提供高效的支撑。</li>
+<li>框架代码单独维护，功能点升级更新快捷。</li>
+<li>一定程度督促自己代码的组织与优化。</li>
+</ul>
+<h2 id="知识储备"><a href="#知识储备" class="headerlink" title="知识储备"></a>知识储备</h2><p>搭建的过程大致参考了这篇教程：<a href="http://blog.wtlucky.com/blog/2015/02/26/create-private-podspec/" target="_blank" rel="external">使用Cocoapods创建私有podspec</a><br>教程非常的细致，很赞的分享。其中有几个地方可能会有点疑惑：</p>
+<h3 id="Podfile中specs引入方式"><a href="#Podfile中specs引入方式" class="headerlink" title="Podfile中specs引入方式"></a>Podfile中specs引入方式</h3><h4 id="1-path-gt-的引入方式"><a href="#1-path-gt-的引入方式" class="headerlink" title="1. :path =&gt;的引入方式"></a>1. :path =&gt;的引入方式</h4><ul>
+<li>会添加到Development Pods中，并且复制整个私有库的文件组织结构（文件夹嵌套关系都会保留）,这种引入方式非常适合于私有库的开发阶段，因为这种方式引入的其实就是实际私有库的源文件，在demo项目中通过这种方式引入，充分测试私有库的相关功能会非常方便快捷。</li>
+<li>对强迫症患者来说可能会觉得有点不完美的地方，就是当specs中包含subspecs的时候，用这种方式引入时，会出现一些多余的文件层次嵌套。。。感兴趣的患者们可以去试一下。。。</li>
+</ul>
+<h4 id="2-常规的引入方式"><a href="#2-常规的引入方式" class="headerlink" title="2. 常规的引入方式"></a>2. 常规的引入方式</h4><p>常规的引入方式这里就不多说了，它走的是另一个极端，会剔除库中的文件组织结构，而简单的划分了源文件与资源文件，如果包含subspecs，只保留子模块名一级的文件层次，模块内部的文件结构将不复存在，这里暂时没有找到合适的解决办法保留原有组织结构。</p>
+<p><img src="http://alithink.com/img/2cocoapods/1.png" alt="1.png"></p>
+<p>比如上图的结构，发布之后将改变为：</p>
+<p><img src="http://alithink.com/img/2cocoapods/2.png" alt="2.png"></p>
+<h3 id="子模块划分思路"><a href="#子模块划分思路" class="headerlink" title="子模块划分思路"></a>子模块划分思路</h3><p>先说结果，大致是按照这个思路进行划分的：  </p>
+<h4 id="1-网络（剔除具体API调用部分）"><a href="#1-网络（剔除具体API调用部分）" class="headerlink" title="1. 网络（剔除具体API调用部分）"></a>1. 网络（剔除具体API调用部分）</h4><ul>
+<li>添加样例</li>
+<li>包含常用插件（network状态标识等）</li>
+<li>缓存</li>
+</ul>
+<h4 id="2-模型映射"><a href="#2-模型映射" class="headerlink" title="2. 模型映射"></a>2. 模型映射</h4><ul>
+<li>统一API调用规则</li>
+<li>封装公共响应处理逻辑</li>
+<li>对于错误类型的统一处理</li>
+</ul>
+<h4 id="3-Hybrid"><a href="#3-Hybrid" class="headerlink" title="3. Hybrid"></a>3. Hybrid</h4><ul>
+<li>资源的预加载（js, css等）</li>
+<li>native能力开放</li>
+</ul>
+<h4 id="4-UI"><a href="#4-UI" class="headerlink" title="4. UI"></a>4. UI</h4><ul>
+<li>HUD</li>
+<li>Tab</li>
+<li>侧边栏</li>
+<li>Nav常用操作</li>
+<li>下拉上拉</li>
+<li>Autolayout封装</li>
+<li>datasource封装</li>
+<li>常用动画转场</li>
+</ul>
+<h4 id="5-安全"><a href="#5-安全" class="headerlink" title="5. 安全"></a>5. 安全</h4><ul>
+<li>加密解密</li>
+</ul>
+<h4 id="6-统计"><a href="#6-统计" class="headerlink" title="6. 统计"></a>6. 统计</h4><ul>
+<li>swizzling添加打点入口</li>
+<li>日志记录模块封装</li>
+<li>bug收集分析</li>
+</ul>
+<h4 id="7-动态性"><a href="#7-动态性" class="headerlink" title="7. 动态性"></a>7. 动态性</h4><ul>
+<li>热部署方案</li>
+</ul>
+<p>主要基于目前涉及项目主要关注的部分进行了一些拆解，每个模块直接可能存在依赖关系，这块cocoapods也贴心的帮忙搞定了，例如:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s.subspec <span class="string">'APIModule'</span> <span class="keyword">do</span> <span class="params">|ss|</span></span><br><span class="line">    ss.source_files = <span class="string">'Classes/APIModule/**/*.&#123;swift,h,m&#125;'</span></span><br><span class="line">    ss.dependency <span class="string">'Moya'</span>, <span class="string">'~&gt; 6.5.0'</span></span><br><span class="line">    ss.dependency <span class="string">'HanekeSwift'</span>, <span class="string">'~&gt; 0.10.1'</span></span><br><span class="line">    ss.dependency <span class="string">'NetworkActivityIndicator'</span>, <span class="string">'~&gt; 0.1.6'</span></span><br><span class="line">    ss.dependency <span class="string">'MonkeyKit/UtilModule'</span></span><br><span class="line">    ss.dependency <span class="string">'MonkeyKit/ModelMapperModule'</span></span><br><span class="line">    ss.dependency <span class="string">'MonkeyKit/SecurityModule'</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>框架会根据将来的实际使用情况再进行优化调整，逐渐完善起来。  </p>
+<h3 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h3><p>本轮主要是基于基础功能模块的拆分封装，其实对于APP群常用的业务模块也可以做相同的工作，比如登录验证模块或者逻辑的封装等。通过对于公用业务场景的思考，逐渐提炼出可以产品化的地方，然后塞入公用库，将大大提升相关APP群的开发效率与产品质量。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay.png" alt="AliThink Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/24/理性的你和猴子还有惊慌怪兽/" rel="next" title="理性的你和猴子还有惊慌怪兽">
+                <i class="fa fa-chevron-left"></i> 理性的你和猴子还有惊慌怪兽
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/11/工作与生活的平衡/" rel="prev" title="工作与生活的平衡">
+                工作与生活的平衡 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="AliThink" />
+          <p class="site-author-name" itemprop="name">AliThink</p>
+          <p class="site-description motion-element" itemprop="description">热爱生活，乐于分享，时而沉默寡言，时而嘻哈扯淡的两面派
+</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/AliThink" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Why"><span class="nav-number">1.</span> <span class="nav-text">Why</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知识储备"><span class="nav-number">2.</span> <span class="nav-text">知识储备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Podfile中specs引入方式"><span class="nav-number">2.1.</span> <span class="nav-text">Podfile中specs引入方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-path-gt-的引入方式"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. :path =>的引入方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-常规的引入方式"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. 常规的引入方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子模块划分思路"><span class="nav-number">2.2.</span> <span class="nav-text">子模块划分思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-网络（剔除具体API调用部分）"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 网络（剔除具体API调用部分）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-模型映射"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 模型映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Hybrid"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. Hybrid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-UI"><span class="nav-number">2.2.4.</span> <span class="nav-text">4. UI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-安全"><span class="nav-number">2.2.5.</span> <span class="nav-text">5. 安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-统计"><span class="nav-number">2.2.6.</span> <span class="nav-text">6. 统计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-动态性"><span class="nav-number">2.2.7.</span> <span class="nav-text">7. 动态性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下一步"><span class="nav-number">2.3.</span> <span class="nav-text">下一步</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AliThink</span>
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+  
+
+  
+      <!-- UY BEGIN -->
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2147238"></script>
+      <!-- UY END -->
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

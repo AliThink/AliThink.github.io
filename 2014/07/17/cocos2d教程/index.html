@@ -1,0 +1,1050 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="我想没有什么比更新入门教程更适合用来庆祝具有标志性的Cocos2D 3.0的诞生了。 Cocos2D 3.0是iOS平台一款2D游戏开发框架的最新版本。App Store上数以千计的游戏不乏一些排行前十的游戏都是用它来进行开发的。 它对sprite有很好的支持,包含一个完美的Chipmunk2D physics类库，支持OpenAL声音类库，诸多有趣的效果，让你可以用它做更多事情。 通过本Coco">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cocos2D简单iPhone游戏【入门教程】">
+<meta property="og:url" content="/2014/07/17/cocos2d教程/index.html">
+<meta property="og:site_name" content="The  Force  Awakens
+">
+<meta property="og:description" content="我想没有什么比更新入门教程更适合用来庆祝具有标志性的Cocos2D 3.0的诞生了。 Cocos2D 3.0是iOS平台一款2D游戏开发框架的最新版本。App Store上数以千计的游戏不乏一些排行前十的游戏都是用它来进行开发的。 它对sprite有很好的支持,包含一个完美的Chipmunk2D physics类库，支持OpenAL声音类库，诸多有趣的效果，让你可以用它做更多事情。 通过本Coco">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game1.png">
+<meta property="og:image" content="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game2.png">
+<meta property="og:image" content="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game3.png">
+<meta property="og:image" content="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game4.png">
+<meta property="og:image" content="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game5.png">
+<meta property="og:image" content="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game6.png">
+<meta property="og:image" content="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game7.png">
+<meta property="og:image" content="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game8.png">
+<meta property="og:image" content="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game9.png">
+<meta property="og:image" content="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game10.png">
+<meta property="og:image" content="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game11.png">
+<meta property="og:updated_time" content="2017-11-10T01:18:12.434Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cocos2D简单iPhone游戏【入门教程】">
+<meta name="twitter:description" content="我想没有什么比更新入门教程更适合用来庆祝具有标志性的Cocos2D 3.0的诞生了。 Cocos2D 3.0是iOS平台一款2D游戏开发框架的最新版本。App Store上数以千计的游戏不乏一些排行前十的游戏都是用它来进行开发的。 它对sprite有很好的支持,包含一个完美的Chipmunk2D physics类库，支持OpenAL声音类库，诸多有趣的效果，让你可以用它做更多事情。 通过本Coco">
+<meta name="twitter:image" content="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2014/07/17/cocos2d教程/"/>
+
+
+
+
+
+  <title> Cocos2D简单iPhone游戏【入门教程】 | The  Force  Awakens
+ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ddd5ea8fb6af25af228cf11a240076e8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">The  Force  Awakens
+</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-desktop"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="/2014/07/17/cocos2d教程/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="AliThink">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="The  Force  Awakens
+">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="The  Force  Awakens
+" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Cocos2D简单iPhone游戏【入门教程】
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-07-17T17:33:40+08:00">
+              2014-07-17
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-11-10T09:18:12+08:00">
+              2017-11-10
+            </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我想没有什么比更新入门教程更适合用来庆祝具有标志性的Cocos2D 3.0的诞生了。</p>
+<p>Cocos2D 3.0是iOS平台一款2D游戏开发框架的最新版本。App Store上数以千计的游戏不乏一些排行前十的游戏都是用它来进行开发的。</p>
+<p>它对sprite有很好的支持,包含一个完美的Chipmunk2D physics类库，支持OpenAL声音类库，诸多有趣的效果，让你可以用它做更多事情。</p>
+<p>通过本Cocos2D 3.0的入门教程，你将会学习从头到尾的编写一个简单有趣的iPhone 2D游戏。如果你之前已经学习过了Cocos2D 2.0的教程，那么将会将会对本教程感觉比较熟悉，但是你仍然可以通过本教程学习利用物理引擎实现一些好玩的东西。</p>
+<p>你可以选择跟随本教程进行学习，当然你也可以直接在本文的末尾下载例子源程序进行学习。那么接下来我们跟随忍者一起热血一下吧。</p>
+<h3 id="Cocos2D-vs-Sprite-Kit"><a href="#Cocos2D-vs-Sprite-Kit" class="headerlink" title="Cocos2D vs Sprite Kit"></a>Cocos2D vs Sprite Kit</h3><p>在你开始学习之前，你也许在想：“嘿，我已经有苹果的Sprite Kit了，还需要Cocos2D吗？我真的需要尝试一些其它的东东吗？”</p>
+<p>好吧，跟其它任何游戏框架一样，Cocos2D也有它的一些优点和缺点：</p>
+<h4 id="Cocos2D-优点"><a href="#Cocos2D-优点" class="headerlink" title="Cocos2D 优点"></a>Cocos2D 优点</h4><ul>
+<li><p>优点一: 你不再被限制在iOS平台了，想要把你的游戏发布到Android平台上吗？那么用Cocos2D可以帮你写一遍代码就可以跨平台发布了！</p>
+</li>
+<li><p>优点二: 你可以写代码自定义一些OpenGL效果了。</p>
+</li>
+<li>优点三: 它是开源的，也就是说如果你想要改造写什么或者研究一下它内部是如何运转的，你只需要深入研究一下它的源码就可以了。.</li>
+</ul>
+<h4 id="Cocos2D-缺点"><a href="#Cocos2D-缺点" class="headerlink" title="Cocos2D 缺点"></a>Cocos2D 缺点</h4><ul>
+<li><p>缺点一: 它不是内建在Xcode里面的，所以你要使用它就必须要下载安装它。</p>
+</li>
+<li><p>缺点二: 它目前还没有自带的纹理与粒子编辑器（但是已经有很多很棒的第三方编辑器了）。</p>
+</li>
+</ul>
+<p>Cocos2D拥有一个完整的社区，社区里有很多相关的教程、书籍和例子程序。Cocos2D的缔造者是一波旨在令游戏开发变得简单的游戏开发者，他们希望开发者利用它能够简单地创造很多伟大的游戏。</p>
+<h3 id="安装-Cocos2D"><a href="#安装-Cocos2D" class="headerlink" title="安装 Cocos2D"></a>安装 Cocos2D</h3><p>The new Cocos2D 3.0 Installer</p>
+<p><img src="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game1.png" alt=""></p>
+<p>Cocos2D 3.0 使用了一个全新的安装程序，安装起来没有比这更简单的了！</p>
+<p>只需要 下载最新的Cocos2D 安装器 (3.0版本以上), 打开DMG文件然后双击安装器。随后安装器会自动帮你配置好Xcode的Cocos2D模板并且部署好Cocos2D的Xcode文档。</p>
+<p>当安装开始的时候，你将会看到一大堆信息，待安装完成之后会自动打开Cocos2D的欢迎页面。恭喜你，你已经做好了使用Cocos2D的准备工作了！</p>
+<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><p>让我们使用上一步安装的Cocos2D模板搭建一个简单的Hello World游戏作为开始吧。</p>
+<p>打开Xcode，选择File\New Project, 然后选择iOS\cocos2d v3.x\cocos2d iOS 模板，点击Next:</p>
+<p><img src="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game2.png" alt=""></p>
+<p>Product Name 输入Cocos2DSimpleGame, 设备选择iPhone 然后点击Next:</p>
+<p><img src="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game3.png" alt=""></p>
+<p>选择一个位置保存你的工程，然后点击Create。然后直接点击play按钮编译运行一下项目。你会看到下面的东东:</p>
+<p><img src="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game4.png" alt=""></p>
+<p>点击 Simple Sprite 按钮切换到另一个测试场景,接下来我们将一起针对改场景进行改造:</p>
+<p><img src="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game5.png" alt=""></p>
+<p>Cocos2D引入了场景scenes的概念，你可以把它想成是游戏的多个屏幕。HelloWorld游戏的第一个场景就是它的菜单场景IntroScene, 第二个场景就是转动着Cocos2D logo标志的HelloWorldScene. 让我们仔细研究下这个场景。</p>
+<h3 id="忍者驾到"><a href="#忍者驾到" class="headerlink" title="忍者驾到!"></a>忍者驾到!</h3><p>在忍者做它漂亮的出场秀之前，你首先需要用到一些图片素材…</p>
+<ul>
+<li><p>第一步：First step, 下载本工程的资源包。解压后拖动ResourcePack到项目的工程目录中。一定要勾选上 “Copy items into destination group’s folder (if needed)”选项并且勾选上Cocos2DSimpleGame目标target。</p>
+</li>
+<li><p>第二步：打开HelloWorldScene.m。记住，这段代码是用来构建那个旋转着Cocos2D logo的场景的，这个场景可以作为游戏制作很好的起点。修改之前先看一下模板代码：</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@implementation HelloWorldScene &#123;  </span><br><span class="line">    <span class="comment">// 1  </span></span><br><span class="line">    CCSprite *_sprite;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">- (id)init &#123;  </span><br><span class="line">    <span class="comment">// 2  </span></span><br><span class="line">    self = [super init];  </span><br><span class="line">    <span class="keyword">if</span> (!self) <span class="keyword">return</span>(nil); </span><br><span class="line">     </span><br><span class="line">    <span class="comment">// 3  </span></span><br><span class="line">    self.userInteractionEnabled = YES;  </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 4  </span></span><br><span class="line">    CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:<span class="number">0.2f</span> green:<span class="number">0.2f</span> blue:<span class="number">0.2f</span> alpha:<span class="number">1.0f</span>]];  </span><br><span class="line">    [self addChild:background];  </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 5  </span></span><br><span class="line">    _sprite = [CCSprite spriteWithImageNamed:@<span class="string">"Icon-72.png"</span>];  </span><br><span class="line">    _sprite.position  = ccp(self.contentSize.width/<span class="number">2</span>,self.contentSize.height/<span class="number">2</span>);  </span><br><span class="line">    [self addChild:_sprite];  </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 6  </span></span><br><span class="line">    CCActionRotateBy* actionSpin = [CCActionRotateBy actionWithDuration:<span class="number">1.5f</span> angle:<span class="number">360</span>];  </span><br><span class="line">    [_sprite runAction:[CCActionRepeatForever actionWithAction:actionSpin]];  </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 7  </span></span><br><span class="line">    CCButton *backButton = [CCButton buttonWithTitle:@<span class="string">"[ Menu ]"</span> fontName:@<span class="string">"Verdana-Bold"</span> fontSize:<span class="number">18.0f</span>];  </span><br><span class="line">    backButton.positionType = CCPositionTypeNormalized;  </span><br><span class="line">    backButton.position = ccp(<span class="number">0.85f</span>, <span class="number">0.95f</span>); <span class="comment">// Top Right of screen  </span></span><br><span class="line">    [backButton setTarget:self selector:@selector(onBackClicked:)];  </span><br><span class="line">    [self addChild:backButton];  </span><br><span class="line">    <span class="keyword">return</span> self;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>让我们一起逐行过一下：</p>
+<p>为了接下来更方便地操作这个正在旋转的Cocos2D logo图标，我们为它声明一个私有实例。</p>
+<p>初始化 HelloWorld 场景.</p>
+<p>配置这个场景让它可以响应Cocos2D 的点击事件。在之后你会看到这这样配置使得 touchBegan:withEvent: 方法将要被调用到。</p>
+<p>创建一个 CCNodeColor, 用它来展示一种颜色（本教程中用它展示深灰色）。当这个node创建之后，你需要调用 addChild: 把它加到当前场景之后才能看到它。现在你的场景拥有一个背景色了!</p>
+<p>用 spriteWithImageNamed: 这个方法创建一个 CCSprite 并为它加载一个图片资源。通过使用这个屏幕的坐标，这个sprite的位置被放置在了屏幕的中央。再调用一下 addChild: 方法，把它也添加到场景中。</p>
+<p>创建一个 CCActionRotateBy action，我们将用它来给这个sprite做360度旋转，配置 CCActionRepeatForever 参数让这个旋转动作无限循环下去。然后调用 runAction 方法让sprite接收这个action。在接下来的讨论中会发现Actions 是Cocos2D的一项非常强大的特性。</p>
+<p>创建一个 CCButton 用以点击返回 IntroScene 场景, 你可以用这个操作作为重新初始化当前场景的一种简单方法。</p>
+<p>很棒! 首先呢，让我们把旋转着的Cocos2D logo图标替换成忍者的。</p>
+<p>想想该怎么做呢? 给你一些提示:</p>
+<p>看一看你刚刚添加到项目中的 ResourcePack ,从里面找一找忍者的图片。</p>
+<p>你只需要改动一行代码就可以了!</p>
+<p>尝试尽量自己搞定它，但是如果你实在卡在这里了，那么方法就在下面：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 5  </span></span><br><span class="line">_sprite = [CCSprite spriteWithImageNamed:@<span class="string">"player.png"</span>];</span><br></pre></td></tr></table></figure>
+<p>这很简单， _sprite 是一个很明显的名字但是当你开始使用_sprite1, _sprite2 的时候它会显得有一点混乱，所以我们把 _sprite 改成 _player。在 @implementation 中找到第一项：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@implementation HelloWorldScene &#123;  </span><br><span class="line">    <span class="comment">// 1  </span></span><br><span class="line">    CCSprite *_sprite;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后把它改成:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@implementation HelloWorldScene &#123;  </span><br><span class="line">    <span class="comment">// 1  </span></span><br><span class="line">    CCSprite *_player;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>很快你就会发现Xcode给你标志出5个错误并且帮你把这错误的几行用红色高亮了。不用担心，这是因为你把 _sprite 改名成了 _player，导致 _sprite 失效的原因。所以继续把所有的 _sprite 引用都改成 _player. 就OK了。</p>
+<p>编译运行项目，让我们看一下不需要打怪的忍者的生活状态。</p>
+<p><img src="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game6.png" alt=""></p>
+<p>现在旋转着的Cocos2D logo图片已经被替换成忍者的了。但愿忍者不会感觉到晕。。。</p>
+<p>然而，忍者这辈子就是被训练来战斗的，所以接下来你想要搞一些怪物让忍者挑战一下!</p>
+<h3 id="疯狂的怪物出现了"><a href="#疯狂的怪物出现了" class="headerlink" title="疯狂的怪物出现了"></a>疯狂的怪物出现了</h3><p>接下来你想要添加一些怪物到你的场景中。一个不会动的怪物自然不会对一个训练有素的忍者造成任何威胁,所以为了变得更有趣一些，你将添加一些会动的怪物。你将在屏幕的右外延创建一些怪物并且给它们添加 CCAction , 命令它们从屏幕右边向屏幕左边移动。</p>
+<p>在 HelloWorldScene.m 中添加如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)addMonster:(CCTime)dt &#123;  </span><br><span class="line">    CCSprite *monster = [CCSprite spriteWithImageNamed:@<span class="string">"monster.png"</span>];  </span><br><span class="line">    <span class="comment">// 1  </span></span><br><span class="line">    <span class="keyword">int</span> minY = monster.contentSize.height / <span class="number">2</span>;  </span><br><span class="line">    <span class="keyword">int</span> maxY = self.contentSize.height - monster.contentSize.height / <span class="number">2</span>;  </span><br><span class="line">    <span class="keyword">int</span> rangeY = maxY - minY;  </span><br><span class="line">    <span class="keyword">int</span> randomY = (arc4random() % rangeY) + minY;  </span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 2  </span></span><br><span class="line">    monster.position = CGPointMake(self.contentSize.width + monster.contentSize.width/<span class="number">2</span>, randomY);  </span><br><span class="line">    [self addChild:monster];  </span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 3  </span></span><br><span class="line">    <span class="keyword">int</span> minDuration = <span class="number">2.0</span>;  </span><br><span class="line">    <span class="keyword">int</span> maxDuration = <span class="number">4.0</span>;  </span><br><span class="line">    <span class="keyword">int</span> rangeDuration = maxDuration - minDuration;  </span><br><span class="line">    <span class="keyword">int</span> randomDuration = (arc4random() % rangeDuration) + minDuration;  </span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 4  </span></span><br><span class="line">    CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(-monster.contentSize.width/<span class="number">2</span>, randomY)];  </span><br><span class="line">    CCAction *actionRemove = [CCActionRemove action];  </span><br><span class="line">    [monster runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>让我们一起逐行过一下：</p>
+<p>为怪物的诞生位置定一个纵向范围。当你放置一个sprite的时候，默认的定位到的是sprite的中心坐标。所以这里为了不至于让怪物断掉，你在计算的时候需要用屏幕的高度减掉怪物的高度。</p>
+<p>用屏幕的宽度加上怪物的宽度确保把怪物恰好定位到屏幕的右外延，不让怪物露出来。</p>
+<p>现在你想要决定怪物横穿屏幕的用时，让我们定个随机时间吧，让怪物的移动更加难以预测。</p>
+<p>你将使用Cocos2D的 CCActionMoveTo: action 来快速移动怪物从起点（屏幕右外延）到目的地（屏幕左外延）。</p>
+<p>你已经看到旋转的action了，然而Cocos2D其实提供了很多非常方便的内置actions，包括移动的、旋转的、消失的、动画的等等。这里我们对怪物使用三种action:</p>
+<ul>
+<li><p>CCActionMoveTo: 这个action被用作控制怪物的移动轨迹，在本教程中用于控制它从屏幕右侧移动到左侧。这个action的duration用于控制怪物执行动作所需的时间。Duration设置的越短，怪物移动的速度将越快。在这里你把duration设置成2秒到4秒之间的随机秒数。</p>
+</li>
+<li><p>CCActionRemove: 将node从它的parent移除的好方法，可以有效地将node从场景中删除。当看不到怪物的时候（怪物移动到屏幕做外延的时候）你可以使用这个action把怪物从这个场景中移除。这步是非常重要的，如果不这么做你会发现有成千上万的怪物试图穿越你的iPhone，它们会耗光你设备的全部资源。</p>
+</li>
+<li><p>CCActionSequence: 这个序列action可以让你把一组action串在一起按序列执行，同一时间只有一个action在执行。通过这个方法你可以设置 CCActionMoveTo action 首先执行，一旦这个action执行完成了接着执行 CCActionRemove action。你可以用这个强大的action创建一组复杂的动画序列。<br>好的，现在你有了一个向场景添加怪物的方法了。然而对于一个经验丰富的忍者来说，一个怪物不足为惧，让我们写一个定时产生怪物的方法吧。</p>
+</li>
+</ul>
+<p>Cocos2D 提供了一个定时器帮助你每X.X秒调用一下回调方法，所以你可以利用它来完成每X秒生成怪物的方法。</p>
+<p>打开 HelloWorldScene.m 然后在 onEnter 方法的 [super onEnter]; 之后添加如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self schedule:@selector(addMonster:) interval:<span class="number">1.5</span>];</span><br></pre></td></tr></table></figure>
+<p>这样会创建一个每1.5秒调用 addMonster: 方法的Cocos2D 定时器。</p>
+<p>记住当你创建 addMonster 方法的时候, 会有一个额外的 dt 参数。 这代表着时间增量，也表示当前帧与之前的时间差异。定时器要求每个方法声明的时候都加上这个参数，虽然在这个教程里面你将不会使用到它。</p>
+<p>在你看到这些怪物之前，你需要做点修改。让我们带领大家从阴暗中走出来一些。为啥不把背景色从深灰改成浅灰色呢？</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2  </span></span><br><span class="line">CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:<span class="number">0.6f</span> green:<span class="number">0.6f</span> blue:<span class="number">0.6f</span> alpha:<span class="number">1.0f</span>]];</span><br></pre></td></tr></table></figure>
+<p>目前你忍者的头一定还在旋转着，你能让它停止转动，并且把他移动到偏左一些这样便于让它做好准备面对前面的突击？</p>
+<p>禁用头的旋转 CCActionRotateBy action。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 6  </span></span><br><span class="line"><span class="comment">//CCActionRotateBy* actionSpin = [CCActionRotateBy actionWithDuration:1.5f angle:360];  </span></span><br><span class="line"><span class="comment">//[_player runAction:[CCActionRepeatForever actionWithAction:actionSpin]];</span></span><br></pre></td></tr></table></figure></p>
+<p>改变忍者的位置。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_player.position  = ccp(self.contentSize.width/<span class="number">8</span>,self.contentSize.height/<span class="number">2</span>);</span><br></pre></td></tr></table></figure></p>
+<p>你也许会疑惑为什么要把宽度除以8（屏幕的1/8）。这是因为如果图方便直接写死坐标，那么遇到不同分辨率设备的时候就需要每种设备设置不同的坐标。</p>
+<p>如果你感兴趣想要多了解一些，看一下 CCButton 的位置配置方式，注意它使用了一种不同的 positionType ，它使用了标准化的解决方案0..1，0..1针对所有设备。</p>
+<p>编译运行，你应该可以看到很多怪物穿越屏幕！</p>
+<p><img src="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game7.png" alt=""></p>
+<h3 id="波动拳（Hadouken）"><a href="#波动拳（Hadouken）" class="headerlink" title="波动拳（Hadouken）"></a>波动拳（Hadouken）</h3><p>不幸的是你的忍者还没有足够强大到可以发射波动拳，所以你将需要依靠你专业的投掷技巧来抵御邪恶的（或者可能只是误解）怪物。</p>
+<p>给自己那个手里剑然后添加个投掷的action</p>
+<p>你将再次使用 CCActionMoveTo: action, 然而这次不会像是从 _player.position 移动到点击位置那般简单。 你想要将你的投射物沿着点击的方向穿越整个屏幕。因此你需要用到只是一点数学知识。</p>
+<p><img src="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game8.png" alt=""></p>
+<p>你可以从起点到点击点的x轴、y轴的位移变化中得到一个小的三角形。你只需求得一个拥有相同角度并且终止点在屏幕边沿的大三角形就OK了。</p>
+<p>为了完成这个运算，如果你有一些向量数学的基础就轻松多了（比如知道增加和减少向量的方法）。 Cocos2D 包含了一系列方便的向量操作函数，如 ccpAdd 和 ccpSub 。</p>
+<p>如果你对接下来的计算有任何疑问，请速查 vector math explanation。关于这个方面我个人建议看一下非常好的 Khan Academy 教学视频。</p>
+<p>响应点击了!</p>
+<p>正如你所看到的HelloWorldScene 模板已经在 init 方法中允许接收touch相应了。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 3  </span></span><br><span class="line">self.userInteractionEnabled = YES;</span><br></pre></td></tr></table></figure></p>
+<p>为了处理点击相应你通常需要创建 touchBegan: 方法，不过默认模板已经很体贴地给你带来了一个简单的 touchBegan 方法实例。</p>
+<p>打开 HelloWorldScene.m 并且用下面的代码替换现有的 touchBegan: 方法内容:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event &#123;  </span><br><span class="line">    <span class="comment">// 1  </span></span><br><span class="line">    CGPoint touchLocation = [touch locationInNode:self];  </span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 2  </span></span><br><span class="line">    CGPoint offset    = ccpSub(touchLocation, _player.position);  </span><br><span class="line">    <span class="keyword">float</span>   ratio     = offset.y/offset.x;  </span><br><span class="line">    <span class="keyword">int</span>     targetX   = _player.contentSize.width/<span class="number">2</span> + self.contentSize.width;  </span><br><span class="line">    <span class="keyword">int</span>     targetY   = (targetX*ratio) + _player.position.y;  </span><br><span class="line">    CGPoint targetPosition = ccp(targetX,targetY);  </span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 3  </span></span><br><span class="line">    CCSprite *projectile = [CCSprite spriteWithImageNamed:@<span class="string">"projectile.png"</span>];  </span><br><span class="line">    projectile.position = _player.position;  </span><br><span class="line">    [self addChild:projectile ];  </span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 4  </span></span><br><span class="line">    CCActionMoveTo *actionMove   = [CCActionMoveTo actionWithDuration:<span class="number">1.5f</span> position:targetPosition];  </span><br><span class="line">    CCActionRemove *actionRemove = [CCActionRemove action];  </span><br><span class="line">    [projectile runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>让我们一起逐行过一下：</p>
+<p>你需要将屏幕点击转化为场景的坐标系表示。Cocos2D的UITouch分类里有一个很方便的方法 locationInNode: 可以做的这一点。</p>
+<p>所以正如你所见，你得到了一个由起点到点击点的x、y轴位移组成的小三角形。你只需求得一个拥有相同角度并且终止点在屏幕边沿的大三角形就OK了。</p>
+<p>创建投掷物的sprite并且设置它的起始位置与忍者一样。你可以简单的使用 _player ，这就是你之前设置这个私有实例变量的原因。</p>
+<p>你现在应该对CCActionMoveTo 这个方法更加熟悉了。你有了之前计算的目标点和投掷物投掷完成的时间duration（duration越小，投掷物就会越快投过去）。</p>
+<p>编译运行，尽情开火吧!</p>
+<p><img src="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game9.png" alt=""></p>
+<p>Arggghhh 这些怪物太强大了，我们为什么不把他们给干掉呢！</p>
+<h3 id="碰撞检测和物理"><a href="#碰撞检测和物理" class="headerlink" title="碰撞检测和物理"></a>碰撞检测和物理</h3><p>那么现在你有了一个忍者、很多怪物和很多穿越屏幕的手里剑。看起来不错了，不过如果带一点摩擦的话就更好玩了，为了达成这一目的你需要在投掷物跟怪物之间做碰撞检测。</p>
+<p>Cocos2D 3.0的一个伟大的特性就是一套完整的物理引擎，有了它完成这个任务就小菜一碟了。物理引擎的伟大在于模拟了真实的移动，而且它对于处理碰撞检测也非常有用。 </p>
+<p>你现在将要使用Cocos2D的物理引擎去判定怪物和抛掷物的碰撞。完成它需要四个步骤：</p>
+<ul>
+<li><p>搭建物理世界. 物理世界是针对物理学计算的模拟空间。你将为当前场景搭建一个并且修改一些属性例如重力。物理世界搭建完成之后，你需要修改现有的游戏对象，把他们添加到物理世界中进而他们都将成为物理模拟的一部分。</p>
+</li>
+<li><p>为每个sprite创建物理主体. 使用Cocos2D你可以为每一个sprite关联物理主体用于碰撞检测并且可以设置某些属性。记住物理主体不用必须跟sprite的形状完全一样。通常它是一些简单的矩形或者圆形，甚至是一个像素清晰的轮廓。这样已经可以很好的满足大部分游戏并且可以提供更好的物理效果处理效率。<br>为每一种sprite设置CollisionType. Cocos2D物理引擎的一个方便特性是你不需要用数字定义你的碰撞类型了。你可以配置一个简单易懂的字符串定义你的碰撞类型。</p>
+</li>
+<li><p>配置碰撞相应代理. 默认当连个物理主体碰在一起他们会被物理模拟器处理，然而你想要在投掷物碰到怪物的时候做一些事情例如干掉怪物。因此你需要添加一个碰撞响应代理去处理投掷物与怪物之间的碰撞类型。</p>
+</li>
+</ul>
+<p>让我们开始吧。首先，你现在需要为你的物理世界添加另外一个私有实例变量。</p>
+<p>打开 HelloWorldScene.m 然后在 @implementation HelloWorldScene 声明里面 CCSprite 的初始化之后添加如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CCPhysicsNode *_physicsWorld;</span><br></pre></td></tr></table></figure>
+<p>现在你需要配置并添加这个物理模拟器到你的场景中，在 init 方法的 CCNodeColor 之后添加如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">_physicsWorld = [CCPhysicsNode node];  </span><br><span class="line">_physicsWorld.gravity = ccp(<span class="number">0</span>,<span class="number">0</span>);  </span><br><span class="line">_physicsWorld.debugDraw = YES;  </span><br><span class="line">_physicsWorld.collisionDelegate = self;  </span><br><span class="line">[self addChild:_physicsWorld];</span><br></pre></td></tr></table></figure>
+<p>因为你要使用物理模拟器主要为了做碰撞检测，在这里把重力（Gravity）设置成 (0,0) 。Cocos2D 有很多方便的调试函数，debugDraw 标志对于具体数字化物理世界是非常有用的。你可以看到所有被添加到模拟器上的物理主体。你同时需要设置 collisionDelegate 到 self, 这样使得你可以添加碰撞处理到场景中而且物理模拟器知道去 HelloWorldScene 中匹配碰撞的响应处理。</p>
+<p>你会注意到Xcode在 collisionDelegate 这行抛出了一个警告; 这很容易解决。打开 HelloWorldScene.h 然后标志这个 interface 实现CCPhysicsCollisionDelegate。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@interface HelloWorldScene : CCScene &lt;CCPhysicsCollisionDelegate&gt;</span><br></pre></td></tr></table></figure>
+<p>现在你需要为忍者配置物理主体并且将它添加到 _physicsWorld 而不是直接添加到场景中。</p>
+<p>退回到 HelloWorldScene.m, 在 init 方法中找到如下代码:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self addChild:_player];</span><br></pre></td></tr></table></figure>
+<p>将它替换成如下代码:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_player.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect)&#123;CGPointZero, 	_player.contentSize&#125; cornerRadius:<span class="number">0</span>]; <span class="comment">// 1  </span></span><br><span class="line">_player.physicsBody.collisionGroup = @<span class="string">"playerGroup"</span>; <span class="comment">// 2  </span></span><br><span class="line">[_physicsWorld addChild:_player];</span><br></pre></td></tr></table></figure>
+<p>快速看一下这个代码片段:</p>
+<p>创建一个物理主体，在这个例子中使用忍者的 contentSize 来创建一个环绕在忍者四周的矩形主体。<br>设置物理主体的 collisionGroup, 默认所有的主体都会碰撞。如果你将一些物理主体设置成相同的 collisionGroup 他们之间就不会再互相碰撞了, 这点当你想要创建一个由多个身体组成的角色，而且不想让他的每个身体互相碰撞的时候非常有用,例如一个拿着武器的角色。你将用这个保证投掷物不会撞到角色。</p>
+<p>你已经配置好物理模拟器、为角色创建了物理主体并且把它添加到了物理模拟器中。现在想想你能不能自己为怪物也添加到物理模拟器中。</p>
+<p>查找 addMonster: 方法并且定位到如下代码:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self addChild:monster];</span><br></pre></td></tr></table></figure>
+<p>将它替换成:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">monster.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect)&#123;CGPointZero, 	monster.contentSize&#125; cornerRadius:<span class="number">0</span>];  </span><br><span class="line">monster.physicsBody.collisionGroup = @<span class="string">"monsterGroup"</span>;  </span><br><span class="line">monster.physicsBody.collisionType  = @<span class="string">"monsterCollision"</span>;  </span><br><span class="line">[_physicsWorld addChild:monster];</span><br></pre></td></tr></table></figure></p>
+<p>这几乎是跟为 _player 添加物理主体的方式的一致的，但是我为了介绍一个新属性使了点小聪明。这次你设置了 collisionType 属性, 这将被用来为’monsterCollision’和’projectileCollsion’的 collisionType 搭建一个物理模拟器碰撞代理方法。</p>
+<p>你快搞定它了！这次试着把抛掷物添加到模拟器中。</p>
+<p>我会给你一个提示：搞定它需要使用到 collisionType 和 collisionGroup 属性。</p>
+<p>找到 touchBegan:withEvent 方法然后定位到如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self addChild:projectile];</span><br></pre></td></tr></table></figure>
+<p>将它替换成:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">projectile.physicsBody = [CCPhysicsBody bodyWithRect:(CGRect)&#123;CGPointZero, 	projectile.contentSize&#125; cornerRadius:<span class="number">0</span>];  </span><br><span class="line">projectile.physicsBody.collisionGroup = @<span class="string">"playerGroup"</span>;  </span><br><span class="line">projectile.physicsBody.collisionType  = @<span class="string">"projectileCollision"</span>;  </span><br><span class="line">[_physicsWorld addChild:projectile];</span><br></pre></td></tr></table></figure>
+<p>编译运行，你应该会看到很多漂亮的粉红色的小方块。</p>
+<p><img src="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game10.png" alt=""></p>
+<p>这些sprite周围的粉红色方块是被 _physics 的 debugDraw 属性创建的。在你首次搭建物理世界的时候他们是很有用的，你可以通过他们确认一切工作是否如你所愿的进行着。注意到在手里剑周围的方块不是很和谐；如果用圆形的话应该更合适一些。</p>
+<p>当然有这么个方法bodyWithCircleOfRadius:可以用于创建更时候你的抛掷物的圆形物理主体。将抛掷物物理主体的配置代码替换为如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">projectile.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:projectile.contentSize.width/<span class="number">2.0f</span> 	andCenter:projectile.anchorPointInPoints];</span><br></pre></td></tr></table></figure>
+<p>默认中心点会被设置在sprite的左下方，然而你想把圆形放置在你的sprite的中心处。</p>
+<p>好的，你现在已经把你的游戏对象改成物理模拟器的一部分了。现在你一定想要在 projectileCollision 和monsterCollison collisionType 交流的时候做一些事情。</p>
+<p>Cocos2D物理引擎有很多很好的方法去完成这个目的。只需要在 HelloWorldScene.m中添加如下方法：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair monsterCollision:(CCNode *)monster projectileCollision:(CCNode *)projectile &#123;  </span><br><span class="line">    [monster removeFromParent];  </span><br><span class="line">    [projectile removeFromParent];  </span><br><span class="line">    <span class="keyword">return</span> YES;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码很强大。当物理模拟器被搭建完成之后，物理引擎会去查找CCPhysicsCollisionDelegate 方法，如果找到了就会触发它。参数名设置成你想要配置成的collisionType。</p>
+<p>用这个方法你把 ‘projectile’ 和 ‘monster’彻底从模拟器和场景中移除了。你当然可以添加一个计分器，添加一个特殊效果或者其它你想在抛掷物与怪物碰撞时发生的事情。</p>
+<p>编译运行，你最后应该可以毁灭这些怪物了。忍者，前进，开火！</p>
+<h3 id="收尾"><a href="#收尾" class="headerlink" title="收尾"></a>收尾</h3><p>你现在已经离完成一个简单游戏非常近了。但是 (Pew-Pew!), 添加一些音乐对于现在来说再好不过了。</p>
+<p>Cocos2D 用OpenAL声音类库提供声音支持。不需要添加任何的额外头文件，都为你准备好了。</p>
+<p>历史课程: 对于那些使用Cocos2D之前版本的用户也许会疑惑SimpleAudioEngine怎么了, 这个声音类库已经被Open AL取代了。</p>
+<p>播放一个SFX非常简单, 是时候在忍者每次发镖的时候添加一个SFX了。这个声音可能不能100%完美表现出忍者投掷手里剑的声音。:-)</p>
+<p>在创建抛掷物的 touchBegan: 方法的最后添加如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[OALSimpleAudio sharedInstance] playEffect:@<span class="string">"pew-pew-lei.caf"</span>];</span><br></pre></td></tr></table></figure>
+<p>是时候添加一些热血的音乐了，在 init 方法的 userInteractionEnabled 之后添加如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[OALSimpleAudio sharedInstance] playBg:@<span class="string">"background-music-aac.caf"</span> loop:YES];</span><br></pre></td></tr></table></figure>
+<p>最后一步，注释掉 init 方法中的调试语句：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_physicsWorld.debugDraw = YES;</span><br></pre></td></tr></table></figure>
+<p>编译运行, pew-pew. 你现在有声音了，简单不？</p>
+<p><img src="http://7xir36.com1.z0.glb.clouddn.com/cocos2d-game11.png" alt=""></p>
+<h3 id="搞完了去哪"><a href="#搞完了去哪" class="headerlink" title="搞完了去哪?"></a>搞完了去哪?</h3><p>完工了!  Cocos2D 3.0 game 这里有你目前编写的完整的代码。</p>
+<p>你已经在学习 Cocos2D 3.0 的道路上走了一大段路了,向你介绍了一些Cocos2D的核心内容。伟大始于渺小，所以你为什么不通过找个项目再做一些更加深入的研究呢？</p>
+<p>看一下 IntroScene 的代码你将会学到如何创建一个label。为何不加一个记录干掉怪物数量的计数器呢？</p>
+<p>当忍者碰到怪物的时候会发生什么呢？</p>
+<p>想要尝试一些更高大上的动画的话，在Xcode里面打开 Help\Documentation and API References 然后搜索 CCAction ，你会看到所有的你可以添加到你的游戏角色对象上的动画列表。</p>
+<p>我从来没有见过不会转的手里剑，为啥不尝试给它加一点旋转（我确定在这个教程开始的时候我们看到过一个现成的例子）提示：你可以对一个node多次使用 runAction 。 这些action没必要放在一个序列中。</p>
+<p>如果你想要学到更多关于Cocos2D的知识，official Cocos2D forum 是一个询问问题和学习经验的好地方。我的用户名是 @cocojoe ，随时都可以过来跟我交流。</p>
+<p>如果你对这篇教程有任何疑问或者建议请一起讨论！</p>
+<p><a href="http://www.raywenderlich.com/61391/how-to-make-a-simple-iphone-game-with-cocos2d-3-0-tutorial" target="_blank" rel="external">英文原文链接</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay.png" alt="AliThink Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/07/14/NSNull扩展/" rel="next" title="NSNull 找不到指定方法解决方案">
+                <i class="fa fa-chevron-left"></i> NSNull 找不到指定方法解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/07/21/IPA 企业证书重新签名/" rel="prev" title="IPA 企业证书重新签名">
+                IPA 企业证书重新签名 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="AliThink" />
+          <p class="site-author-name" itemprop="name">AliThink</p>
+          <p class="site-description motion-element" itemprop="description">热爱生活，乐于分享，时而沉默寡言，时而嘻哈扯淡的两面派
+</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/AliThink" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cocos2D-vs-Sprite-Kit"><span class="nav-number">1.</span> <span class="nav-text">Cocos2D vs Sprite Kit</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cocos2D-优点"><span class="nav-number">1.1.</span> <span class="nav-text">Cocos2D 优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cocos2D-缺点"><span class="nav-number">1.2.</span> <span class="nav-text">Cocos2D 缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Cocos2D"><span class="nav-number">2.</span> <span class="nav-text">安装 Cocos2D</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-World"><span class="nav-number">3.</span> <span class="nav-text">Hello World</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#忍者驾到"><span class="nav-number">4.</span> <span class="nav-text">忍者驾到!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#疯狂的怪物出现了"><span class="nav-number">5.</span> <span class="nav-text">疯狂的怪物出现了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#波动拳（Hadouken）"><span class="nav-number">6.</span> <span class="nav-text">波动拳（Hadouken）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#碰撞检测和物理"><span class="nav-number">7.</span> <span class="nav-text">碰撞检测和物理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#收尾"><span class="nav-number">8.</span> <span class="nav-text">收尾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搞完了去哪"><span class="nav-number">9.</span> <span class="nav-text">搞完了去哪?</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AliThink</span>
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+  
+
+  
+      <!-- UY BEGIN -->
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2147238"></script>
+      <!-- UY END -->
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
