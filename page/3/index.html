@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,11 +10,22 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
 
 
 
@@ -34,38 +45,27 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
 
 
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -73,11 +73,6 @@
 
 
 
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
 
 
 
@@ -105,19 +100,21 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
-      userId: 'undefined',
+      userId: '0',
       author: '博主'
     },
     algolia: {
       applicationID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
@@ -130,13 +127,11 @@
 
 
 
-  <title> The  Force  Awakens
- </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>The  Force  Awakens
+</title>
   
+
+
 
 
 
@@ -144,7 +139,7 @@
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?ddd5ea8fb6af25af228cf11a240076e8";
+      hm.src = "https://hm.baidu.com/hm.js?ddd5ea8fb6af25af228cf11a240076e8";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
@@ -153,41 +148,44 @@
 
 
 
+</head>
 
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">The  Force  Awakens
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">The  Force  Awakens
 </span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-  <p class="site-subtitle"></p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -238,32 +236,9 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
   
 </nav>
 
@@ -287,23 +262,23 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="/2016/07/01/《禅与 Objective-C 编程艺术》读书拾遗/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2016/07/01/《禅与 Objective-C 编程艺术》读书拾遗/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="AliThink">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="The  Force  Awakens
-">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="The  Force  Awakens
-" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AliThink">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The  Force  Awakens
+">
+    </span>
 
     
       <header class="post-header">
@@ -311,46 +286,40 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/07/01/《禅与 Objective-C 编程艺术》读书拾遗/" itemprop="url">
-                  《禅与 Objective-C 编程艺术》读书拾遗
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/07/01/《禅与 Objective-C 编程艺术》读书拾遗/" itemprop="url">《禅与 Objective-C 编程艺术》读书拾遗</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-01T10:49:23+08:00">
-              2016-07-01
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-01T10:49:23+08:00">
+                2016-07-01
+              </time>
+            
 
-            &nbsp;|&nbsp;
+            
 
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-11-10T09:18:12+08:00">
-              2017-11-10
-            </time>
             
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/读过的书/" itemprop="url" rel="index">
@@ -360,7 +329,6 @@
 
                 
                 
-
               
             </span>
           
@@ -370,19 +338,21 @@
           
 
           
-
-          
           
 
           
+
           
+
           
 
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -499,17 +469,19 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -519,6 +491,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -531,23 +507,23 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="/2016/06/28/BI APP图形库选型/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2016/06/28/BI APP图形库选型/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="AliThink">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="The  Force  Awakens
-">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="The  Force  Awakens
-" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AliThink">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The  Force  Awakens
+">
+    </span>
 
     
       <header class="post-header">
@@ -555,46 +531,40 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/06/28/BI APP图形库选型/" itemprop="url">
-                  BI APP图形库选型
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/28/BI APP图形库选型/" itemprop="url">BI APP图形库选型</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-28T09:55:04+08:00">
-              2016-06-28
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-28T09:55:04+08:00">
+                2016-06-28
+              </time>
+            
 
-            &nbsp;|&nbsp;
+            
 
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-11-10T09:18:12+08:00">
-              2017-11-10
-            </time>
             
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS/" itemprop="url" rel="index">
@@ -604,7 +574,6 @@
 
                 
                 
-
               
             </span>
           
@@ -614,19 +583,21 @@
           
 
           
-
-          
           
 
           
+
           
+
           
 
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -676,17 +647,19 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -696,6 +669,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -708,23 +685,23 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="/2016/06/11/工作与生活的平衡/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2016/06/11/工作与生活的平衡/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="AliThink">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="The  Force  Awakens
-">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="The  Force  Awakens
-" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AliThink">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The  Force  Awakens
+">
+    </span>
 
     
       <header class="post-header">
@@ -732,46 +709,40 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/06/11/工作与生活的平衡/" itemprop="url">
-                  工作与生活的平衡
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/11/工作与生活的平衡/" itemprop="url">工作与生活的平衡</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-11T21:43:53+08:00">
-              2016-06-11
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-11T21:43:53+08:00">
+                2016-06-11
+              </time>
+            
 
-            &nbsp;|&nbsp;
+            
 
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-11-10T09:18:12+08:00">
-              2017-11-10
-            </time>
             
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/鸡汤乱炖/" itemprop="url" rel="index">
@@ -781,7 +752,6 @@
 
                 
                 
-
               
             </span>
           
@@ -791,19 +761,21 @@
           
 
           
-
-          
           
 
           
+
           
+
           
 
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -839,17 +811,19 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -859,6 +833,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -871,23 +849,23 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="/2016/06/04/cocoapods私有仓库封装过程中的思考/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2016/06/04/cocoapods私有仓库封装过程中的思考/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="AliThink">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="The  Force  Awakens
-">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="The  Force  Awakens
-" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AliThink">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The  Force  Awakens
+">
+    </span>
 
     
       <header class="post-header">
@@ -895,46 +873,40 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/06/04/cocoapods私有仓库封装过程中的思考/" itemprop="url">
-                  cocoapods私有仓库封装过程中的思考
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/04/cocoapods私有仓库封装过程中的思考/" itemprop="url">cocoapods私有仓库封装过程中的思考</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-04T21:33:11+08:00">
-              2016-06-04
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-04T21:33:11+08:00">
+                2016-06-04
+              </time>
+            
 
-            &nbsp;|&nbsp;
+            
 
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-11-10T09:18:12+08:00">
-              2017-11-10
-            </time>
             
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS/" itemprop="url" rel="index">
@@ -944,7 +916,6 @@
 
                 
                 
-
               
             </span>
           
@@ -954,19 +925,21 @@
           
 
           
-
-          
           
 
           
+
           
+
           
 
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1038,17 +1011,19 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1058,6 +1033,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1070,23 +1049,23 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="/2016/05/24/理性的你和猴子还有惊慌怪兽/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2016/05/24/理性的你和猴子还有惊慌怪兽/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="AliThink">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="The  Force  Awakens
-">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="The  Force  Awakens
-" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AliThink">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The  Force  Awakens
+">
+    </span>
 
     
       <header class="post-header">
@@ -1094,46 +1073,40 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/05/24/理性的你和猴子还有惊慌怪兽/" itemprop="url">
-                  理性的你和猴子还有惊慌怪兽
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/05/24/理性的你和猴子还有惊慌怪兽/" itemprop="url">理性的你和猴子还有惊慌怪兽</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-24T21:50:25+08:00">
-              2016-05-24
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-24T21:50:25+08:00">
+                2016-05-24
+              </time>
+            
 
-            &nbsp;|&nbsp;
+            
 
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-11-10T09:18:12+08:00">
-              2017-11-10
-            </time>
             
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/鸡汤乱炖/" itemprop="url" rel="index">
@@ -1143,7 +1116,6 @@
 
                 
                 
-
               
             </span>
           
@@ -1153,19 +1125,21 @@
           
 
           
-
-          
           
 
           
+
           
+
           
 
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1190,17 +1164,19 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1210,6 +1186,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1222,23 +1202,23 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="/2016/05/10/Swifter Tips阅读随想1/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2016/05/10/Swifter Tips阅读随想1/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="AliThink">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="The  Force  Awakens
-">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="The  Force  Awakens
-" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AliThink">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The  Force  Awakens
+">
+    </span>
 
     
       <header class="post-header">
@@ -1246,46 +1226,40 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/05/10/Swifter Tips阅读随想1/" itemprop="url">
-                  Swifter Tips阅读随想1
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/05/10/Swifter Tips阅读随想1/" itemprop="url">Swifter Tips阅读随想1</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-10T17:43:00+08:00">
-              2016-05-10
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-10T17:43:00+08:00">
+                2016-05-10
+              </time>
+            
 
-            &nbsp;|&nbsp;
+            
 
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-11-10T09:18:12+08:00">
-              2017-11-10
-            </time>
             
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Swift/" itemprop="url" rel="index">
@@ -1295,7 +1269,6 @@
 
                 
                 
-
               
             </span>
           
@@ -1305,19 +1278,21 @@
           
 
           
-
-          
           
 
           
+
           
+
           
 
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1336,17 +1311,19 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1356,6 +1333,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1368,23 +1349,23 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="/2015/06/06/《三体》浅读梳理/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2015/06/06/《三体》浅读梳理/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="AliThink">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="The  Force  Awakens
-">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="The  Force  Awakens
-" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AliThink">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The  Force  Awakens
+">
+    </span>
 
     
       <header class="post-header">
@@ -1392,46 +1373,40 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/06/06/《三体》浅读梳理/" itemprop="url">
-                  《三体》浅读梳理
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/06/06/《三体》浅读梳理/" itemprop="url">《三体》浅读梳理</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-06T14:45:34+08:00">
-              2015-06-06
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-06T14:45:34+08:00">
+                2015-06-06
+              </time>
+            
 
-            &nbsp;|&nbsp;
+            
 
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-11-10T09:18:12+08:00">
-              2017-11-10
-            </time>
             
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/读过的书/" itemprop="url" rel="index">
@@ -1441,7 +1416,6 @@
 
                 
                 
-
               
             </span>
           
@@ -1451,19 +1425,21 @@
           
 
           
-
-          
           
 
           
+
           
+
           
 
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1505,17 +1481,19 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1525,6 +1503,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1537,23 +1519,23 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="/2014/07/21/IPA 企业证书重新签名/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2014/07/21/IPA 企业证书重新签名/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="AliThink">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="The  Force  Awakens
-">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="The  Force  Awakens
-" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AliThink">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The  Force  Awakens
+">
+    </span>
 
     
       <header class="post-header">
@@ -1561,46 +1543,40 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/07/21/IPA 企业证书重新签名/" itemprop="url">
-                  IPA 企业证书重新签名
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/07/21/IPA 企业证书重新签名/" itemprop="url">IPA 企业证书重新签名</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-07-21T17:33:40+08:00">
-              2014-07-21
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-21T17:33:40+08:00">
+                2014-07-21
+              </time>
+            
 
-            &nbsp;|&nbsp;
+            
 
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-11-10T09:18:12+08:00">
-              2017-11-10
-            </time>
             
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS/" itemprop="url" rel="index">
@@ -1610,7 +1586,6 @@
 
                 
                 
-
               
             </span>
           
@@ -1620,19 +1595,21 @@
           
 
           
-
-          
           
 
           
+
           
+
           
 
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1679,17 +1656,19 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1699,6 +1678,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1711,23 +1694,23 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="/2014/07/17/cocos2d教程/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2014/07/17/cocos2d教程/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="AliThink">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="The  Force  Awakens
-">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="The  Force  Awakens
-" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AliThink">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The  Force  Awakens
+">
+    </span>
 
     
       <header class="post-header">
@@ -1735,46 +1718,40 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/07/17/cocos2d教程/" itemprop="url">
-                  Cocos2D简单iPhone游戏【入门教程】
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/07/17/cocos2d教程/" itemprop="url">Cocos2D简单iPhone游戏【入门教程】</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-07-17T17:33:40+08:00">
-              2014-07-17
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-17T17:33:40+08:00">
+                2014-07-17
+              </time>
+            
 
-            &nbsp;|&nbsp;
+            
 
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-11-10T09:18:12+08:00">
-              2017-11-10
-            </time>
             
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS/" itemprop="url" rel="index">
@@ -1784,7 +1761,6 @@
 
                 
                 
-
               
             </span>
           
@@ -1794,19 +1770,21 @@
           
 
           
-
-          
           
 
           
+
           
+
           
 
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2007,17 +1985,19 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -2027,6 +2007,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -2039,23 +2023,23 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="/2014/07/14/NSNull扩展/">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2014/07/14/NSNull扩展/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="AliThink">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="The  Force  Awakens
-">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="The  Force  Awakens
-" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AliThink">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The  Force  Awakens
+">
+    </span>
 
     
       <header class="post-header">
@@ -2063,46 +2047,40 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/07/14/NSNull扩展/" itemprop="url">
-                  NSNull 找不到指定方法解决方案
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/07/14/NSNull扩展/" itemprop="url">NSNull 找不到指定方法解决方案</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-07-14T17:33:40+08:00">
-              2014-07-14
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-14T17:33:40+08:00">
+                2014-07-14
+              </time>
+            
 
-            &nbsp;|&nbsp;
+            
 
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-11-10T09:18:12+08:00">
-              2017-11-10
-            </time>
             
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS/" itemprop="url" rel="index">
@@ -2112,7 +2090,6 @@
 
                 
                 
-
               
             </span>
           
@@ -2122,19 +2099,21 @@
           
 
           
-
-          
           
 
           
+
           
+
           
 
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2157,17 +2136,19 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -2177,6 +2158,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -2209,69 +2194,80 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.png"
-               alt="AliThink" />
-          <p class="site-author-name" itemprop="name">AliThink</p>
-          <p class="site-description motion-element" itemprop="description">热爱生活，乐于分享，时而沉默寡言，时而嘻哈扯淡的两面派
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="AliThink" />
+            
+              <p class="site-author-name" itemprop="name">AliThink</p>
+              <p class="site-description motion-element" itemprop="description">热爱生活，乐于分享，时而沉默寡言，时而嘻哈扯淡的两面派
 </p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">31</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
           </div>
 
           
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
+          
+
+          
           
 
           
 
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/AliThink" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
         </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
+
+      
 
       
 
@@ -2285,28 +2281,68 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">AliThink</span>
-  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
+  
 </div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
 
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-eye"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
@@ -2326,6 +2362,15 @@
 
 
   
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2351,33 +2396,32 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
 
 
 
   
-
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
 
 
 
   
 
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
 
 
   
@@ -2392,138 +2436,24 @@
 
 
   
-    
-  
 
-  
+
 
 
 
   
+
+
+
+
+
+
+
+
   
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
 
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $( "entry", xmlResponse ).map(function() {
-            return {
-              title: $( "title", this ).text(),
-              content: $("content",this).text(),
-              url: $( "url" , this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function(){
-            var matchcounts = 0;
-            var str='<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if(data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if( index_title >= 0 || index_content >= 0 ){
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
 
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g,"");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if(start == 0){
-                      end = 50;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword){
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                    });
 
-                    str += "<p class=\"search-result\">" + match_content +"...</p>"
-                  }
-                  str += "</li>";
-                }
-              })};
-            str += "</ul>";
-            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
 
 
   
@@ -2534,6 +2464,9 @@
 
   
 
+  
+
+  
 
 </body>
 </html>
