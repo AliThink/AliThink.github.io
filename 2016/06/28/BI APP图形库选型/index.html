@@ -1,85 +1,12 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="背景BI中会涉及到不少图形可视化的应用，因为考虑到APP用户体验方面的需求（移动端版本主要面向集团领导使用），BI APP主要采用Native的图形可视化解决方案（当然Swift优先^_^）。 涉及的图形类型 BI 中的各种图形图表都封装成了对应的卡片类型，根据接口的卡片类型描述动态生成对应的数据卡片进行展示。 开源库选型1.Charts 传送门：https://github.com/daniel">
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="背景BI中会涉及到不少图形可视化的应用，因为考虑到APP用户体验方面的需求（移动端版本主要面向集团领导使用），BI APP主要采用Native的图形可视化解决方案（当然Swift优先^_^）。 涉及的图形类型 BI 中的各种图形图表都封装成了对应的卡片类型，根据接口的卡片类型描述动态生成对应的数据卡片进行展示。 开源库选型1.Charts 传送门：https://github.com/daniel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BI APP图形库选型">
 <meta property="og:url" content="/2016/06/28/BI APP图形库选型/index.html">
@@ -97,280 +24,141 @@
 <meta name="twitter:title" content="BI APP图形库选型">
 <meta name="twitter:description" content="背景BI中会涉及到不少图形可视化的应用，因为考虑到APP用户体验方面的需求（移动端版本主要面向集团领导使用），BI APP主要采用Native的图形可视化解决方案（当然Swift优先^_^）。 涉及的图形类型 BI 中的各种图形图表都封装成了对应的卡片类型，根据接口的卡片类型描述动态生成对应的数据卡片进行展示。 开源库选型1.Charts 传送门：https://github.com/daniel">
 <meta name="twitter:image" content="http://alithink.com/img/3bi/1.png">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="/2016/06/28/BI APP图形库选型/"/>
-
-
-
-
-
-  <title>BI APP图形库选型 | The  Force  Awakens
-</title>
-  
-
-
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?ddd5ea8fb6af25af228cf11a240076e8";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/img/favicon.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.png">
+          
+        
+    
+    <!-- title -->
+    <title>BI APP图形库选型</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/archives">Writing</a></li>
+         
+          <li><a href="/categories">categories</a></li>
+         
+          <li><a href="https://github.com/AliThink">Projects</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/07/01/《禅与 Objective-C 编程艺术》读书拾遗/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/06/11/工作与生活的平衡/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=/2016/06/28/BI APP图形库选型/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=/2016/06/28/BI APP图形库选型/&text=BI APP图形库选型"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=/2016/06/28/BI APP图形库选型/&title=BI APP图形库选型"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=/2016/06/28/BI APP图形库选型/&is_video=false&description=BI APP图形库选型"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BI APP图形库选型&body=Check out this article: /2016/06/28/BI APP图形库选型/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=/2016/06/28/BI APP图形库选型/&title=BI APP图形库选型"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=/2016/06/28/BI APP图形库选型/&title=BI APP图形库选型"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=/2016/06/28/BI APP图形库选型/&title=BI APP图形库选型"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=/2016/06/28/BI APP图形库选型/&title=BI APP图形库选型"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=/2016/06/28/BI APP图形库选型/&name=BI APP图形库选型&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">The  Force  Awakens
-</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#涉及的图形类型"><span class="toc-number">2.</span> <span class="toc-text">涉及的图形类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开源库选型"><span class="toc-number">3.</span> <span class="toc-text">开源库选型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Charts"><span class="toc-number">3.1.</span> <span class="toc-text">1.Charts</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#应用场景："><span class="toc-number">3.1.1.</span> <span class="toc-text">应用场景：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#优势："><span class="toc-number">3.1.2.</span> <span class="toc-text">优势：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ESArcProgressView"><span class="toc-number">3.2.</span> <span class="toc-text">2.ESArcProgressView</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#应用场景：-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">应用场景：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#优势：-1"><span class="toc-number">3.2.2.</span> <span class="toc-text">优势：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-XCL-Charts"><span class="toc-number">3.3.</span> <span class="toc-text">3.XCL-Charts</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#应用场景：-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">应用场景：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-number">4.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-展示图形中的最后几个元素"><span class="toc-number">4.1.</span> <span class="toc-text">1. 展示图形中的最后几个元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-完整显示x轴所有的元素标签"><span class="toc-number">4.2.</span> <span class="toc-text">2. 完整显示x轴所有的元素标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-设置为可拖动的图形与tableview的滑动存在冲突"><span class="toc-number">4.3.</span> <span class="toc-text">3. 设置为可拖动的图形与tableview的滑动存在冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存在的不足"><span class="toc-number">5.</span> <span class="toc-text">存在的不足</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-组合图包含grouped柱状图时存在bug"><span class="toc-number">5.1.</span> <span class="toc-text">1. 组合图包含grouped柱状图时存在bug</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-堆积图缺失线性堆积图"><span class="toc-number">5.2.</span> <span class="toc-text">2. 堆积图缺失线性堆积图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-ChartMarker堆积图功能缺失"><span class="toc-number">5.3.</span> <span class="toc-text">3. ChartMarker堆积图功能缺失</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">6.</span> <span class="toc-text">小结</span></a></li></ol>
+    </div>
+  </span>
 </div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-desktop"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2016/06/28/BI APP图形库选型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="AliThink">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/img/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="The  Force  Awakens
-">
-    </span>
-
-    
-      <header class="post-header">
-
+    <div class="content index py4">
         
-        
-          <h1 class="post-title" itemprop="name headline">BI APP图形库选型</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-28T09:55:04+08:00">
-                2016-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-eye"></i> 浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
     
+    <h1 class="posttitle" itemprop="name headline">
+        BI APP图形库选型
+    </h1>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">The  Force  Awakens
+</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-06-28T01:55:04.000Z" itemprop="datePublished">2016-06-28</time>
+    </div>
+
 
       
-      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/iOS/">iOS</a>
+    </div>
+
 
       
-        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>BI中会涉及到不少图形可视化的应用，因为考虑到APP用户体验方面的需求（移动端版本主要面向集团领导使用），BI APP主要采用Native的图形可视化解决方案（当然Swift优先^_^）。</p>
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>BI中会涉及到不少图形可视化的应用，因为考虑到APP用户体验方面的需求（移动端版本主要面向集团领导使用），BI APP主要采用Native的图形可视化解决方案（当然Swift优先^_^）。</p>
 <h3 id="涉及的图形类型"><a href="#涉及的图形类型" class="headerlink" title="涉及的图形类型"></a>涉及的图形类型</h3><p><img src="http://alithink.com/img/3bi/1.png" alt="BI show.png"></p>
 <p>BI 中的各种图形图表都封装成了对应的卡片类型，根据接口的卡片类型描述动态生成对应的数据卡片进行展示。</p>
 <h3 id="开源库选型"><a href="#开源库选型" class="headerlink" title="开源库选型"></a>开源库选型</h3><h4 id="1-Charts"><a href="#1-Charts" class="headerlink" title="1.Charts"></a>1.Charts</h4><blockquote>
-<p>传送门：<a href="https://github.com/danielgindi/Charts" target="_blank" rel="external">https://github.com/danielgindi/Charts</a>  </p>
+<p>传送门：<a href="https://github.com/danielgindi/Charts" target="_blank" rel="noopener">https://github.com/danielgindi/Charts</a>  </p>
 </blockquote>
 <h5 id="应用场景："><a href="#应用场景：" class="headerlink" title="应用场景："></a>应用场景：</h5><p>主力图形库，常规图形的展示。</p>
 <h5 id="优势："><a href="#优势：" class="headerlink" title="优势："></a>优势：</h5><ul>
@@ -380,7 +168,7 @@
 <li>较为优雅的动画支持、默认数据展示区域的控制、各种展示细节的灵活控制等。</li>
 </ul>
 <h4 id="2-ESArcProgressView"><a href="#2-ESArcProgressView" class="headerlink" title="2.ESArcProgressView"></a>2.ESArcProgressView</h4><blockquote>
-<p>传送门：<a href="https://github.com/e-sites/ESArcProgressView" target="_blank" rel="external">https://github.com/e-sites/ESArcProgressView</a>  </p>
+<p>传送门：<a href="https://github.com/e-sites/ESArcProgressView" target="_blank" rel="noopener">https://github.com/e-sites/ESArcProgressView</a>  </p>
 </blockquote>
 <h5 id="应用场景：-1"><a href="#应用场景：-1" class="headerlink" title="应用场景："></a>应用场景：</h5><p><img src="http://alithink.com/img/3bi/2.png" alt="Circle.png"></p>
 <p>多层环形图（暂时这么称呼她吧）<br>其实是仿照的Apple Watch的Activity，不过确实比纯粹的柱状图更具美感一些^_^。</p>
@@ -389,7 +177,7 @@
 <li>支持简单动画，不过需要手动处理下timer的runloop mode的问题。</li>
 </ul>
 <h4 id="3-XCL-Charts"><a href="#3-XCL-Charts" class="headerlink" title="3.XCL-Charts"></a>3.XCL-Charts</h4><blockquote>
-<p>传送门：<a href="https://github.com/xcltapestry/XCL-Charts" target="_blank" rel="external">https://github.com/xcltapestry/XCL-Charts</a> </p>
+<p>传送门：<a href="https://github.com/xcltapestry/XCL-Charts" target="_blank" rel="noopener">https://github.com/xcltapestry/XCL-Charts</a> </p>
 </blockquote>
 <h5 id="应用场景：-2"><a href="#应用场景：-2" class="headerlink" title="应用场景："></a>应用场景：</h5><p><img src="http://alithink.com/img/3bi/3.png" alt="android circle.png"></p>
 <p>Android的多层环形图解决方案，XCL也是一个较为完备的Android图形库，不过相较来说库的成熟度没有Charts高，一些细节功能也存在一定程度的缺失。</p>
@@ -398,439 +186,121 @@
 <p>这里setVisibleXRangeMaximum设置的数目在grouped柱状图配置的时候记得要乘以单位组内柱子的数目并包含组之间间隔的空间（往往间隔的空间也算做一个柱子）。</p>
 <h4 id="2-完整显示x轴所有的元素标签"><a href="#2-完整显示x轴所有的元素标签" class="headerlink" title="2. 完整显示x轴所有的元素标签"></a>2. 完整显示x轴所有的元素标签</h4><p>Charts默认自动计算相邻x轴元素标签的距离, 控制x轴部分标签的隐藏以达到较好的现实效果。但实际需求中往往会要求展示所有x轴的元素标签，那么就可以通过以下配置禁用默认的计算。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xAxis?.setLabelsToSkip(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
 <h4 id="3-设置为可拖动的图形与tableview的滑动存在冲突"><a href="#3-设置为可拖动的图形与tableview的滑动存在冲突" class="headerlink" title="3. 设置为可拖动的图形与tableview的滑动存在冲突"></a>3. 设置为可拖动的图形与tableview的滑动存在冲突</h4><p>暂时的解决办法是在可拖动的图形顶部覆盖一层隐藏层，需要看全局数据的用户需要先进行一步点击才能进行图形的拖动操作。</p>
-<h3 id="存在的不足"><a href="#存在的不足" class="headerlink" title="存在的不足"></a>存在的不足</h3><h4 id="1-组合图包含grouped柱状图时存在bug"><a href="#1-组合图包含grouped柱状图时存在bug" class="headerlink" title="1. 组合图包含grouped柱状图时存在bug"></a>1. 组合图包含grouped柱状图时存在bug</h4><p><img src="http://alithink.com/img/3bi/4.png" alt="problem.png"><br><img src="http://alithink.com/img/3bi/5.png" alt="solution.png"><br>尚未解决，暂时只能将grouped柱状图跟线形图分开成两个图进行展示。。。<br>或者研究下liuxuan30的这个PR<br><a href="https://github.com/danielgindi/Charts/issues/1159#issuecomment-228954675" target="_blank" rel="external">issue传送门</a></p>
+<h3 id="存在的不足"><a href="#存在的不足" class="headerlink" title="存在的不足"></a>存在的不足</h3><h4 id="1-组合图包含grouped柱状图时存在bug"><a href="#1-组合图包含grouped柱状图时存在bug" class="headerlink" title="1. 组合图包含grouped柱状图时存在bug"></a>1. 组合图包含grouped柱状图时存在bug</h4><p><img src="http://alithink.com/img/3bi/4.png" alt="problem.png"><br><img src="http://alithink.com/img/3bi/5.png" alt="solution.png"><br>尚未解决，暂时只能将grouped柱状图跟线形图分开成两个图进行展示。。。<br>或者研究下liuxuan30的这个PR<br><a href="https://github.com/danielgindi/Charts/issues/1159#issuecomment-228954675" target="_blank" rel="noopener">issue传送门</a></p>
 <h4 id="2-堆积图缺失线性堆积图"><a href="#2-堆积图缺失线性堆积图" class="headerlink" title="2. 堆积图缺失线性堆积图"></a>2. 堆积图缺失线性堆积图</h4><p>目前只提供柱状堆积图的支持。</p>
 <h4 id="3-ChartMarker堆积图功能缺失"><a href="#3-ChartMarker堆积图功能缺失" class="headerlink" title="3. ChartMarker堆积图功能缺失"></a>3. ChartMarker堆积图功能缺失</h4><p>堆积图的ChartMarker目前只能展示堆积后的总值，而不能展示分项的值。</p>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>目前的这套方案可以满足基本的数据可视化需求，对于一些较为复杂灵活的图形展示需求，也可以封装一个单独的web类型的卡片，对于这部分需求采用web相关的图形可视化解决方案进行处理。</p>
 
-      
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/archives">Writing</a></li>
+         
+          <li><a href="/categories">categories</a></li>
+         
+          <li><a href="https://github.com/AliThink">Projects</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+        
+      </ul>
     </div>
-    
-    
-    
 
-    
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#涉及的图形类型"><span class="toc-number">2.</span> <span class="toc-text">涉及的图形类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开源库选型"><span class="toc-number">3.</span> <span class="toc-text">开源库选型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Charts"><span class="toc-number">3.1.</span> <span class="toc-text">1.Charts</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#应用场景："><span class="toc-number">3.1.1.</span> <span class="toc-text">应用场景：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#优势："><span class="toc-number">3.1.2.</span> <span class="toc-text">优势：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ESArcProgressView"><span class="toc-number">3.2.</span> <span class="toc-text">2.ESArcProgressView</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#应用场景：-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">应用场景：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#优势：-1"><span class="toc-number">3.2.2.</span> <span class="toc-text">优势：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-XCL-Charts"><span class="toc-number">3.3.</span> <span class="toc-text">3.XCL-Charts</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#应用场景：-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">应用场景：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-number">4.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-展示图形中的最后几个元素"><span class="toc-number">4.1.</span> <span class="toc-text">1. 展示图形中的最后几个元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-完整显示x轴所有的元素标签"><span class="toc-number">4.2.</span> <span class="toc-text">2. 完整显示x轴所有的元素标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-设置为可拖动的图形与tableview的滑动存在冲突"><span class="toc-number">4.3.</span> <span class="toc-text">3. 设置为可拖动的图形与tableview的滑动存在冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存在的不足"><span class="toc-number">5.</span> <span class="toc-text">存在的不足</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-组合图包含grouped柱状图时存在bug"><span class="toc-number">5.1.</span> <span class="toc-text">1. 组合图包含grouped柱状图时存在bug</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-堆积图缺失线性堆积图"><span class="toc-number">5.2.</span> <span class="toc-text">2. 堆积图缺失线性堆积图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-ChartMarker堆积图功能缺失"><span class="toc-number">5.3.</span> <span class="toc-text">3. ChartMarker堆积图功能缺失</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">6.</span> <span class="toc-text">小结</span></a></li></ol>
+    </div>
 
-    
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
-  </button>
-  <div id="QR" style="display: none;">
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=/2016/06/28/BI APP图形库选型/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=/2016/06/28/BI APP图形库选型/&text=BI APP图形库选型"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=/2016/06/28/BI APP图形库选型/&title=BI APP图形库选型"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=/2016/06/28/BI APP图形库选型/&is_video=false&description=BI APP图形库选型"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BI APP图形库选型&body=Check out this article: /2016/06/28/BI APP图形库选型/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=/2016/06/28/BI APP图形库选型/&title=BI APP图形库选型"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=/2016/06/28/BI APP图形库选型/&title=BI APP图形库选型"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=/2016/06/28/BI APP图形库选型/&title=BI APP图形库选型"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=/2016/06/28/BI APP图形库选型/&title=BI APP图形库选型"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=/2016/06/28/BI APP图形库选型/&name=BI APP图形库选型&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
-    
+    </div>
 
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/img/alipay.png" alt="AliThink 支付宝"/>
-        <p>支付宝</p>
-      </div>
-    
-
-    
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
 
   </div>
 </div>
 
-      </div>
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/06/11/工作与生活的平衡/" rel="next" title="工作与生活的平衡">
-                <i class="fa fa-chevron-left"></i> 工作与生活的平衡
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/01/《禅与 Objective-C 编程艺术》读书拾遗/" rel="prev" title="《禅与 Objective-C 编程艺术》读书拾遗">
-                《禅与 Objective-C 编程艺术》读书拾遗 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
         
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-      
-    </div>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 AliThink
   </div>
-
-
-          </div>
-          
-
-
-          
-  
-    <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjA2OS84NjMz"></div>
-    </div>
-  
-
-
-        </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/archives">Writing</a></li>
+         
+          <li><a href="/categories">categories</a></li>
+         
+          <li><a href="https://github.com/AliThink">Projects</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+      </ul>
+    </nav>
   </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/img/avatar.png"
-                alt="AliThink" />
-            
-              <p class="site-author-name" itemprop="name">AliThink</p>
-              <p class="site-description motion-element" itemprop="description">热爱生活 乐于分享 
-
-时而沉默寡言 时而嘻哈扯淡的两面派
-</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives">
-              
-                  <span class="site-state-item-count">31</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-
-          </nav>
-
-          
-
-          <div class="links-of-author motion-element">
-            
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/AliThink" target="_blank" title="GitHub">
-                    
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            
-          </div>
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#涉及的图形类型"><span class="nav-number">2.</span> <span class="nav-text">涉及的图形类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开源库选型"><span class="nav-number">3.</span> <span class="nav-text">开源库选型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Charts"><span class="nav-number">3.1.</span> <span class="nav-text">1.Charts</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#应用场景："><span class="nav-number">3.1.1.</span> <span class="nav-text">应用场景：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优势："><span class="nav-number">3.1.2.</span> <span class="nav-text">优势：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-ESArcProgressView"><span class="nav-number">3.2.</span> <span class="nav-text">2.ESArcProgressView</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#应用场景：-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">应用场景：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优势：-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">优势：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-XCL-Charts"><span class="nav-number">3.3.</span> <span class="nav-text">3.XCL-Charts</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#应用场景：-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">应用场景：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">4.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-展示图形中的最后几个元素"><span class="nav-number">4.1.</span> <span class="nav-text">1. 展示图形中的最后几个元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-完整显示x轴所有的元素标签"><span class="nav-number">4.2.</span> <span class="nav-text">2. 完整显示x轴所有的元素标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-设置为可拖动的图形与tableview的滑动存在冲突"><span class="nav-number">4.3.</span> <span class="nav-text">3. 设置为可拖动的图形与tableview的滑动存在冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存在的不足"><span class="nav-number">5.</span> <span class="nav-text">存在的不足</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-组合图包含grouped柱状图时存在bug"><span class="nav-number">5.1.</span> <span class="nav-text">1. 组合图包含grouped柱状图时存在bug</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-堆积图缺失线性堆积图"><span class="nav-number">5.2.</span> <span class="nav-text">2. 堆积图缺失线性堆积图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-ChartMarker堆积图功能缺失"><span class="nav-number">5.3.</span> <span class="nav-text">3. ChartMarker堆积图功能缺失</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
+</footer>
 
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">AliThink</span>
-  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
-  
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
-
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-eye"></i> 访问人数
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i> 总访问量
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      次
-    </span>
-  
-</div>
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
 </body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?ddd5ea8fb6af25af228cf11a240076e8";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+<!-- Disqus Comments -->
+
+

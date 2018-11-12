@@ -4,6 +4,393 @@
   
     
     <entry>
+      <title><![CDATA[智子环境搭建历程]]></title>
+      <url>/2018/02/24/%E6%99%BA%E5%AD%90%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>智子 - 韩都衣舍机器学习平台代号😋</p>
+</blockquote>
+<h1 id="一、spark流派"><a href="#一、spark流派" class="headerlink" title="一、spark流派"></a>一、spark流派</h1><h2 id="1-1-hadoop"><a href="#1-1-hadoop" class="headerlink" title="1.1 hadoop"></a>1.1 hadoop</h2><blockquote>
+<p>起初选择使用CDH安装（原因：老环境就用的这个，据说比较稳定），然而在双节点情况下总是出现莫名问题。磕磕绊绊安装好了，实际用起来还是有不少问题（集成环境问题定位好麻烦。。），在尝试几波之后最终选择放弃（期间还麻烦运维妹子重做了系统😂）。想到实际需要的功能并不太多，果断转为人工安装部署。<br>CDH的安装部署过程作为番外放在最后面吧。。。</p>
+</blockquote>
+<h3 id="版本选择"><a href="#版本选择" class="headerlink" title="版本选择"></a>版本选择</h3><p>虽然没有安装CDH，还是选用了CDH版的hadoop2.6。（据说体质较好，比较稳健）</p>
+<h3 id="文章参考"><a href="#文章参考" class="headerlink" title="文章参考"></a>文章参考</h3><p><a href="https://www.jianshu.com/p/1448d1550c8b" target="_blank" rel="noopener">CentOS 7 集群部署 Hadoop 2.7.3</a></p>
+<h3 id="坑位介绍"><a href="#坑位介绍" class="headerlink" title="坑位介绍"></a>坑位介绍</h3><blockquote>
+<p>主要记录自己部署时遇到的主要问题，详细步骤可以参考上面的文章</p>
+</blockquote>
+<h4 id="💩-jps发现竟然木有DataNode"><a href="#💩-jps发现竟然木有DataNode" class="headerlink" title="💩 jps发现竟然木有DataNode"></a>💩 jps发现竟然木有DataNode</h4><blockquote>
+<p>之前用CDH安装过一遍hadoop导致部分目录有内容残留</p>
+</blockquote>
+<ul>
+<li>查看$HADOOP_HOME/etc/hadoop/hdfs-site.xml<ul>
+<li>namenode路径</li>
+<li>datanode路径</li>
+<li>删除对应目录下的所有文件</li>
+</ul>
+</li>
+<li>重新执行namenode -format</li>
+<li>重启hadoop start-all.sh</li>
+</ul>
+<h4 id="💩-各种Permission-denied"><a href="#💩-各种Permission-denied" class="headerlink" title="💩 各种Permission denied"></a>💩 各种Permission denied</h4><ul>
+<li>先查看各路径是否正确赋权给了hadoop用户<ul>
+<li>没有的chown -R hadoop:hadoop 对应路径</li>
+</ul>
+</li>
+<li>当前用户是否已经切换成hadoop用户再执行相关启动命令</li>
+</ul>
+<h4 id="💩-没有SecondaryNode了"><a href="#💩-没有SecondaryNode了" class="headerlink" title="💩 没有SecondaryNode了"></a>💩 没有SecondaryNode了</h4><ul>
+<li>配置$HADOOP_HOME/etc/hadoop/hdfs-site.xml<ul>
+<li>name: dfs.namenode.secondary.http-address</li>
+<li>value: 0.0.0.0:50090</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2-hive"><a href="#1-2-hive" class="headerlink" title="1.2 hive"></a>1.2 hive</h2><h3 id="版本选择-1"><a href="#版本选择-1" class="headerlink" title="版本选择"></a>版本选择</h3><p>目前最新版：apache-hive-2.3.2-bin</p>
+<h3 id="文章参考-1"><a href="#文章参考-1" class="headerlink" title="文章参考"></a>文章参考</h3><p><a href="http://blog.csdn.net/u014591781/article/details/52895176" target="_blank" rel="noopener">Hadoop2.6下安装Hive</a></p>
+<h3 id="坑位介绍-1"><a href="#坑位介绍-1" class="headerlink" title="坑位介绍"></a>坑位介绍</h3><h4 id="💩-启动时各种缺表"><a href="#💩-启动时各种缺表" class="headerlink" title="💩 启动时各种缺表"></a>💩 启动时各种缺表</h4><ul>
+<li>查看$HIVE_HOME/scripts/metastore/upgrade/mysql/hive-schema-2.3.0.mysql.sql</li>
+<li>用root用户登录至mysql</li>
+<li>创建对应的用户并授权用户（别忘记flush privileges）</li>
+<li>然后执行这个初始化sql</li>
+</ul>
+<h4 id="💩-如何重启hive-metastore"><a href="#💩-如何重启hive-metastore" class="headerlink" title="💩 如何重启hive metastore"></a>💩 如何重启hive metastore</h4><ul>
+<li>ps -ef |grep HiveMetaStore</li>
+<li>kill -TERM pid</li>
+<li>hive –service hiveserver &amp;</li>
+</ul>
+<h2 id="1-3-sqoop"><a href="#1-3-sqoop" class="headerlink" title="1.3 sqoop"></a>1.3 sqoop</h2><h3 id="版本选择-2"><a href="#版本选择-2" class="headerlink" title="版本选择"></a>版本选择</h3><blockquote>
+<p>官网说了诸多sqoop2的好处，最后建议说生产环境不要使用2…</p>
+</blockquote>
+<p>sqoop1最新版：sqoop-1.4.7.bin__hadoop-2.6.0</p>
+<h3 id="文章参考-2"><a href="#文章参考-2" class="headerlink" title="文章参考"></a>文章参考</h3><p><a href="https://www.jianshu.com/p/99301eeedd91" target="_blank" rel="noopener">如何将mysql数据导入Hadoop之Sqoop安装</a></p>
+<h3 id="坑位介绍-2"><a href="#坑位介绍-2" class="headerlink" title="坑位介绍"></a>坑位介绍</h3><h4 id="💩-发现总是Connection-Failure"><a href="#💩-发现总是Connection-Failure" class="headerlink" title="💩 发现总是Connection Failure"></a>💩 发现总是Connection Failure</h4><blockquote>
+<p>mysql场景</p>
+</blockquote>
+<ul>
+<li>检查hadoop集群每台机器与mysql数据源的连通性<ul>
+<li>telnet xx.xx.xx.xx 3306</li>
+<li>不同的话，申请开通权限即可</li>
+</ul>
+</li>
+</ul>
+<h4 id="💩-报出jackson-databind缺少某某方法"><a href="#💩-报出jackson-databind缺少某某方法" class="headerlink" title="💩 报出jackson databind缺少某某方法"></a>💩 报出jackson databind缺少某某方法</h4><ul>
+<li>统一hadoop、hive、sqoop各自lib中jackson的版本</li>
+<li>选择三者中的最高版本即可</li>
+</ul>
+<h4 id="💩-报出hive-version与metastore-version不一致"><a href="#💩-报出hive-version与metastore-version不一致" class="headerlink" title="💩 报出hive version与metastore version不一致"></a>💩 报出hive version与metastore version不一致</h4><ul>
+<li>如果报出hive版本低于metastore版本（跟我一样）<ul>
+<li>关闭版本检查即可</li>
+<li>name: hive.metastore.schema.verification</li>
+<li>value: false</li>
+</ul>
+</li>
+<li>如果报出hive版本高于metastore版本：<ul>
+<li>将元数据库mysql中的对应hive库删除</li>
+<li>用对应版本的script重新初始化元数据表</li>
+<li>同样禁用掉版本检查吧。。</li>
+</ul>
+</li>
+</ul>
+<h4 id="💩-导入hive报错HIVE-CONF-DIR"><a href="#💩-导入hive报错HIVE-CONF-DIR" class="headerlink" title="💩 导入hive报错HIVE_CONF_DIR"></a>💩 导入hive报错HIVE_CONF_DIR</h4><ul>
+<li>.bashrc添加<ul>
+<li>export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$HIVE_HOME/lib/*</li>
+</ul>
+</li>
+<li>source .bashrc</li>
+</ul>
+<h2 id="1-4-spark"><a href="#1-4-spark" class="headerlink" title="1.4 spark"></a>1.4 spark</h2><h3 id="版本选择-3"><a href="#版本选择-3" class="headerlink" title="版本选择"></a>版本选择</h3><blockquote>
+<p>从官网下载的时候，记得选择对应的hadoop版本</p>
+</blockquote>
+<p>spark-2.2.1-bin-hadoop2.6</p>
+<h3 id="文章参考-3"><a href="#文章参考-3" class="headerlink" title="文章参考"></a>文章参考</h3><blockquote>
+<p>过于简单其实也没有参考什么文章。。</p>
+</blockquote>
+<p><a href="http://blog.csdn.net/leon_founder/article/details/78715831" target="_blank" rel="noopener">CentOS 7上安装Spark 2.2单机</a></p>
+<h2 id="1-5-zeppelin"><a href="#1-5-zeppelin" class="headerlink" title="1.5 zeppelin"></a>1.5 zeppelin</h2><h3 id="版本选择-4"><a href="#版本选择-4" class="headerlink" title="版本选择"></a>版本选择</h3><blockquote>
+<p>这里选择了附带所有interpreter的版本</p>
+</blockquote>
+<p>zeppelin最新版：zeppelin-0.7.3-bin-all</p>
+<h3 id="文章参考-4"><a href="#文章参考-4" class="headerlink" title="文章参考"></a>文章参考</h3><p><a href="http://blog.csdn.net/u013013024/article/details/79082503" target="_blank" rel="noopener">CDH安装配置zeppelin-0.7.3以及配置spark查询hive表</a></p>
+<h3 id="坑位介绍-3"><a href="#坑位介绍-3" class="headerlink" title="坑位介绍"></a>坑位介绍</h3><h4 id="💩-报出jackson版本问题"><a href="#💩-报出jackson版本问题" class="headerlink" title="💩 报出jackson版本问题"></a>💩 报出jackson版本问题</h4><ul>
+<li>与之前的问题类似，立刻想到将包统一即可。</li>
+</ul>
+<h4 id="💩-无法初始化SessionHiveMetaStoreClient"><a href="#💩-无法初始化SessionHiveMetaStoreClient" class="headerlink" title="💩 无法初始化SessionHiveMetaStoreClient"></a>💩 无法初始化SessionHiveMetaStoreClient</h4><blockquote>
+<p>由于配置hive之后，需要将hive-site.xml复制HADOOP_CONF_DIR一份，由于zeppelin（支持hive）也需要加载HADOOP_CONF_DIR目录，所以导致无法加载hive元数据，导致异常，此时启动hive的元数据服务在启动zeppelin即可。</p>
+</blockquote>
+<ul>
+<li>拷贝hive-site.xml到$HADOOP_HOME/etc/hadoop</li>
+</ul>
+<h1 id="二、sklearn流派"><a href="#二、sklearn流派" class="headerlink" title="二、sklearn流派"></a>二、sklearn流派</h1><h2 id="2-1-anaconda与jupyter-猪币特"><a href="#2-1-anaconda与jupyter-猪币特" class="headerlink" title="2.1 anaconda与jupyter(猪币特)"></a>2.1 anaconda与jupyter(猪币特)</h2><h3 id="版本选择-5"><a href="#版本选择-5" class="headerlink" title="版本选择"></a>版本选择</h3><p>python3版本：Anaconda3-5.0.1-Linux-x86_64</p>
+<h3 id="文章参考-5"><a href="#文章参考-5" class="headerlink" title="文章参考"></a>文章参考</h3><p><a href="http://blog.csdn.net/c13669463387/article/details/78436691" target="_blank" rel="noopener">在centos7服务器上安装anaconda和jupyter notebook</a></p>
+<p><a href="http://blog.csdn.net/u010694764/article/details/76862854" target="_blank" rel="noopener">远程访问</a></p>
+<h3 id="坑位介绍-4"><a href="#坑位介绍-4" class="headerlink" title="坑位介绍"></a>坑位介绍</h3><blockquote>
+<p>此处应该有掌声，配置太简单了，与spark流派形成鲜明的对比。<br>没啥特别的坑位需要备忘，一切都水到渠成。</p>
+</blockquote>
+<h1 id="三、数据同步策略"><a href="#三、数据同步策略" class="headerlink" title="三、数据同步策略"></a>三、数据同步策略</h1><h2 id="3-1-sqoop同步策略"><a href="#3-1-sqoop同步策略" class="headerlink" title="3.1 sqoop同步策略"></a>3.1 sqoop同步策略</h2><p><img src="http://of71dfqgz.bkt.clouddn.com/15194416883439.jpg" alt=""></p>
+<h3 id="具体sqoop同步示例"><a href="#具体sqoop同步示例" class="headerlink" title="具体sqoop同步示例"></a>具体sqoop同步示例</h3><blockquote>
+<p>sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true –connect jdbc:mysql://xx.xx.xx.xx/数据库名?characterEncoding=utf-8 –username 数据库用户名 –password 数据库密码 –num-mappers 4 –table 源表名 –hive-import –hive-overwrite –hive-table hive表名 –split-by 切分字段（如果有主键默认使用主键）</p>
+</blockquote>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><ul>
+<li>同步速度真心快。（为什么会这么快呢？3000多万的表15分钟左右）</li>
+<li>hive源数据放置在磁盘中，无需全部加载入内存再进行筛选处理。</li>
+<li>似乎对于源数据库压力不大。</li>
+<li>最终选定该方案。</li>
+</ul>
+<h2 id="3-2-mysql直接拉取csv"><a href="#3-2-mysql直接拉取csv" class="headerlink" title="3.2 mysql直接拉取csv"></a>3.2 mysql直接拉取csv</h2><blockquote>
+<p>在sqoop环境起初搭建不顺利的背景下提出的备选方案。</p>
+</blockquote>
+<h3 id="同步示例"><a href="#同步示例" class="headerlink" title="同步示例"></a>同步示例</h3><blockquote>
+<p>mysql -u数据库用户名 -p数据库密码 -hxx.xx.xx.xx 数据库名 -B -e “select * from `表名`;” | sed ‘s/\t/“,”/g;s/^/“/;s/$/“/;s/\n//g’ &gt; 导出的csv名</p>
+</blockquote>
+<h3 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h3><ul>
+<li>同步速度较sqoop慢一些。（3000多万的表半个小时左右）</li>
+<li>配置简单，只要网络通即可。</li>
+<li>csv文件较大，直接用pandas读取的话，内存占用会暴涨。<ul>
+<li>不过pandas的大数据集处理速度还是挺快的。</li>
+</ul>
+</li>
+<li>小数据集场景灵活使用。</li>
+</ul>
+<h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><blockquote>
+<p>经此一役，收获颇多，除了获取知识之外，也总结了几则六字真言，与君共勉。</p>
+</blockquote>
+<ul>
+<li>多备份，少吃亏</li>
+<li>多联想，勤记录</li>
+<li>多虚拟，后物理</li>
+<li>多尝试，不放弃</li>
+</ul>
+<h1 id="五、番外"><a href="#五、番外" class="headerlink" title="五、番外"></a>五、番外</h1><h2 id="CDH篇"><a href="#CDH篇" class="headerlink" title="CDH篇"></a>CDH篇</h2><ul>
+<li>修改hostname hostnamectl set-hostname</li>
+<li>配置hosts</li>
+<li>创建用户hadoop adduser</li>
+<li>passwd</li>
+<li>配置visudo</li>
+<li>reboot</li>
+<li>切换至hadoop用户：<ul>
+<li>ssh免密配置<ul>
+<li>ssh-keygen -t rsa -P “”</li>
+<li>cat id_rsa.pub &gt;&gt; authorized_keys</li>
+<li>多服务器配置同步到master<ul>
+<li>scp id_rsa.pub sophonmaster:/home/hadoop/.ssh/id_rsa.pub.s1</li>
+<li>cat id_rsa.pub.s1 &gt;&gt; authorized_keys</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>root用户密码未知，新创建hadoop用户，配置对应密码<ul>
+<li>visudo<ul>
+<li>hadoop ALL=(root)NOPASSWD:ALL</li>
+<li>wheel nopasswd放开</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>消除警告：<ul>
+<li><img src="http://of71dfqgz.bkt.clouddn.com/15180588854980.jpg" alt=""></li>
+<li>echo 0 &gt; /proc/sys/vm/swappiness</li>
+<li>echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</li>
+<li>echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</li>
+</ul>
+</li>
+<li>关闭防火墙<ul>
+<li>systemctl stop firewalld</li>
+<li>systemctl disable firewalld</li>
+<li>systemctl status firewalld</li>
+</ul>
+</li>
+<li>关闭SELinux(centos7 默认关闭)<ul>
+<li>/etc/selinux/config</li>
+</ul>
+</li>
+<li>常规CDH安装方式：<ul>
+<li>将cloudera-manager.repo文件拷贝到所有节点的/etc/yum.repos.d/文件夹下</li>
+<li>验证repo文件是否起效<ul>
+<li>yum list|grep cloudera</li>
+<li>如果列出的不是你安装的版本，执行下面命令重试</li>
+<li>yum clean all</li>
+<li>yum list | grep cloudera</li>
+</ul>
+</li>
+<li>将之前下载的rpms文件拷贝到所有节点下（任意目录）<ul>
+<li>切换到rpms目录下，执行</li>
+<li>yum -y install *.rpm</li>
+</ul>
+</li>
+<li>将之前下载的Parcel那3个文件拷贝到/opt/cloudera/parcel-repo目录下（如果没有该目录，请自行创建）<ul>
+<li>至此，/opt/cloudera/parcel-repo下面有三个文件： CDH-5.2.0-1.cdh5.2.0.p0.36-el6.parcel,mainfest.json,CDH-5.2.0-1.cdh5.2.0.p0.36-el6.parcel.sha</li>
+</ul>
+</li>
+<li>主节点启动manager安装：<ul>
+<li>sudo chmod +x ./cloudera-manager-installer.bin</li>
+<li>./cloudera-manager-installer.bin</li>
+</ul>
+</li>
+<li>删除已经存在的db.properties<ul>
+<li>mv /etc/cloudera-scm-server/db.properties /etc/cloudera-scm-server/db.properties.bak</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> ML </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《兜兜睡前故事》-- 杰克]]></title>
+      <url>/2018/02/02/%E5%85%9C%E5%85%9C%E6%BB%91%E6%9D%BF/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>今天兜兜突然说：“爸爸，我想听一个滑板车的故事”。<br>于是就有了这么个故事。</p>
+<p>通过故事打算让她懂得什么？</p>
+<p>勇于尝试、不惧失败、坚持、勤学善问<br>那么故事开始吧 ^_^</p>
+</blockquote>
+<p><img src="http://of71dfqgz.bkt.clouddn.com/%E5%85%9C%E5%85%9C%E6%BB%91%E6%9D%BF.jpg" alt="兜兜滑板"></p>
+<p>曾经有一个小男孩，他的名字叫杰克。</p>
+<p>今天是杰克的3岁生日，作为生日礼物呢，他的爸爸送给他了一个滑板车。这个特别的“滑板车”跟兜兜有的这个不太一样。这个滑板车没有可以手抓的扶手，只有一个板子以及板子下面的四个轮子，它还有一个更贴切的名字叫做“滑板”。</p>
+<p>杰克也是第一次见到这个神奇的滑板车，他之前呢，跟兜兜一样，也只会玩带扶手的滑板车。<br>他很好奇，这个滑板该如何玩呢？他一支脚丫小心翼翼的踏了上去，当打算把另一支脚丫也挪上去的时候，滑板往前一滑，杰克摔了一个屁股蹲。</p>
+<p>杰克大声的哭了起来，屁股也在火辣辣的痛，一边哭着一边喊：“这个滑板不好，再也不玩它了。。唔。。”。</p>
+<p>在一旁的爸爸走过来，扶起了杰克，对他说：“杰克，你也摔跤了呀，看来跟我小时候一样呀。你知道吗，杰克，爸爸小时候玩滑板的时候，摔的可惨了”。爸爸摸了摸自己的屁股，若有所思的说：“啊~我想当初估计屁股肯定已经被摔成四半儿了吧”。</p>
+<p>杰克哈哈笑了起来，问爸爸：“真的呀，爸爸你小时候玩这个也摔跤了呀~”</p>
+<p>爸爸认真的说：“是呀，当时摔的好惨呀，不过我后来还是学会玩滑板啦，杰克你想知道爸爸是怎么学滑板的吗？”。杰克说：“嗯嗯嗯，我要听”。</p>
+<p>爸爸点了点头说：“好吧，那我就来讲讲我学滑板的故事吧~”。</p>
+<p>“刚开始，我也跟杰克一样，摔了好多屁股蹲，咳咳，具体多少次我都记不清楚了。。”</p>
+<p>“但是我并没有因为疼就放弃了，因为那时候玩具少，有这么个玩具就很不容易啦。我于是在一次次摔跤、一次次失败中总结经验。一个星期后，我竟然神奇的学会了玩滑板，好吧，只是不会那么频繁摔跤啦。”</p>
+<p>“一个月过去啦，我的滑板技术越来越好啦，甚至可以滑着滑板去学校。然后我竟然教会了我的一些同学们玩滑板，我是不是很厉害呀？😎”</p>
+<p>“杰克，要不要爸爸也教教你呀，爸爸相信你一定能学会玩滑板哒~”</p>
+<p>杰克摸了摸头说：“好吧，我再试试看，爸爸你教教我吧”。</p>
+<p>杰克爸爸于是给杰克仔细讲了讲玩滑板的一些方法窍门。杰克虽然听得很认真，不过还是摔了好几跤。但是杰克想像爸爸那样学会玩滑板，而且爸爸也一直在身边鼓励教导着他，他于是坚持了下来。两天之后，杰克已经可以在滑板上比较稳的前进啦。一个星期后，杰克学会了玩滑板。感受到滑板的乐趣后，他已经完全忘记了之前学习滑板时摔过的屁股蹲了。</p>
+<p>刚开始学做一件事情，起初往往都不会那么顺利，就像学滑板这样，总要摔那么几个屁股蹲。但是如果想要真正学会它，感受学会它后所能收获的快乐，就需要坚持与勇敢尝试了。相信自己的力量，多向身边的人请教，比如有不懂的地方，可以问问爸爸妈妈或者奶奶，有了这些帮助呢，就会让做这件事情，变得稍稍容易一些。</p>
+<p>好了，今天的故事讲完啦，睡吧，晚安，爸爸会陪在你身边，伴你成长。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 兜兜 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《兜兜睡前故事》-- 安妮]]></title>
+      <url>/2018/01/31/%E5%85%9C%E5%85%9C%E7%9D%A1%E5%89%8D%E6%95%85%E4%BA%8B/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>兜兜快三岁了，渐渐进入了第二个叛逆期，该如何告诉她一些事情呢，既然每晚都要讲睡前故事，索性原创一个故事吧。</p>
+<p>通过故事打算让她懂得什么？</p>
+<p>珍惜身边的东西（食物、玩具等）、学会整理自己的东西、发现美好不抱怨、体会独立与坚持、感恩之心。<br>那么故事开始吧 ^_^</p>
+</blockquote>
+<p>很久很久以前，在离城堡不远的地方有一个小村庄。</p>
+<p>村庄里面有一个小女孩，她的名字叫作安妮。安妮多大呢，大约就跟兜兜这么大吧，也是一个漂亮的小姑娘。</p>
+<p>安妮家并不那么富裕，甚至说有一些贫穷。安妮家里有爸爸、妈妈还有奶奶。每天爸爸妈妈都要早出晚归，出去工作，努力赚钱。因为只有赚到钱，才能去买面包、馒头这些吃的东西，才能勉强维持一家人的生计。因为家里吃的东西都来之不易，都是爸爸妈妈辛苦工作换来的，所以安妮从小就养成了珍惜食物的好习惯。每到吃饭的时候，安妮都主动坐到自己的小板凳上，自己吃饭。每次都把自己的那份食物吃的干干净净，从不挑食，因为她知道只有好好吃饭，吃各种食物才能让自己的身体棒棒哒，快快成长~</p>
+<p>安妮只有一个布娃娃，并不像兜兜这样有那么多的玩具。安妮的这个娃娃虽然是奶奶用旧衣服缝制而成的，但却非常的漂亮，安妮也非常喜欢它，娃娃身上总带着奶奶般暖暖的味道。安妮非常的爱护自己的娃娃，就跟爱护她其它的东西一样。每次玩完娃娃，就把它放到一个干净的小盒子中。自己平时画画用的纸笔用完之后，也都好好地整理整齐。因为她知道这些东西都来之不易，要好好珍惜，才能陪伴她更长的时间。</p>
+<p>安妮生日，家里并没有钱去买好吃的奶油蛋糕。安妮并没有吵吵着像其他小朋友那样要吃蛋糕，因为她觉得只要一家人聚在一起陪她过生日就很开心了。爸爸妈妈那天早早的就下班回家。一家四口坐在饭桌前，桌子上点着一支蜡烛，安妮高兴的闭上眼睛许下一个生日愿望，然后睁开眼睛一口气吹灭蜡烛，祈祷自己的愿望能够实现。她把愿望悄悄的告诉我了，兜兜你想知道她许的什么愿望吗？她想快快长大，好好学习，学好多本领，好好工作，用自己的劳动赚好多的钱，让家里的生活变得更好一些。</p>
+<p>安妮渐渐长大了，就像她许的那个愿望那样，好好学习，学到了好多本领。她从小学会了独立与坚持。记得她学跳舞的时候，起初跳得很不好，然而她并没有放弃，而是多加练习，最后出色的完成了一场舞蹈表演。安妮渐渐养成的这些性格习惯，让她出色的完成了很多工作任务。付出的多，回报的也就多。有的时候呢，是金钱上的回报；有的时候呢，可能是能力上的提升，做这些事情以后就更加得心应手啦。</p>
+<p>安妮长大了，爸爸妈妈尤其是奶奶也都渐渐变老了。安妮知道家人们为照顾小时候的她付出了很多，现在她长大了，她要去好好地照顾自己的家人们。她经常回家，跟家人们聊天，彼此倾诉这段日子的生活。像安妮小时候那样，一家人经常在一起吃饭，虽然生活并不那么富裕，但他们都感受到了那最简单的幸福。</p>
+<p>兜兜喜欢安妮吗？是不是有些地方可以向安妮小朋友学习呢？<br>好了，今天的故事讲完啦，睡吧，晚安，爸爸会陪在你身边，伴你成长。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 兜兜 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[岁月 - 共度余下的时光]]></title>
+      <url>/2018/01/21/%E5%B2%81%E6%9C%88/</url>
+      <content type="html"><![CDATA[<h2 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a>传送门</h2><p><a href="https://itunes.apple.com/cn/app/%E5%B2%81%E6%9C%88-%E5%85%B1%E5%BA%A6%E4%BD%99%E4%B8%8B%E7%9A%84%E6%97%B6%E5%85%89/id1334705330?mt=8" target="_blank" rel="noopener">App Store下载地址</a><br><img src="http://of71dfqgz.bkt.clouddn.com/qrcode.png" alt="qrcode"></p>
+<h2 id="先立Flag😇"><a href="#先立Flag😇" class="headerlink" title="先立Flag😇"></a>先立Flag😇</h2><p>无论是否继续从事移动端方向，每年都会抽时间独立设计研发一枚App。并不那么看重实际收入，在乎的是从产品设计、UED到研发与运营的综合磨砺~</p>
+<blockquote>
+<p>番外：这个app已经拖延了有半年之久，这一晃快过年了，赶紧趁周末集中收了收尾。。。<br>App都是全球市场哒，顺便锻炼了下我蹩脚的英文=。=</p>
+</blockquote>
+<h2 id="一、产品向"><a href="#一、产品向" class="headerlink" title="一、产品向"></a>一、产品向</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>某日刷头条，刷到了类似“人生A4纸”的实验视频（具体视频已经找不到了。。）。实验对当时的自己触动很大，可能跟那时自己的生活也有关系吧。于是就决定利用自己的能力做一个App去帮助我们不要留下遗憾。</p>
+<blockquote>
+<p>这里搜到几个相似的视频，列在这里吧。<br><a href="http://v.youku.com/v_show/id_XOTMyNjI5NzMy.html?spm=a2h0k.8191407.0.0&amp;from=s1.8-1-1.2&amp;f=27605031" target="_blank" rel="noopener">人生A4纸解释</a><br><a href="https://v.qq.com/x/page/e01933oenij.html" target="_blank" rel="noopener">人生A4纸社会实验</a></p>
+</blockquote>
+<h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p>岁月流逝，流出一缕清泉，流出一阵芳香；齿月年轮，只剩下苍白的脸，无奈的守候；回忆流沙，谁都看不到他的身影，谁都听不到他的脚步，一切都在流逝中进行，在流逝中生长。</p>
+<p>我们尚还年轻，但亲人们却已渐渐老去，对他们来说剩余可支配的岁月已不如我们一般充裕。</p>
+<p>人这一辈子，以百年计量，最后十年，身体行动已不灵便。父母们为我们辛苦了大半辈子，退休之后，实则乐年岁月已无多。珍惜与至亲在一起的每一年，忙碌的生活，也总能拿出几日专心的陪伴他们。不要做让自己的后悔的事情。</p>
+<p>如果有一天，你发现父母老是咳个不停；如果有一天，你发现父母过马路反应慢了；如果有一天，你发现父母不再爱出门；如果有一天，你发现父母脸上多了皱纹；如果有这么一天，说明父母真的老了…… 树欲静而风不止、子欲养而亲不在，你留意过自己的父母吗？</p>
+<h3 id="“岁月”能帮到什么"><a href="#“岁月”能帮到什么" class="headerlink" title="“岁月”能帮到什么"></a>“岁月”能帮到什么</h3><p>“岁月”帮您生成自己与亲人朋友们的岁月卡片，会默认刨去生命最后的十年，真实显露出你们可共度岁月的珍贵。</p>
+<p>“岁月”帮您生成从现在到他们生命尽头每一年的计划卡片，每一年计划为他们做一些事情，珍视在一起的每一年。</p>
+<h2 id="二、UED"><a href="#二、UED" class="headerlink" title="二、UED"></a>二、UED</h2><h3 id="“岁月”模样"><a href="#“岁月”模样" class="headerlink" title="“岁月”模样"></a>“岁月”模样</h3><p><img src="http://of71dfqgz.bkt.clouddn.com/OneLifeGlobal.png" alt="OneLifeGloba"></p>
+<h3 id="设计要素"><a href="#设计要素" class="headerlink" title="设计要素"></a>设计要素</h3><ul>
+<li>卡片式统一风格</li>
+<li>字幕式引导(初始化 + 卡片生成)：<ul>
+<li>增加仪式感与冥想间隙</li>
+<li>沉浸式体感</li>
+</ul>
+</li>
+<li>动效<ul>
+<li>卡片进度重放动画</li>
+<li>剩余岁月数字倒计时</li>
+<li>controller切换动画逻辑划分</li>
+</ul>
+</li>
+<li>配色（一段艰辛的尝试）<ul>
+<li>sip爬取了多个dribbble相关配色方案</li>
+<li>不断尝试调整</li>
+<li>男式配色与女士配色的区分</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、研发"><a href="#三、研发" class="headerlink" title="三、研发"></a>三、研发</h2><blockquote>
+<p>额。。真正用于研发的时间其实并不多。。</p>
+</blockquote>
+<h3 id="用到了什么"><a href="#用到了什么" class="headerlink" title="用到了什么"></a>用到了什么</h3><ul>
+<li>Swift4: 顺道熟悉了一遍语法知识。猫神的书第一时间推送了更新，赞一个哈。</li>
+<li>WCDB: 微信开源的数据库封装，实践整体效果不错。</li>
+<li>RazzleDazzle: 借助该库封装了一个字幕式动画组件。</li>
+<li>Xcode9: 整体好评，有些bug也是醉了。。。（新模拟器截商店展示图好痛苦😂）</li>
+<li>。。。</li>
+</ul>
+<h3 id="学到了什么"><a href="#学到了什么" class="headerlink" title="学到了什么"></a>学到了什么</h3><blockquote>
+<p>以温故知识为主，毕竟目前已经转战ML，并未采用较为突进的架构设计。</p>
+</blockquote>
+<ul>
+<li>iPhoneX相关适配原则。</li>
+<li>Swift4迭代学习。</li>
+<li>Xcode9构建上传应用的流程体验。</li>
+<li>。。。</li>
+</ul>
+<h2 id="四、运营"><a href="#四、运营" class="headerlink" title="四、运营"></a>四、运营</h2><blockquote>
+<p>大大的短板，不过身边有好哥们PD(The One)这块比较擅长，今后可以多多请教。</p>
+</blockquote>
+<p>因为应用为全球市场，除中国大陆外，准备重点尝试下Apple Search Ads的效果。<br>（国内为啥迟迟没有开放。。擦）</p>
+<h2 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h2><ul>
+<li>加入更多的卡片扩展（比如3张生命卡片的链接）。Link more life.</li>
+<li>规划部分的维度细化。</li>
+<li>。。。</li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>“时光匆匆”<br>“是否忘记了某个人”<br>“某位很重要的人”<br>“可能你还年轻”<br>“他们却已悄悄老去”<br>“可共度的岁月已不多”<br>“一起为他们做些什么吧”</p>
+<blockquote>
+<p>2018年1月31日前应用限免，感兴趣的同学多多给予反馈建议哈</p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 个人作品 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[iOSer's 跨界之路]]></title>
       <url>/2017/11/10/iOSer's%E8%B7%A8%E7%95%8C%E4%B9%8B%E8%B7%AF/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -94,8 +481,8 @@
 <p>感谢文哥的悉心教导😘</p>
 </blockquote>
 <h4 id="搞出来的一些东东"><a href="#搞出来的一些东东" class="headerlink" title="搞出来的一些东东"></a>搞出来的一些东东</h4><ul>
-<li>spark mllib流派：<a href="http://alithink.com/2017/11/09/%E9%94%80%E5%94%AE%E9%A2%84%E6%B5%8B%E6%A1%88%E4%BE%8B%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" target="_blank" rel="external">销售预测案例源码分析</a></li>
-<li>sklearn流派：<a href="http://alithink.com/2017/11/09/%E9%94%80%E5%94%AE%E9%A2%84%E6%B5%8B%E7%88%86%E6%97%BA%EF%BC%88scikit-learn%E7%89%88%E6%9C%AC%EF%BC%89/" target="_blank" rel="external">销售预测爆旺（scikit-learn版本）</a></li>
+<li>spark mllib流派：<a href="http://alithink.com/2017/11/09/%E9%94%80%E5%94%AE%E9%A2%84%E6%B5%8B%E6%A1%88%E4%BE%8B%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" target="_blank" rel="noopener">销售预测案例源码分析</a></li>
+<li>sklearn流派：<a href="http://alithink.com/2017/11/09/%E9%94%80%E5%94%AE%E9%A2%84%E6%B5%8B%E7%88%86%E6%97%BA%EF%BC%88scikit-learn%E7%89%88%E6%9C%AC%EF%BC%89/" target="_blank" rel="noopener">销售预测爆旺（scikit-learn版本）</a></li>
 </ul>
 <h4 id="几点体会"><a href="#几点体会" class="headerlink" title="几点体会"></a>几点体会</h4><ul>
 <li>记得路上听得到音频时也讲过，做AI或者ML方向，坚实的理论基础以及对于业务的深刻理解是非常重要的。而这块也是目前我最最最欠缺的（当然其它方面也欠缺😆）。将来要猛补这方面知识。<ul>
@@ -505,11 +892,11 @@ dtype: int64
 </blockquote>
 <p><img src="http://of71dfqgz.bkt.clouddn.com/%E7%BB%BC%E5%90%88%E5%AF%B9%E6%AF%94%E6%8A%A5%E5%91%8A.png" alt="综合对比报告"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="http://scikit-learn.org/stable/" target="_blank" rel="external">scikit-learn官网</a></li>
-<li><a href="http://contrib.scikit-learn.org/imbalanced-learn/stable/" target="_blank" rel="external">imbalanced-learn官网</a></li>
-<li><a href="http://blog.csdn.net/Bryan__/article/details/51288953" target="_blank" rel="external">python sklearn分类算法简单调用</a></li>
-<li><a href="http://www.jianshu.com/p/7e0e2d66b3d4" target="_blank" rel="external">Kaggle神器xgboost</a></li>
-<li><a href="https://morvanzhou.github.io/tutorials/machine-learning/ML-intro/" target="_blank" rel="external">莫烦PYTHON 机器学习专题(需翻墙)</a></li>
+<li><a href="http://scikit-learn.org/stable/" target="_blank" rel="noopener">scikit-learn官网</a></li>
+<li><a href="http://contrib.scikit-learn.org/imbalanced-learn/stable/" target="_blank" rel="noopener">imbalanced-learn官网</a></li>
+<li><a href="http://blog.csdn.net/Bryan__/article/details/51288953" target="_blank" rel="noopener">python sklearn分类算法简单调用</a></li>
+<li><a href="http://www.jianshu.com/p/7e0e2d66b3d4" target="_blank" rel="noopener">Kaggle神器xgboost</a></li>
+<li><a href="https://morvanzhou.github.io/tutorials/machine-learning/ML-intro/" target="_blank" rel="noopener">莫烦PYTHON 机器学习专题(需翻墙)</a></li>
 </ul>
 ]]></content>
       
@@ -631,7 +1018,7 @@ dtype: int64
 <li>一句话：分区由少变多，或者在一些不是键值对的RDD中想要重新分区的话，就需要使用repartition了</li>
 <li>有多变少，直接coalesce,repartition其实就是shuffle=true的coalesce</li>
 <li>关于分区：分区的个数决定了并行计算的粒度<ul>
-<li>详情参考：<a href="https://www.zhihu.com/question/31948747" target="_blank" rel="external">知乎传送门</a></li>
+<li>详情参考：<a href="https://www.zhihu.com/question/31948747" target="_blank" rel="noopener">知乎传送门</a></li>
 </ul>
 </li>
 </ul>
@@ -658,7 +1045,7 @@ dtype: int64
 <li>回归evaluator</li>
 <li>集中评估标准：<ul>
 <li>R^2：决定系数，反应因变量的全部变异能通过回归关系被自变量解释的比例。如R平方为0.8，则表示回归关系可以解释因变量80%的变异。换句话说，如果我们能控制自变量不变，则因变量的变异程度会减少80%</li>
-<li>explainedVariance: 解释方差，具体详见：<a href="http://blog.sciencenet.cn/blog-1148346-852482.html" target="_blank" rel="external">http://blog.sciencenet.cn/blog-1148346-852482.html</a></li>
+<li>explainedVariance: 解释方差，具体详见：<a href="http://blog.sciencenet.cn/blog-1148346-852482.html" target="_blank" rel="noopener">http://blog.sciencenet.cn/blog-1148346-852482.html</a></li>
 <li>MAE mean absolute error: 绝对误差，准确值与其测量值之间的误差。</li>
 <li>MSE mean squared error: 均方误差, 衡量平均误差的方法。</li>
 <li>RMSE root mean square error: 均方根误差。</li>
@@ -669,13 +1056,13 @@ dtype: int64
 <li>最后用训练好的模型transform测试集，然后将结果保存。</li>
 </ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="http://sparktutorials.net/spark-mllib---predict-store-sales-with-ml-pipelines" target="_blank" rel="external">Spark MLLib - Predict Store Sales with ML Pipelines</a></li>
-<li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#package" target="_blank" rel="external">Spark doc</a></li>
-<li><a href="http://dblab.xmu.edu.cn/blog/1510-2/" target="_blank" rel="external">Spark2.1.0入门：模型选择和超参数调整</a></li>
+<li><a href="http://sparktutorials.net/spark-mllib---predict-store-sales-with-ml-pipelines" target="_blank" rel="noopener">Spark MLLib - Predict Store Sales with ML Pipelines</a></li>
+<li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#package" target="_blank" rel="noopener">Spark doc</a></li>
+<li><a href="http://dblab.xmu.edu.cn/blog/1510-2/" target="_blank" rel="noopener">Spark2.1.0入门：模型选择和超参数调整</a></li>
 <li><a href="Spark2 Linear Regression线性回归">Spark2 Linear Regression线性回归</a></li>
-<li><a href="http://blog.csdn.net/tuntunwang/article/details/60870312" target="_blank" rel="external">基于spark用线性回归（linear regression)进行数据预测</a></li>
-<li><a href="http://www.jianshu.com/p/200473f264bc" target="_blank" rel="external">Intellij之Spark Scala开发环境搭建</a></li>
-<li><a href="http://dblab.xmu.edu.cn/blog/1297-2/" target="_blank" rel="external">Spark入门：标签和索引的转化：StringIndexer- IndexToString-VectorIndexer</a></li>
+<li><a href="http://blog.csdn.net/tuntunwang/article/details/60870312" target="_blank" rel="noopener">基于spark用线性回归（linear regression)进行数据预测</a></li>
+<li><a href="http://www.jianshu.com/p/200473f264bc" target="_blank" rel="noopener">Intellij之Spark Scala开发环境搭建</a></li>
+<li><a href="http://dblab.xmu.edu.cn/blog/1297-2/" target="_blank" rel="noopener">Spark入门：标签和索引的转化：StringIndexer- IndexToString-VectorIndexer</a></li>
 </ul>
 ]]></content>
       
@@ -765,7 +1152,7 @@ dtype: int64
 </blockquote>
 <h3 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h3><ul>
 <li>私有pod库封装实践<ul>
-<li>简介：<a href="http://alithink.com/2016/06/04/cocoapods%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E5%B0%81%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/" target="_blank" rel="external">cocoapods私有仓库封装过程中的思考</a></li>
+<li>简介：<a href="http://alithink.com/2016/06/04/cocoapods%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E5%B0%81%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/" target="_blank" rel="noopener">cocoapods私有仓库封装过程中的思考</a></li>
 <li>功能性封装</li>
 <li>业务型封装</li>
 </ul>
@@ -778,14 +1165,14 @@ dtype: int64
 </li>
 <li>进阶：swift进阶</li>
 <li>实践：TFA、HBI企业项目实践<ul>
-<li><a href="http://alithink.com/2016/06/28/BI%20APP%E5%9B%BE%E5%BD%A2%E5%BA%93%E9%80%89%E5%9E%8B/" target="_blank" rel="external">BI App图形库选型</a></li>
-<li><a href="http://alithink.com/2016/07/25/Charts%E8%AF%8A%E7%96%97%E6%97%A5%E5%BF%97/" target="_blank" rel="external">Charts诊疗日志</a></li>
+<li><a href="http://alithink.com/2016/06/28/BI%20APP%E5%9B%BE%E5%BD%A2%E5%BA%93%E9%80%89%E5%9E%8B/" target="_blank" rel="noopener">BI App图形库选型</a></li>
+<li><a href="http://alithink.com/2016/07/25/Charts%E8%AF%8A%E7%96%97%E6%97%A5%E5%BF%97/" target="_blank" rel="noopener">Charts诊疗日志</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li>体验watchOS开发<ul>
-<li>简介：<a href="http://alithink.com/2016/11/15/Focus/" target="_blank" rel="external">Focus</a></li>
+<li>简介：<a href="http://alithink.com/2016/11/15/Focus/" target="_blank" rel="noopener">Focus</a></li>
 <li>成果：Focus App开发与上线</li>
 </ul>
 </li>
@@ -924,7 +1311,7 @@ dtype: int64
 <p>Focus帮助我们专注于做最重要的事情，给她一个期限，可能是一两年，也可能只有几天或者几小时，总之一旦决定拥有她，那么中途就不要背弃她。</p>
 <p>人这一辈子不要过得太复杂，专注于现在，执着于每次的努力，当回看过往，必将为自己而骄傲。</p>
 <blockquote>
-<p>Focus App Store：<a href="https://itunes.apple.com/us/app/focus-concentrate-on-one-task/id1169917639" target="_blank" rel="external">传送门</a></p>
+<p>Focus App Store：<a href="https://itunes.apple.com/us/app/focus-concentrate-on-one-task/id1169917639" target="_blank" rel="noopener">传送门</a></p>
 </blockquote>
 <h2 id="Focus长什么样"><a href="#Focus长什么样" class="headerlink" title="Focus长什么样"></a>Focus长什么样</h2><p><img src="http://of71dfqgz.bkt.clouddn.com/focus_appstore.png" alt="focus_appstore.png"></p>
 <h2 id="Focus参数"><a href="#Focus参数" class="headerlink" title="Focus参数"></a>Focus参数</h2><ul>
@@ -978,15 +1365,15 @@ dtype: int64
 <li>慨叹下目前Apple的审核速度，真实快啊，上传到上架one day。</li>
 </ul>
 <h2 id="可利用的资源"><a href="#可利用的资源" class="headerlink" title="可利用的资源"></a>可利用的资源</h2><ul>
-<li><a href="https://developer.apple.com/watchos/resources/" target="_blank" rel="external">watchOS官方资源（包括Human Interface Guidelines、App Programming Guide for watchOS 等)</a></li>
-<li><a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">swift官方资源</a></li>
-<li><a href="https://www.raywenderlich.com/" target="_blank" rel="external">Raywenderlich</a></li>
-<li><a href="https://onevcat.com/2015/08/watchos2/" target="_blank" rel="external">猫神相关文章(虽然是watchOS 2的，但是很受用)</a></li>
-<li>图形素材：<a href="http://www.dribbble.com/" target="_blank" rel="external">dribbble(寻找创意)</a>、<a href="http://www.easyicon.net/" target="_blank" rel="external">easyicon(图标)</a>、<a href="http://makeappicon.com/" target="_blank" rel="external">MakeAppIcon(iPhone App图标与watch App图标生成)</a></li>
+<li><a href="https://developer.apple.com/watchos/resources/" target="_blank" rel="noopener">watchOS官方资源（包括Human Interface Guidelines、App Programming Guide for watchOS 等)</a></li>
+<li><a href="https://developer.apple.com/swift/resources/" target="_blank" rel="noopener">swift官方资源</a></li>
+<li><a href="https://www.raywenderlich.com/" target="_blank" rel="noopener">Raywenderlich</a></li>
+<li><a href="https://onevcat.com/2015/08/watchos2/" target="_blank" rel="noopener">猫神相关文章(虽然是watchOS 2的，但是很受用)</a></li>
+<li>图形素材：<a href="http://www.dribbble.com/" target="_blank" rel="noopener">dribbble(寻找创意)</a>、<a href="http://www.easyicon.net/" target="_blank" rel="noopener">easyicon(图标)</a>、<a href="http://makeappicon.com/" target="_blank" rel="noopener">MakeAppIcon(iPhone App图标与watch App图标生成)</a></li>
 </ul>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>Focus会持续更新，目前主要解决了我自己的一些痛点，希望她也能够帮助到你。如果有什么好的建议欢迎留言讨论。Watch中的App种类确实很有限，不像iOS的这么丰富，有好的产品创意也欢迎一起讨论。watchOS 3.0的更新让Apple Watch焕发了新的生机，有了不少新的可能，让我们一起把我们的Apple Watch丰富起来吧^_^。</p>
 <p>最后附上50个促销代码，感兴趣的同学可以下载使用。</p>
-<p><a href="http://of71dfqgz.bkt.clouddn.com/Focus%E5%85%8D%E8%B4%B9%E7%A0%81.txt" target="_blank" rel="external">促销码传送门</a></p>
+<p><a href="http://of71dfqgz.bkt.clouddn.com/Focus%E5%85%8D%E8%B4%B9%E7%A0%81.txt" target="_blank" rel="noopener">促销码传送门</a></p>
 ]]></content>
       
         <categories>
@@ -1091,18 +1478,18 @@ dtype: int64
       <url>/2016/09/12/AFNetworking%E6%BA%90%E7%A0%81%E6%8B%BE%E9%81%97/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>一句话简介：最著名的OC开源网络库。</p>
-<p>Github: <a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">传送门</a></p>
+<p>Github: <a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="noopener">传送门</a></p>
 <p>PS: 本拾遗系列文章只专注于代码以及工程层面知识点拾遗，架构层面作者文章已经进行了详细的讲解。</p>
 </blockquote>
 <h3 id="1-import和modulemap"><a href="#1-import和modulemap" class="headerlink" title="1. @import和modulemap"></a>1. @import和modulemap</h3><p>首先OC中的@import以及Swift中的import其实都是基于modulemap实现的。</p>
 <ul>
-<li>@import的使用可以参考：<a href="http://stackoverflow.com/questions/18947516/import-vs-import-ios-7" target="_blank" rel="external">@import vs #import</a></li>
-<li>关于modulemap相关的内容可以参考：<a href="http://nsomar.com/modular-framework-creating-and-using-them/" target="_blank" rel="external">Modular framework, creating and using them</a></li>
+<li>@import的使用可以参考：<a href="http://stackoverflow.com/questions/18947516/import-vs-import-ios-7" target="_blank" rel="noopener">@import vs #import</a></li>
+<li>关于modulemap相关的内容可以参考：<a href="http://nsomar.com/modular-framework-creating-and-using-them/" target="_blank" rel="noopener">Modular framework, creating and using them</a></li>
 </ul>
 <h3 id="2-各种标记"><a href="#2-各种标记" class="headerlink" title="2. 各种标记"></a>2. 各种标记</h3><ul>
 <li>__unused: 避免因变量声明未使用造成的警告。</li>
-<li>ARC相关（如__autoreleasing）参考: <a href="http://www.cnblogs.com/flyFreeZn/p/4264220.html" target="_blank" rel="external">iOS开发ARC内存管理技术要点</a></li>
-<li>NS_DESIGNATED_INITIALIZER 声明了designated初始化方法后，其余初始化方法如果没有调用designated初始化会有警告提示，具体可以参考: <a href="http://useyourloaf.com/blog/xcode-6-objective-c-modernization/" target="_blank" rel="external">Xcode 6 Objective-C Modernization</a> </li>
+<li>ARC相关（如__autoreleasing）参考: <a href="http://www.cnblogs.com/flyFreeZn/p/4264220.html" target="_blank" rel="noopener">iOS开发ARC内存管理技术要点</a></li>
+<li>NS_DESIGNATED_INITIALIZER 声明了designated初始化方法后，其余初始化方法如果没有调用designated初始化会有警告提示，具体可以参考: <a href="http://useyourloaf.com/blog/xcode-6-objective-c-modernization/" target="_blank" rel="noopener">Xcode 6 Objective-C Modernization</a> </li>
 <li>DEPRECATED_ATTRIBUTE（过期）、NS_SWIFT_NOTHROW（一些便于OC迁移Swift的标记）等</li>
 </ul>
 <h3 id="3-宏"><a href="#3-宏" class="headerlink" title="3. 宏"></a>3. 宏</h3><ul>
@@ -1128,8 +1515,8 @@ dtype: int64
       <url>/2016/09/05/CTNetworking%E6%BA%90%E7%A0%81%E6%8B%BE%E9%81%97/</url>
       <content type="html"><![CDATA[<blockquote>
 <p> 一句话简介：CTNetworking为casa大神针对iOS网络层方案的一个架构实例。</p>
-<p> 架构详解: <a href="http://casatwy.com/iosying-yong-jia-gou-tan-wang-luo-ceng-she-ji-fang-an.html" target="_blank" rel="external">传送门</a></p>
-<p> Github: <a href="https://github.com/casatwy/RTNetworking" target="_blank" rel="external">传送门</a></p>
+<p> 架构详解: <a href="http://casatwy.com/iosying-yong-jia-gou-tan-wang-luo-ceng-she-ji-fang-an.html" target="_blank" rel="noopener">传送门</a></p>
+<p> Github: <a href="https://github.com/casatwy/RTNetworking" target="_blank" rel="noopener">传送门</a></p>
 <p> PS: 本拾遗系列文章只专注于代码以及工程层面知识点拾遗，架构层面作者文章已经进行了详细的讲解。</p>
 </blockquote>
 <h3 id="1-宏相关"><a href="#1-宏相关" class="headerlink" title="1. 宏相关"></a>1. 宏相关</h3><ul>
@@ -1164,7 +1551,7 @@ dtype: int64
 </li>
 <li><p>当不能采用生成子类的方法进行扩充时。一种情况是,可能有大量独立的扩展,为支持每一种组合将产生大量的子类,使得子类数目呈爆炸性增长。另一种情况可能是因为类定义被隐藏,或类定义不能用于生成子类。            </p>
 <blockquote>
-<p> 一个专门讲解OC设计模式的开源库—<a href="https://github.com/huang303513/Design-Pattern-For-iOS" target="_blank" rel="external">传送门</a>        </p>
+<p> 一个专门讲解OC设计模式的开源库—<a href="https://github.com/huang303513/Design-Pattern-For-iOS" target="_blank" rel="noopener">传送门</a>        </p>
 </blockquote>
 </li>
 </ul>
@@ -1188,8 +1575,8 @@ dtype: int64
       <url>/2016/09/01/CTMediator%E6%BA%90%E7%A0%81%E6%8B%BE%E9%81%97/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>一句话简介：CTMediator为casa大神针对iOS组件化方案的一个架构实例。</p>
-<p>架构详解: <a href="http://casatwy.com/iOS-Modulization.html" target="_blank" rel="external">传送门</a></p>
-<p>Github: <a href="https://github.com/casatwy/CTMediator" target="_blank" rel="external">传送门</a></p>
+<p>架构详解: <a href="http://casatwy.com/iOS-Modulization.html" target="_blank" rel="noopener">传送门</a></p>
+<p>Github: <a href="https://github.com/casatwy/CTMediator" target="_blank" rel="noopener">传送门</a></p>
 <p>PS: 本拾遗系列文章只专注于代码以及工程层面知识点拾遗，架构层面作者文章已经进行了详细的讲解。</p>
 </blockquote>
 <h3 id="1-UIViewController常用分段"><a href="#1-UIViewController常用分段" class="headerlink" title="1. UIViewController常用分段"></a>1. UIViewController常用分段</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark - life cycle</span><br><span class="line">#pragma mark - UITableViewDelegate</span><br><span class="line">#pragma mark - CustomDelegate</span><br><span class="line">#pragma mark - event response</span><br><span class="line">#pragma mark - private methods</span><br><span class="line">#pragma mark - getters and setters</span><br></pre></td></tr></table></figure>
@@ -1198,7 +1585,7 @@ dtype: int64
 <p>我比较习惯一个对象的”私有”属性写在extension里面，然后这些属性的初始化全部放在getter里面做，在init和dealloc之外，是不会出现任何类似<code>_property</code>这样的写法的。</p>
 <p>唐巧说他喜欢的做法是用<code>_property</code>这种，然后关于<code>_property</code>的初始化通过<code>[self setupProperty]</code>这种做法去做。从刚才上面的代码来看，就是要在viewDidLoad里面多调用一个setup方法而已，然后我推荐的方法就是不用多调一个setup方法，直接走getter。</p>
 <p>嗯，怎么说呢，其实两种做法都能完成需求。但是从另一个角度看，苹果之所以选择让<code>[self getProperty]</code>和<code>self.property</code>可以互相通用，这种做法已经很明显地表达了苹果的倾向：<code>希望每个property都是通过getter方法来获得</code>。</p>
-<p>早在2003年，Allen Holub就发了篇文章《<a href="http://www.javaworld.com/article/2073723/core-java/why-getter-and-setter-methods-are-evil.html" target="_blank" rel="external">Why getter and setter methods are evil</a>》，自此之后，业界就对此产生了各种争议，虽然是从Java开始说的，但是发展到后面各种语言也参与了进来。然后虽然现在关于这个问题讨论得少了，但是依旧属于没有定论的状态。setter的情况比较复杂，也不是我这一节的重点，我这边还是主要说getter。我们从objc的设计来看，苹果的设计者更加倾向于<code>getter is not evil</code>。</p>
+<p>早在2003年，Allen Holub就发了篇文章《<a href="http://www.javaworld.com/article/2073723/core-java/why-getter-and-setter-methods-are-evil.html" target="_blank" rel="noopener">Why getter and setter methods are evil</a>》，自此之后，业界就对此产生了各种争议，虽然是从Java开始说的，但是发展到后面各种语言也参与了进来。然后虽然现在关于这个问题讨论得少了，但是依旧属于没有定论的状态。setter的情况比较复杂，也不是我这一节的重点，我这边还是主要说getter。我们从objc的设计来看，苹果的设计者更加倾向于<code>getter is not evil</code>。</p>
 <p>认为<code>getter is evil</code>的原因有非常之多，或大或小，随着争论的进行，大家慢慢就聚焦到这样的一个原因：<code>Getter和Setter提供了一个能让外部修改对象内部数据的方式，这是evil的，正常情况下，一个对象自己私有的变量应该是只有自己关心</code>。</p>
 <p>然后我们回到iOS领域来，objc也同样面临了这样的问题，甚至更加严重：<code>objc并没有像Java那么严格的私有概念</code>。但在实际工作中，我们不太会去操作头文件里面没有的变量，这是从规范上就被禁止的。</p>
 <p>认为<code>getter is not evil</code>的原因也可以聚焦到一个：<code>高度的封装性</code>。getter事实上是工厂方法，有了getter之后，业务逻辑可以更加专注于调用，而不必担心当前变量是否可用。我们可以想一下，假设一个ViewController有20个subview要加入view中，这20个subview的初始化代码是肯定逃不掉的，放在哪里比较好？放在哪里都比放在addsubview的地方好，我个人认为最好的地方还是放在getter里面，结合单例模式之后，代码会非常整齐，生产的地方和使用的地方得到了很好的区分。</p>
@@ -1207,7 +1594,7 @@ dtype: int64
 <h3 id="2-应该在哪里配置View的位置？（-继续引用casa的原文）"><a href="#2-应该在哪里配置View的位置？（-继续引用casa的原文）" class="headerlink" title="2. 应该在哪里配置View的位置？（^_^继续引用casa的原文）"></a>2. 应该在哪里配置View的位置？（^_^继续引用casa的原文）</h3><ul>
 <li><p>关于在哪儿写Constraints?</p>
 <p>苹果在文档中指出，<code>updateViewConstraints</code>是用来做add constraints的地方。</p>
-<p>但是在<a href="http://stackoverflow.com/questions/17497002/when-will-or-wont-updateviewconstraints-be-called-on-my-view-controller-for-m" target="_blank" rel="external">这里</a>有一个回答者说<code>updateViewConstraints</code>并不适合做添加Constraints的事情。</p>
+<p>但是在<a href="http://stackoverflow.com/questions/17497002/when-will-or-wont-updateviewconstraints-be-called-on-my-view-controller-for-m" target="_blank" rel="noopener">这里</a>有一个回答者说<code>updateViewConstraints</code>并不适合做添加Constraints的事情。</p>
 <p>综合我自己和评论区各位关心这个问题的兄弟们的各种测试和各种文档，我现在觉得还是在<code>viewDidLoad</code>里面开一个layoutPageSubviews的方法，然后在这个里面创建Constraints并添加，会比较好。就是像下面这样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad</span><br><span class="line">&#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line"></span><br><span class="line">    [self.view addSubview:self.firstView];</span><br><span class="line">    [self.view addSubview:self.secondView];</span><br><span class="line">    [self.view addSubview:self.thirdView];</span><br><span class="line"></span><br><span class="line">    [self layoutPageSubviews];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)layoutPageSubviews</span><br><span class="line">&#123;</span><br><span class="line">    [self.view addConstraints:xxxConstraints];</span><br><span class="line">    [self.view addConstraints:yyyConstraints];</span><br><span class="line">    [self.view addConstraints:zzzConstraints];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -1326,7 +1713,7 @@ dtype: int64
 <li>强制横屏</li>
 </ul>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">forceLandScape</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">let</span> width = <span class="type">UIScreen</span>.mainScreen().bounds.size.width</span><br><span class="line">    <span class="keyword">let</span> height = <span class="type">UIScreen</span>.mainScreen().bounds.size.height</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> isLandscape = width &lt; height</span><br><span class="line">    <span class="keyword">if</span> isLandscape &#123;</span><br><span class="line">        <span class="keyword">let</span> device = <span class="type">UIDevice</span>.currentDevice()</span><br><span class="line">        <span class="keyword">let</span> number = <span class="type">NSNumber</span>(integer: <span class="type">UIInterfaceOrientation</span>.<span class="type">LandscapeRight</span>.rawValue)</span><br><span class="line">        device.setValue(number, forKey: <span class="string">"orientation"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上方案基本可以搞定大部分的屏幕旋转场景了。如果APP的产品需求中主体为固定方向，只要求对弹出(present)模态视图进行旋转的话，可以参考下面这篇文章：<br><a href="http://swiftiostutorials.com/ios-orientations-landscape-orientation-one-view-controller/" target="_blank" rel="external">iOS Orientations: Landscape orientation for only one View Controller</a><br>这么做会更加方便一些，但问题是这种方案对于push模式的场景并不适用，需要结合以上方案综合解决。  </p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上方案基本可以搞定大部分的屏幕旋转场景了。如果APP的产品需求中主体为固定方向，只要求对弹出(present)模态视图进行旋转的话，可以参考下面这篇文章：<br><a href="http://swiftiostutorials.com/ios-orientations-landscape-orientation-one-view-controller/" target="_blank" rel="noopener">iOS Orientations: Landscape orientation for only one View Controller</a><br>这么做会更加方便一些，但问题是这种方案对于push模式的场景并不适用，需要结合以上方案综合解决。  </p>
 ]]></content>
       
         <categories>
@@ -1342,7 +1729,7 @@ dtype: int64
       <title><![CDATA[Charts诊疗日志]]></title>
       <url>/2016/07/25/Charts%E8%AF%8A%E7%96%97%E6%97%A5%E5%BF%97/</url>
       <content type="html"><![CDATA[<blockquote>
-<p>用Charts有一段时间了，期间遇到了一些现有版本存在的问题，特作此记录。<br><a href="https://github.com/danielgindi/Charts" target="_blank" rel="external">Charts传送门</a></p>
+<p>用Charts有一段时间了，期间遇到了一些现有版本存在的问题，特作此记录。<br><a href="https://github.com/danielgindi/Charts" target="_blank" rel="noopener">Charts传送门</a></p>
 </blockquote>
 <h2 id="病症1-组合图-CombinedChartView-弹出MarkerView位置不对"><a href="#病症1-组合图-CombinedChartView-弹出MarkerView位置不对" class="headerlink" title="病症1.组合图(CombinedChartView)弹出MarkerView位置不对"></a>病症1.组合图(CombinedChartView)弹出MarkerView位置不对</h2><h3 id="病症表象如下图："><a href="#病症表象如下图：" class="headerlink" title="病症表象如下图："></a>病症表象如下图：</h3><p><img src="http://alithink.com/img/4charts/combine.png" alt="combine.png"></p>
 <p>截图为想要的结果（修复后的效果），实际情况为弹出的Marker没有显示在对应折线图的数据点上。</p>
@@ -1505,7 +1892,7 @@ dtype: int64
       <title><![CDATA[《禅与 Objective-C 编程艺术》读书拾遗]]></title>
       <url>/2016/07/01/%E3%80%8A%E7%A6%85%E4%B8%8E%20Objective-C%20%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF%E3%80%8B%E8%AF%BB%E4%B9%A6%E6%8B%BE%E9%81%97/</url>
       <content type="html"><![CDATA[<blockquote>
-<p>纯粹拾遗性质的读书笔记，只记录知识体系尚模糊的内容<br>原文链接：<a href="https://github.com/oa414/objc-zen-book-cn#%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B" target="_blank" rel="external">《禅与 Objective-C 编程艺术》</a></p>
+<p>纯粹拾遗性质的读书笔记，只记录知识体系尚模糊的内容<br>原文链接：<a href="https://github.com/oa414/objc-zen-book-cn#%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B" target="_blank" rel="noopener">《禅与 Objective-C 编程艺术》</a></p>
 </blockquote>
 <h3 id="1-条件语句"><a href="#1-条件语句" class="headerlink" title="1.条件语句"></a>1.条件语句</h3><ul>
 <li>善用return, 将主流程从分支中脱离</li>
@@ -1625,7 +2012,7 @@ dtype: int64
 <h3 id="涉及的图形类型"><a href="#涉及的图形类型" class="headerlink" title="涉及的图形类型"></a>涉及的图形类型</h3><p><img src="http://alithink.com/img/3bi/1.png" alt="BI show.png"></p>
 <p>BI 中的各种图形图表都封装成了对应的卡片类型，根据接口的卡片类型描述动态生成对应的数据卡片进行展示。</p>
 <h3 id="开源库选型"><a href="#开源库选型" class="headerlink" title="开源库选型"></a>开源库选型</h3><h4 id="1-Charts"><a href="#1-Charts" class="headerlink" title="1.Charts"></a>1.Charts</h4><blockquote>
-<p>传送门：<a href="https://github.com/danielgindi/Charts" target="_blank" rel="external">https://github.com/danielgindi/Charts</a>  </p>
+<p>传送门：<a href="https://github.com/danielgindi/Charts" target="_blank" rel="noopener">https://github.com/danielgindi/Charts</a>  </p>
 </blockquote>
 <h5 id="应用场景："><a href="#应用场景：" class="headerlink" title="应用场景："></a>应用场景：</h5><p>主力图形库，常规图形的展示。</p>
 <h5 id="优势："><a href="#优势：" class="headerlink" title="优势："></a>优势：</h5><ul>
@@ -1635,7 +2022,7 @@ dtype: int64
 <li>较为优雅的动画支持、默认数据展示区域的控制、各种展示细节的灵活控制等。</li>
 </ul>
 <h4 id="2-ESArcProgressView"><a href="#2-ESArcProgressView" class="headerlink" title="2.ESArcProgressView"></a>2.ESArcProgressView</h4><blockquote>
-<p>传送门：<a href="https://github.com/e-sites/ESArcProgressView" target="_blank" rel="external">https://github.com/e-sites/ESArcProgressView</a>  </p>
+<p>传送门：<a href="https://github.com/e-sites/ESArcProgressView" target="_blank" rel="noopener">https://github.com/e-sites/ESArcProgressView</a>  </p>
 </blockquote>
 <h5 id="应用场景：-1"><a href="#应用场景：-1" class="headerlink" title="应用场景："></a>应用场景：</h5><p><img src="http://alithink.com/img/3bi/2.png" alt="Circle.png"></p>
 <p>多层环形图（暂时这么称呼她吧）<br>其实是仿照的Apple Watch的Activity，不过确实比纯粹的柱状图更具美感一些^_^。</p>
@@ -1644,7 +2031,7 @@ dtype: int64
 <li>支持简单动画，不过需要手动处理下timer的runloop mode的问题。</li>
 </ul>
 <h4 id="3-XCL-Charts"><a href="#3-XCL-Charts" class="headerlink" title="3.XCL-Charts"></a>3.XCL-Charts</h4><blockquote>
-<p>传送门：<a href="https://github.com/xcltapestry/XCL-Charts" target="_blank" rel="external">https://github.com/xcltapestry/XCL-Charts</a> </p>
+<p>传送门：<a href="https://github.com/xcltapestry/XCL-Charts" target="_blank" rel="noopener">https://github.com/xcltapestry/XCL-Charts</a> </p>
 </blockquote>
 <h5 id="应用场景：-2"><a href="#应用场景：-2" class="headerlink" title="应用场景："></a>应用场景：</h5><p><img src="http://alithink.com/img/3bi/3.png" alt="android circle.png"></p>
 <p>Android的多层环形图解决方案，XCL也是一个较为完备的Android图形库，不过相较来说库的成熟度没有Charts高，一些细节功能也存在一定程度的缺失。</p>
@@ -1653,7 +2040,7 @@ dtype: int64
 <p>这里setVisibleXRangeMaximum设置的数目在grouped柱状图配置的时候记得要乘以单位组内柱子的数目并包含组之间间隔的空间（往往间隔的空间也算做一个柱子）。</p>
 <h4 id="2-完整显示x轴所有的元素标签"><a href="#2-完整显示x轴所有的元素标签" class="headerlink" title="2. 完整显示x轴所有的元素标签"></a>2. 完整显示x轴所有的元素标签</h4><p>Charts默认自动计算相邻x轴元素标签的距离, 控制x轴部分标签的隐藏以达到较好的现实效果。但实际需求中往往会要求展示所有x轴的元素标签，那么就可以通过以下配置禁用默认的计算。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xAxis?.setLabelsToSkip(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
 <h4 id="3-设置为可拖动的图形与tableview的滑动存在冲突"><a href="#3-设置为可拖动的图形与tableview的滑动存在冲突" class="headerlink" title="3. 设置为可拖动的图形与tableview的滑动存在冲突"></a>3. 设置为可拖动的图形与tableview的滑动存在冲突</h4><p>暂时的解决办法是在可拖动的图形顶部覆盖一层隐藏层，需要看全局数据的用户需要先进行一步点击才能进行图形的拖动操作。</p>
-<h3 id="存在的不足"><a href="#存在的不足" class="headerlink" title="存在的不足"></a>存在的不足</h3><h4 id="1-组合图包含grouped柱状图时存在bug"><a href="#1-组合图包含grouped柱状图时存在bug" class="headerlink" title="1. 组合图包含grouped柱状图时存在bug"></a>1. 组合图包含grouped柱状图时存在bug</h4><p><img src="http://alithink.com/img/3bi/4.png" alt="problem.png"><br><img src="http://alithink.com/img/3bi/5.png" alt="solution.png"><br>尚未解决，暂时只能将grouped柱状图跟线形图分开成两个图进行展示。。。<br>或者研究下liuxuan30的这个PR<br><a href="https://github.com/danielgindi/Charts/issues/1159#issuecomment-228954675" target="_blank" rel="external">issue传送门</a></p>
+<h3 id="存在的不足"><a href="#存在的不足" class="headerlink" title="存在的不足"></a>存在的不足</h3><h4 id="1-组合图包含grouped柱状图时存在bug"><a href="#1-组合图包含grouped柱状图时存在bug" class="headerlink" title="1. 组合图包含grouped柱状图时存在bug"></a>1. 组合图包含grouped柱状图时存在bug</h4><p><img src="http://alithink.com/img/3bi/4.png" alt="problem.png"><br><img src="http://alithink.com/img/3bi/5.png" alt="solution.png"><br>尚未解决，暂时只能将grouped柱状图跟线形图分开成两个图进行展示。。。<br>或者研究下liuxuan30的这个PR<br><a href="https://github.com/danielgindi/Charts/issues/1159#issuecomment-228954675" target="_blank" rel="noopener">issue传送门</a></p>
 <h4 id="2-堆积图缺失线性堆积图"><a href="#2-堆积图缺失线性堆积图" class="headerlink" title="2. 堆积图缺失线性堆积图"></a>2. 堆积图缺失线性堆积图</h4><p>目前只提供柱状堆积图的支持。</p>
 <h4 id="3-ChartMarker堆积图功能缺失"><a href="#3-ChartMarker堆积图功能缺失" class="headerlink" title="3. ChartMarker堆积图功能缺失"></a>3. ChartMarker堆积图功能缺失</h4><p>堆积图的ChartMarker目前只能展示堆积后的总值，而不能展示分项的值。</p>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>目前的这套方案可以满足基本的数据可视化需求，对于一些较为复杂灵活的图形展示需求，也可以封装一个单独的web类型的卡片，对于这部分需求采用web相关的图形可视化解决方案进行处理。</p>
@@ -1672,7 +2059,7 @@ dtype: int64
       <title><![CDATA[工作与生活的平衡]]></title>
       <url>/2016/06/11/%E5%B7%A5%E4%BD%9C%E4%B8%8E%E7%94%9F%E6%B4%BB%E7%9A%84%E5%B9%B3%E8%A1%A1/</url>
       <content type="html"><![CDATA[<p>对应视频的传送门：</p>
-<p><a href="http://open.163.com/movie/2011/2/D/L/M77U1DAGR_M77U1L2DL.html" target="_blank" rel="external">如何实现工作与生活的平衡</a></p>
+<p><a href="http://open.163.com/movie/2011/2/D/L/M77U1DAGR_M77U1L2DL.html" target="_blank" rel="noopener">如何实现工作与生活的平衡</a></p>
 <h3 id="平衡的四个关键"><a href="#平衡的四个关键" class="headerlink" title="平衡的四个关键"></a>平衡的四个关键</h3><h4 id="1-有些职业的选择与生活具有不可调和性"><a href="#1-有些职业的选择与生活具有不可调和性" class="headerlink" title="1.有些职业的选择与生活具有不可调和性"></a>1.有些职业的选择与生活具有不可调和性</h4><p>这种不可调和跟周五允许不穿工装、育儿假等生活福利没有多大联系。很多人一直从事着自己痛恨着的工作，目的只是为了买一些没有多大用处的东西，以此博得自己的邻居朋友的羡慕而已。  </p>
 <blockquote>
 <p>职业的选择很重要，找到一份自己热爱并且可以驾驭掌控的工作是解决平衡问题的一个关键。</p>
@@ -1716,7 +2103,7 @@ dtype: int64
 <li>框架代码单独维护，功能点升级更新快捷。</li>
 <li>一定程度督促自己代码的组织与优化。</li>
 </ul>
-<h2 id="知识储备"><a href="#知识储备" class="headerlink" title="知识储备"></a>知识储备</h2><p>搭建的过程大致参考了这篇教程：<a href="http://blog.wtlucky.com/blog/2015/02/26/create-private-podspec/" target="_blank" rel="external">使用Cocoapods创建私有podspec</a><br>教程非常的细致，很赞的分享。其中有几个地方可能会有点疑惑：</p>
+<h2 id="知识储备"><a href="#知识储备" class="headerlink" title="知识储备"></a>知识储备</h2><p>搭建的过程大致参考了这篇教程：<a href="http://blog.wtlucky.com/blog/2015/02/26/create-private-podspec/" target="_blank" rel="noopener">使用Cocoapods创建私有podspec</a><br>教程非常的细致，很赞的分享。其中有几个地方可能会有点疑惑：</p>
 <h3 id="Podfile中specs引入方式"><a href="#Podfile中specs引入方式" class="headerlink" title="Podfile中specs引入方式"></a>Podfile中specs引入方式</h3><h4 id="1-path-gt-的引入方式"><a href="#1-path-gt-的引入方式" class="headerlink" title="1. :path =&gt;的引入方式"></a>1. :path =&gt;的引入方式</h4><ul>
 <li>会添加到Development Pods中，并且复制整个私有库的文件组织结构（文件夹嵌套关系都会保留）,这种引入方式非常适合于私有库的开发阶段，因为这种方式引入的其实就是实际私有库的源文件，在demo项目中通过这种方式引入，充分测试私有库的相关功能会非常方便快捷。</li>
 <li>对强迫症患者来说可能会觉得有点不完美的地方，就是当specs中包含subspecs的时候，用这种方式引入时，会出现一些多余的文件层次嵌套。。。感兴趣的患者们可以去试一下。。。</li>
@@ -2098,7 +2485,7 @@ dtype: int64
 <p>我从来没有见过不会转的手里剑，为啥不尝试给它加一点旋转（我确定在这个教程开始的时候我们看到过一个现成的例子）提示：你可以对一个node多次使用 runAction 。 这些action没必要放在一个序列中。</p>
 <p>如果你想要学到更多关于Cocos2D的知识，official Cocos2D forum 是一个询问问题和学习经验的好地方。我的用户名是 @cocojoe ，随时都可以过来跟我交流。</p>
 <p>如果你对这篇教程有任何疑问或者建议请一起讨论！</p>
-<p><a href="http://www.raywenderlich.com/61391/how-to-make-a-simple-iphone-game-with-cocos2d-3-0-tutorial" target="_blank" rel="external">英文原文链接</a></p>
+<p><a href="http://www.raywenderlich.com/61391/how-to-make-a-simple-iphone-game-with-cocos2d-3-0-tutorial" target="_blank" rel="noopener">英文原文链接</a></p>
 ]]></content>
       
         <categories>
@@ -2147,7 +2534,7 @@ dtype: int64
 <h3 id="APP的原始需求的实现以及优化"><a href="#APP的原始需求的实现以及优化" class="headerlink" title="APP的原始需求的实现以及优化"></a>APP的原始需求的实现以及优化</h3><p>拿“简密”来说基础需求不复杂，很快就可以完成了，然后就是对它进行一些力所能及的雕琢。<br>比如这部分我把“帮我解密”模块的布局模仿了一把扁平化了的锁，点击加密的时候，有锁合上的动画效果，自我感觉效果还是不错的^_^。总之发挥想象给自己的App润色。</p>
 <p>同时添加一些风格统一的图标，这里推荐下面这个网站，有很多不错的免费图片素材：</p>
 <blockquote>
-<p>easyicon:<a href="http://www.easyicon.net/" target="_blank" rel="external">http://www.easyicon.net/</a></p>
+<p>easyicon:<a href="http://www.easyicon.net/" target="_blank" rel="noopener">http://www.easyicon.net/</a></p>
 </blockquote>
 <h3 id="APP全球市场的一些总结"><a href="#APP全球市场的一些总结" class="headerlink" title="APP全球市场的一些总结"></a>APP全球市场的一些总结</h3><p>首先就是APP文字的本地化，这点不用说用苹果官方的本地化方案就好了<br>NSLocalizedString。<br>也可以获取设备语言写一些针对不同语言的分支处理，具体判断方法如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];</span><br><span class="line">NSArray *languages = [defaults objectForKey:@<span class="string">"AppleLanguages"</span>];</span><br><span class="line">NSString *currentLang = [languages objectAtIndex:<span class="number">0</span>];</span><br><span class="line"><span class="keyword">return</span> currentLang;</span><br></pre></td></tr></table></figure>
@@ -2181,7 +2568,7 @@ dtype: int64
 <p>简密 - 保持一点神秘感</p>
 <p>一个人应该永远保持一点神秘感 — 王尔德</p>
 <blockquote>
-<p><a href="https://itunes.apple.com/cn/app/jian-mi-bao-chi-yi-dian-shen/id879758988?mt=8" target="_blank" rel="external">https://itunes.apple.com/cn/app/jian-mi-bao-chi-yi-dian-shen/id879758988?mt=8</a></p>
+<p><a href="https://itunes.apple.com/cn/app/jian-mi-bao-chi-yi-dian-shen/id879758988?mt=8" target="_blank" rel="noopener">https://itunes.apple.com/cn/app/jian-mi-bao-chi-yi-dian-shen/id879758988?mt=8</a></p>
 </blockquote>
 ]]></content>
       
