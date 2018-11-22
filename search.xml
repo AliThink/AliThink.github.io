@@ -4,6 +4,47 @@
   
     
     <entry>
+      <title><![CDATA[智子airflow配置指南]]></title>
+      <url>/2018/09/21/%E6%99%BA%E5%AD%90airflow%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</url>
+      <content type="html"><![CDATA[<h2 id="安装python3"><a href="#安装python3" class="headerlink" title="安装python3"></a>安装python3</h2><blockquote>
+<p><a href="https://www.yuzhi100.com/tutorial/centos/centos-anzhuang-python36" target="_blank" rel="noopener">https://www.yuzhi100.com/tutorial/centos/centos-anzhuang-python36</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#安装EPEL依赖</span><br><span class="line">sudo yum install epel-release</span><br><span class="line"></span><br><span class="line">#安装IUS软件源</span><br><span class="line">sudo yum install https://centos7.iuscommunity.org/ius-release.rpm</span><br><span class="line"></span><br><span class="line">sudo yum install python36u</span><br><span class="line">sudo ln -s /bin/python3.6 /bin/python3</span><br><span class="line"></span><br><span class="line">sudo yum install python36u-pip</span><br><span class="line">sudo ln -s /bin/pip3.6 /bin/pip3</span><br></pre></td></tr></table></figure>
+<h2 id="安装airflow"><a href="#安装airflow" class="headerlink" title="安装airflow"></a>安装airflow</h2><h3 id="1-添加环境变量"><a href="#1-添加环境变量" class="headerlink" title="1. 添加环境变量"></a>1. 添加环境变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export SLUGIFY_USES_TEXT_UNIDECODE=yes</span><br></pre></td></tr></table></figure>
+<h3 id="2-环境安装"><a href="#2-环境安装" class="headerlink" title="2. 环境安装"></a>2. 环境安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install python36u-devel.x86_64</span><br><span class="line"></span><br><span class="line">sudo yum install mysql-community-devel.x86_64</span><br><span class="line"></span><br><span class="line"># sasl/sasl.h: No such file or directory</span><br><span class="line">yum install gcc-c++ cyrus-sasl-devel.x86_64</span><br></pre></td></tr></table></figure>
+<h3 id="3-元数据库配置（mysql）"><a href="#3-元数据库配置（mysql）" class="headerlink" title="3. 元数据库配置（mysql）"></a>3. 元数据库配置（mysql）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- xxxx</span><br><span class="line"></span><br><span class="line">CREATE DATABASE airflow;</span><br><span class="line"></span><br><span class="line">GRANT all privileges on airflow.* TO &apos;root&apos;@&apos;localhost&apos;  IDENTIFIED BY &apos;xxxx&apos;;</span><br><span class="line"></span><br><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;xxxx&apos; PASSWORD EXPIRE NEVER;</span><br><span class="line"></span><br><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_password BY &apos;xxxx&apos;;</span><br></pre></td></tr></table></figure>
+<h3 id="4-AIRFLOW-HOME-airflow-cfg文件配置"><a href="#4-AIRFLOW-HOME-airflow-cfg文件配置" class="headerlink" title="4. \$AIRFLOW_HOME/airflow.cfg文件配置"></a>4. \$AIRFLOW_HOME/airflow.cfg文件配置</h3><blockquote>
+<p>将AIRFLOW_HOME加入环境变量</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql_alchemy_conn = mysql://root:xxxx@localhost:3306/airflow</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">from cryptography.fernet import Fernet</span><br><span class="line"></span><br><span class="line">fernet_key= Fernet.generate_key()</span><br><span class="line">print(fernet_key) # your fernet_key, keep it in secured place!</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装加密模块</span><br><span class="line">pip install flask-bcrypt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>暴露端口5001</p>
+</blockquote>
+<h3 id="5-配置用户"><a href="#5-配置用户" class="headerlink" title="5. 配置用户"></a>5. 配置用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import airflow</span><br><span class="line">from airflow import models, settings</span><br><span class="line">from airflow.contrib.auth.backends.password_auth import PasswordUser</span><br><span class="line"></span><br><span class="line">user = PasswordUser(models.User())</span><br><span class="line">user.username = &apos;alithink&apos;</span><br><span class="line">user.email = &apos;xxxx&apos;</span><br><span class="line">user.password = &apos;xxxx&apos;</span><br><span class="line">session = settings.Session()</span><br><span class="line">session.add(user)</span><br><span class="line">session.commit()</span><br><span class="line">session.close()</span><br><span class="line">exit()</span><br></pre></td></tr></table></figure>
+<h2 id="启动airflow"><a href="#启动airflow" class="headerlink" title="启动airflow"></a>启动airflow</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nohup airflow webserver -p 5001 &amp;</span><br><span class="line"></span><br><span class="line"># 每次resetdb后scheduler要重启</span><br><span class="line">nohup airflow scheduler &amp;</span><br></pre></td></tr></table></figure>
+<h2 id="airflow-tips"><a href="#airflow-tips" class="headerlink" title="airflow tips"></a>airflow tips</h2><ul>
+<li>cfg配置改变后要进行重启</li>
+<li>默认utc时间，建议在dag配置的时候进行时区的考量（web ui只支持utc…）</li>
+<li>dag开关置为on之后，如果scheduler已启动，start-date到目前每个执行计划节点的任务都会依次执行。</li>
+<li>可以点击立刻执行，进行手动dag执行。</li>
+<li>每个节点的日志，可以点击对应task，然后查看task instance log</li>
+<li>UTC时间，需要在原本打算设置的时间减8小时</li>
+<li>catch_up: 如果指定的开始时间早于当前时间且catch_up设置为true，那么airflow会把过去‘遗漏’的调度执行一遍</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> airflow </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[智子环境搭建历程]]></title>
       <url>/2018/02/24/%E6%99%BA%E5%AD%90%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/</url>
       <content type="html"><![CDATA[<blockquote>
