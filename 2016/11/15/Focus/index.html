@@ -227,6 +227,31 @@
   </div>
 </article>
 
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <!--<script src="//cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script>
+    <script src='//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js'></script>-->
+    <div class="blog-post-comments">
+        <div id="vcomments"></div>
+        <script>
+          var notify = false == true ? true : false;
+          var verify = false == true ? true : false;
+          var visitor = true == true ? true : false;
+          new Valine({
+            el: '#vcomments',
+              notify: notify,
+              verify: verify,
+            app_id: 'UDE2tWFJX1om8cC7yKjgWA9r-gzGzoHsz',
+            app_key: 'iugcsrMhVBXsIqhhhWHAdgr1',
+            lang: 'en',
+            placeholder: 'ヾﾉ≧∀≦)o快来评论一下吧!',
+            avatar: 'monsterid',
+            pageSize: 10,
+            visitor: visitor
+          });
+          </script>
+      </div>
+
 
 
         
