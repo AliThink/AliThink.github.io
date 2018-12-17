@@ -466,7 +466,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 .content p {
   hyphens: auto;
