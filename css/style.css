@@ -1253,7 +1253,6 @@ article .content .caption {
   #footer {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
     align-items: center;
     align-content: center;
     margin-bottom: 20px;
@@ -1263,7 +1262,7 @@ article .content .caption {
     margin-right: 20px;
   }
   #footer .footer-right {
-    align-self: flex-end;
+    align-self: flex-start;
   }
 }
 .pagination {
