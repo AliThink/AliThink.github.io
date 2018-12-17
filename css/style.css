@@ -466,7 +466,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
 }
 .content p {
   hyphens: auto;
@@ -929,8 +929,8 @@ body {
   overflow: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
   width: 100%;
   text-align: center;
   white-space: nowrap;
