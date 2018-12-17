@@ -397,7 +397,7 @@ body abbr {
 body ul,
 body ol,
 body dl {
-  line-height: 1.725;
+  line-height: 1.825;
 }
 body ul ul,
 body ol ul,
@@ -416,14 +416,14 @@ body table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
 }
 body th {
   padding: 8px;
   border-bottom: 1px dashed $color-code-border;
   color: #eee;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 15px;
 }
 body td {
   padding: 9px 8px 0;
@@ -453,9 +453,9 @@ body {
   color: #c9cacc;
   font-display: swap;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Menlo", "Meslo LG", monospace;
-  line-height: 1.725;
+  line-height: 1.825;
   text-rendering: geometricPrecision;
   flex: 1;
   -moz-osx-font-smoothing: grayscale;
@@ -1047,7 +1047,7 @@ article header .posttitle {
   margin-top: 0;
   margin-bottom: 0;
   text-transform: none;
-  font-size: 1.6em;
+  font-size: 1.5em;
   line-height: 1.25;
 }
 article header .meta {
@@ -1056,7 +1056,7 @@ article header .meta {
 }
 article header .meta * {
   color: #ccc;
-  font-size: 0.86rem;
+  font-size: 0.85rem;
 }
 article header .author {
   text-transform: uppercase;
@@ -1073,7 +1073,7 @@ article .content h2:before {
   color: #2bbc8a;
   content: "#";
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 article .content img,
 article .content video {
@@ -1114,7 +1114,7 @@ article .content blockquote:before {
   color: #ccffb6;
   content: "\201C";
   vertical-align: -0.4em;
-  font-size: 2.1em;
+  font-size: 2em;
   line-height: 0.1em;
 }
 article .content blockquote footer {
@@ -1153,11 +1153,11 @@ article .content .caption {
   margin-top: 0.5em;
   color: color-grey;
   text-align: center;
-  font-size: 1em;
+  font-size: 0.9em;
 }
 .posttitle {
   text-transform: none;
-  font-size: 1.6em;
+  font-size: 1.5em;
   line-height: 1.25;
 }
 .article-tag .tag-link {
