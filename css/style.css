@@ -544,12 +544,12 @@ body {
   }
 }
 .max-width {
-  max-width: 48rem;
+  max-width: 49rem;
 }
 @media (max-width: 480px) {
   .px3 {
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
   }
   .my4 {
     margin-top: 2rem;
