@@ -929,8 +929,8 @@ body {
   overflow: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+  padding-right: 0rem;
+  padding-left: 0rem;
   width: 100%;
   text-align: center;
   white-space: nowrap;

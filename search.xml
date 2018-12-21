@@ -251,7 +251,7 @@
 <h3 id="坑位介绍-4"><a href="#坑位介绍-4" class="headerlink" title="坑位介绍"></a>坑位介绍</h3><blockquote>
 <p>此处应该有掌声，配置太简单了，与spark流派形成鲜明的对比。<br>没啥特别的坑位需要备忘，一切都水到渠成。</p>
 </blockquote>
-<h1 id="三、数据同步策略"><a href="#三、数据同步策略" class="headerlink" title="三、数据同步策略"></a>三、数据同步策略</h1><h2 id="3-1-sqoop同步策略"><a href="#3-1-sqoop同步策略" class="headerlink" title="3.1 sqoop同步策略"></a>3.1 sqoop同步策略</h2><p><img src="http://of71dfqgz.bkt.clouddn.com/15194416883439.jpg" alt=""></p>
+<h1 id="三、数据同步策略"><a href="#三、数据同步策略" class="headerlink" title="三、数据同步策略"></a>三、数据同步策略</h1><h2 id="3-1-sqoop同步策略"><a href="#3-1-sqoop同步策略" class="headerlink" title="3.1 sqoop同步策略"></a>3.1 sqoop同步策略</h2><p><img src="https://i.loli.net/2018/12/21/5c1caba11079c.jpg" alt="15194416883439"></p>
 <h3 id="具体sqoop同步示例"><a href="#具体sqoop同步示例" class="headerlink" title="具体sqoop同步示例"></a>具体sqoop同步示例</h3><blockquote>
 <p>sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true –connect jdbc:mysql://xx.xx.xx.xx/数据库名?characterEncoding=utf-8 –username 数据库用户名 –password 数据库密码 –num-mappers 4 –table 源表名 –hive-import –hive-overwrite –hive-table hive表名 –split-by 切分字段（如果有主键默认使用主键）</p>
 </blockquote>
@@ -314,7 +314,7 @@
 </ul>
 </li>
 <li>消除警告：<ul>
-<li><img src="http://of71dfqgz.bkt.clouddn.com/15180588854980.jpg" alt=""></li>
+<li><img src="https://i.loli.net/2018/12/21/5c1caba0b8bb0.jpg" alt="15180588854980"></li>
 <li>echo 0 &gt; /proc/sys/vm/swappiness</li>
 <li>echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</li>
 <li>echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</li>
@@ -379,7 +379,7 @@
 <p>通过故事打算让她懂得什么？</p>
 <p>勇于尝试、不惧失败、坚持、勤学善问<br>那么故事开始吧 ^_^</p>
 </blockquote>
-<p><img src="http://of71dfqgz.bkt.clouddn.com/%E5%85%9C%E5%85%9C%E6%BB%91%E6%9D%BF.jpg" alt="兜兜滑板"></p>
+<p><img src="https://i.loli.net/2018/12/21/5c1caba0d6f67.jpg" alt="兜兜滑板"></p>
 <p>曾经有一个小男孩，他的名字叫杰克。</p>
 <p>今天是杰克的3岁生日，作为生日礼物呢，他的爸爸送给他了一个滑板车。这个特别的“滑板车”跟兜兜有的这个不太一样。这个滑板车没有可以手抓的扶手，只有一个板子以及板子下面的四个轮子，它还有一个更贴切的名字叫做“滑板”。</p>
 <p>杰克也是第一次见到这个神奇的滑板车，他之前呢，跟兜兜一样，也只会玩带扶手的滑板车。<br>他很好奇，这个滑板该如何玩呢？他一支脚丫小心翼翼的踏了上去，当打算把另一支脚丫也挪上去的时候，滑板往前一滑，杰克摔了一个屁股蹲。</p>
@@ -437,7 +437,7 @@
     <entry>
       <title><![CDATA[岁月 - 共度余下的时光]]></title>
       <url>/2018/01/21/%E5%B2%81%E6%9C%88/</url>
-      <content type="html"><![CDATA[<h2 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a>传送门</h2><p><a href="https://itunes.apple.com/cn/app/%E5%B2%81%E6%9C%88-%E5%85%B1%E5%BA%A6%E4%BD%99%E4%B8%8B%E7%9A%84%E6%97%B6%E5%85%89/id1334705330?mt=8" target="_blank" rel="noopener">App Store下载地址</a><br><img src="http://of71dfqgz.bkt.clouddn.com/qrcode.png" alt="qrcode"></p>
+      <content type="html"><![CDATA[<h2 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a>传送门</h2><p><a href="https://itunes.apple.com/cn/app/%E5%B2%81%E6%9C%88-%E5%85%B1%E5%BA%A6%E4%BD%99%E4%B8%8B%E7%9A%84%E6%97%B6%E5%85%89/id1334705330?mt=8" target="_blank" rel="noopener">App Store下载地址</a><br><img src="https://i.loli.net/2018/12/21/5c1caba0be7e5.png" alt="qrcode"></p>
 <h2 id="先立Flag😇"><a href="#先立Flag😇" class="headerlink" title="先立Flag😇"></a>先立Flag😇</h2><p>无论是否继续从事移动端方向，每年都会抽时间独立设计研发一枚App。并不那么看重实际收入，在乎的是从产品设计、UED到研发与运营的综合磨砺~</p>
 <blockquote>
 <p>番外：这个app已经拖延了有半年之久，这一晃快过年了，赶紧趁周末集中收了收尾。。。<br>App都是全球市场哒，顺便锻炼了下我蹩脚的英文=。=</p>
@@ -452,7 +452,7 @@
 <p>如果有一天，你发现父母老是咳个不停；如果有一天，你发现父母过马路反应慢了；如果有一天，你发现父母不再爱出门；如果有一天，你发现父母脸上多了皱纹；如果有这么一天，说明父母真的老了…… 树欲静而风不止、子欲养而亲不在，你留意过自己的父母吗？</p>
 <h3 id="“岁月”能帮到什么"><a href="#“岁月”能帮到什么" class="headerlink" title="“岁月”能帮到什么"></a>“岁月”能帮到什么</h3><p>“岁月”帮您生成自己与亲人朋友们的岁月卡片，会默认刨去生命最后的十年，真实显露出你们可共度岁月的珍贵。</p>
 <p>“岁月”帮您生成从现在到他们生命尽头每一年的计划卡片，每一年计划为他们做一些事情，珍视在一起的每一年。</p>
-<h2 id="二、UED"><a href="#二、UED" class="headerlink" title="二、UED"></a>二、UED</h2><h3 id="“岁月”模样"><a href="#“岁月”模样" class="headerlink" title="“岁月”模样"></a>“岁月”模样</h3><p><img src="http://of71dfqgz.bkt.clouddn.com/OneLifeGlobal.png" alt="OneLifeGloba"></p>
+<h2 id="二、UED"><a href="#二、UED" class="headerlink" title="二、UED"></a>二、UED</h2><h3 id="“岁月”模样"><a href="#“岁月”模样" class="headerlink" title="“岁月”模样"></a>“岁月”模样</h3><p><img src="https://i.loli.net/2018/12/21/5c1cabba61943.png" alt="OneLifeGloba"></p>
 <h3 id="设计要素"><a href="#设计要素" class="headerlink" title="设计要素"></a>设计要素</h3><ul>
 <li>卡片式统一风格</li>
 <li>字幕式引导(初始化 + 卡片生成)：<ul>
@@ -543,7 +543,7 @@
 <h4 id="PM"><a href="#PM" class="headerlink" title="PM"></a>PM</h4><blockquote>
 <p>免责声明，粗略一写，纯个人体会😆</p>
 </blockquote>
-<p><img src="http://of71dfqgz.bkt.clouddn.com/%E9%98%BF%E9%87%8C%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B.png" alt="阿里项目流程"></p>
+<p><img src="https://i.loli.net/2018/12/21/5c1cabc077e8b.png" alt="阿里项目流程"></p>
 <h3 id="二、思想"><a href="#二、思想" class="headerlink" title="二、思想"></a>二、思想</h3><blockquote>
 <p>其实感觉来阿里的这段日子，思想上的转变可能更重要一些。</p>
 </blockquote>
@@ -623,7 +623,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="http://of71dfqgz.bkt.clouddn.com/%E7%99%BD%E8%AF%9D%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.png" alt="白话大数据与机器学习"></p>
+<p><img src="https://i.loli.net/2018/12/21/5c1cabc0cdd3c.png" alt="白话大数据与机器学习"></p>
 <ul>
 <li>良好的数据基础是必要条件。良好的周期性数据积累，对于各数据变动节点相关数据的完备与丰富，会为ML分析打下坚实的基础。</li>
 <li>数据探索是个体力活。不断对比相关度，探索特征相关性。发现一条规律弥足珍贵。</li>
@@ -634,7 +634,7 @@
 <h4 id="2-前后端"><a href="#2-前后端" class="headerlink" title="2. 前后端"></a>2. 前后端</h4><blockquote>
 <p>我其实是vue党。。</p>
 </blockquote>
-<h4 id="智子（Flask-Bootstrap）"><a href="#智子（Flask-Bootstrap）" class="headerlink" title="智子（Flask + Bootstrap）"></a>智子（Flask + Bootstrap）</h4><p><img src="http://of71dfqgz.bkt.clouddn.com/%E6%99%BA%E5%AD%90%E6%95%88%E6%9E%9C.jpg" alt="智子效果"></p>
+<h4 id="智子（Flask-Bootstrap）"><a href="#智子（Flask-Bootstrap）" class="headerlink" title="智子（Flask + Bootstrap）"></a>智子（Flask + Bootstrap）</h4><p><img src="https://i.loli.net/2018/12/21/5c1caba0f169d.jpg" alt="智子效果"></p>
 <blockquote>
 <p>使用Flask的原因: 算法模型使用sklearn搞得，同是python好基友，于是就直接上手了。</p>
 </blockquote>
@@ -652,7 +652,7 @@
 <h4 id="有趣的双十一（实时Dashboard-angular-nebular-Elasticsearch）"><a href="#有趣的双十一（实时Dashboard-angular-nebular-Elasticsearch）" class="headerlink" title="有趣的双十一（实时Dashboard angular + nebular + Elasticsearch）"></a>有趣的双十一（实时Dashboard angular + nebular + Elasticsearch）</h4><blockquote>
 <p>vue党为什么用angular: 因为想用nebular的这套主题。。。</p>
 </blockquote>
-<p><img src="http://of71dfqgz.bkt.clouddn.com/interesting.png" alt="interesting"></p>
+<p><img src="https://i.loli.net/2018/12/21/5c1cabbaaa82b.png" alt="interesting"></p>
 <ul>
 <li>直接看Angular官方文档吧，更新速度实在太快了。。<ul>
 <li>官方的英雄实例很赞，适合入门上手。</li>
@@ -677,9 +677,9 @@
 <h4 id="3-UED"><a href="#3-UED" class="headerlink" title="3. UED"></a>3. UED</h4><blockquote>
 <p>零星接了点这方面的货，还蛮有意思的哈</p>
 </blockquote>
-<h4 id="培训视频"><a href="#培训视频" class="headerlink" title="培训视频"></a>培训视频</h4><p><img src="http://of71dfqgz.bkt.clouddn.com/%E5%9F%B9%E8%AE%AD.png" alt="培训"></p>
-<h4 id="双十一H5直播间设计"><a href="#双十一H5直播间设计" class="headerlink" title="双十一H5直播间设计"></a>双十一H5直播间设计</h4><p><img src="http://of71dfqgz.bkt.clouddn.com/%E7%9B%B4%E6%92%AD%E9%97%B4.png" alt="直播间"></p>
-<h4 id="双十一数据海报"><a href="#双十一数据海报" class="headerlink" title="双十一数据海报"></a>双十一数据海报</h4><p><img src="http://of71dfqgz.bkt.clouddn.com/report.png" alt="report"></p>
+<h4 id="培训视频"><a href="#培训视频" class="headerlink" title="培训视频"></a>培训视频</h4><p><img src="https://i.loli.net/2018/12/21/5c1cabba6503a.png" alt="培训"></p>
+<h4 id="双十一H5直播间设计"><a href="#双十一H5直播间设计" class="headerlink" title="双十一H5直播间设计"></a>双十一H5直播间设计</h4><p><img src="https://i.loli.net/2018/12/21/5c1caba118340.png" alt="直播间"></p>
+<h4 id="双十一数据海报"><a href="#双十一数据海报" class="headerlink" title="双十一数据海报"></a>双十一数据海报</h4><p><img src="https://i.loli.net/2018/12/21/5c1cabba5d5a8.png" alt="report"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>持续学习，共同成长。</p>
 <p>最后预祝今晚双十一：“大吉大利，晚上吃鸡~”🐥🐥🐥🐥🐥🐥</p>
 ]]></content>
@@ -768,9 +768,9 @@
 <li>销售额的相关度有所下降</li>
 </ul>
 <ul>
-<li><img src="http://of71dfqgz.bkt.clouddn.com/15060597682343.jpg" alt=""></li>
-<li><img src="http://of71dfqgz.bkt.clouddn.com/15060602769621.jpg" alt=""></li>
-<li><img src="http://of71dfqgz.bkt.clouddn.com/15060632132189.jpg" alt=""></li>
+<li><img src="https://i.loli.net/2018/12/21/5c1cabba1faf7.jpg" alt="15060597682343"></li>
+<li><img src="https://i.loli.net/2018/12/21/5c1caba091d02.jpg" alt="15060602769621"></li>
+<li><img src="https://i.loli.net/2018/12/21/5c1caba09e791.jpg" alt="15060632132189"></li>
 </ul>
 </li>
 </ul>
@@ -778,7 +778,7 @@
 <li>冬装数据太奇葩了，基本依托于两个大活动走货<ul>
 <li>考虑要把冬装单独拆分出模型来搞</li>
 <li>其它季节货品使用一个预测模型</li>
-<li>只保留冬季的情况<br><img src="http://of71dfqgz.bkt.clouddn.com/15063072795952.jpg" alt=""></li>
+<li>只保留冬季的情况<br><img src="https://i.loli.net/2018/12/21/5c1cabba244a6.jpg" alt="15063072795952"></li>
 </ul>
 </li>
 </ul>
@@ -1012,11 +1012,11 @@ dtype: int64
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><h3 id="特征重要性分析"><a href="#特征重要性分析" class="headerlink" title="特征重要性分析"></a>特征重要性分析</h3><blockquote>
 <p>分数越高越重要</p>
 </blockquote>
-<p><img src="http://of71dfqgz.bkt.clouddn.com/%E6%A8%A1%E5%9E%8B%E7%89%B9%E5%BE%81%E9%87%8D%E8%A6%81%E6%80%A7%E5%88%86%E6%9E%90.jpg" alt="模型特征重要性分析"></p>
+<p><img src="https://i.loli.net/2018/12/21/5c1cabba9e6d8.jpg" alt="模型特征重要性分析"></p>
 <h3 id="综合对比"><a href="#综合对比" class="headerlink" title="综合对比"></a>综合对比</h3><blockquote>
 <p>分数越接近1越好</p>
 </blockquote>
-<p><img src="http://of71dfqgz.bkt.clouddn.com/%E7%BB%BC%E5%90%88%E5%AF%B9%E6%AF%94%E6%8A%A5%E5%91%8A.png" alt="综合对比报告"></p>
+<p><img src="https://i.loli.net/2018/12/21/5c1cabbaa02df.png" alt="综合对比报告"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="http://scikit-learn.org/stable/" target="_blank" rel="noopener">scikit-learn官网</a></li>
 <li><a href="http://contrib.scikit-learn.org/imbalanced-learn/stable/" target="_blank" rel="noopener">imbalanced-learn官网</a></li>
@@ -1132,7 +1132,7 @@ dtype: int64
 </li>
 <li>DataFrame（粗略一说，内容太多^_^）:<ul>
 <li>DataSet[Row]</li>
-<li>DataFrame vs RDD<br><img src="http://of71dfqgz.bkt.clouddn.com/15048413811557.jpg" alt=""></li>
+<li>DataFrame vs RDD<br><img src="https://i.loli.net/2018/12/21/5c1caba0d91e0.jpg" alt="15048413811557"></li>
 <li>DataFrame vs DataSet<ul>
 <li>往往区别是在于行类型的不确定与确定</li>
 </ul>
@@ -1257,8 +1257,6 @@ dtype: int64
       <content type="html"><![CDATA[<blockquote>
 <p>家人与朋友的支持是男人前行的永恒动力。新起点，新方向，杭州我来了。</p>
 </blockquote>
-<p><img src="http://of71dfqgz.bkt.clouddn.com/Alibaba%20App.png" alt="alibaba.com"></p>
-<p>d</p>
 ]]></content>
       
         <categories>
@@ -1439,7 +1437,7 @@ dtype: int64
 <blockquote>
 <p>Focus App Store：<a href="https://itunes.apple.com/us/app/focus-concentrate-on-one-task/id1169917639" target="_blank" rel="noopener">传送门</a></p>
 </blockquote>
-<h2 id="Focus长什么样"><a href="#Focus长什么样" class="headerlink" title="Focus长什么样"></a>Focus长什么样</h2><p><img src="http://of71dfqgz.bkt.clouddn.com/focus_appstore.png" alt="focus_appstore.png"></p>
+<h2 id="Focus长什么样"><a href="#Focus长什么样" class="headerlink" title="Focus长什么样"></a>Focus长什么样</h2><p><img src="https://i.loli.net/2018/12/21/5c1cabba4e5e2.png" alt="focus_appstore"></p>
 <h2 id="Focus参数"><a href="#Focus参数" class="headerlink" title="Focus参数"></a>Focus参数</h2><ul>
 <li>Language: pure Swift3</li>
 <li>Support: iOS9+、watchOS3.0+（包含Complication、WatchConnectivity）</li>
@@ -1447,7 +1445,7 @@ dtype: int64
 <li>OpenSource：梳理完毕后开源</li>
 </ul>
 <h2 id="为什么要做这么个App"><a href="#为什么要做这么个App" class="headerlink" title="为什么要做这么个App"></a>为什么要做这么个App</h2><p>Apple发布了新款的Apple Watch Series2，之前一直想涉足watchOS的领域，一看设备更新了就赶紧入手了一款。这么贵的东东，不开发点东西感觉对不起自己花出去的银子。于是在认真体验了一段时间后，进行了以下产品思考:</p>
-<p><img src="http://of71dfqgz.bkt.clouddn.com/aw_mind.png" alt="aw_mind.png"></p>
+<p><img src="https://i.loli.net/2018/12/21/5c1cabbaa1136.png" alt="aw_mind"></p>
 <p>最后决定先尝试制作一款GTD类APP，跟其它同质App的区别呢就在于只关注于一件事情的实现引导。提供的Apple Watch端App包含了几乎所有iOS端的功能，同时结合Complication可以将Focus的精简信息展现到表盘中。利用Apple Watch的贴近特点，进行一些轻度提醒。（说不定过段时间可能会搞一下那个偷偷录音的APP ^_^）</p>
 <h2 id="Focus让我了解了什么"><a href="#Focus让我了解了什么" class="headerlink" title="Focus让我了解了什么"></a>Focus让我了解了什么</h2><h3 id="1-Swift3"><a href="#1-Swift3" class="headerlink" title="1. Swift3"></a>1. Swift3</h3><p>Swift3更新以来，还没有将原有的swift2项目进行迁移，正好拿个人项目进行了实践。</p>
 <p>综合体会就是更加优雅简洁了，这里就不展开描述了。推荐几个不错的教程，首先是官方文档，然后有猫神的《Swifter - <em>100</em> 个 <em>Swift</em> 必备 <em>tips</em>》（买的正版，动态更新为了swift3的版本）,还有raywenderlich swift相关教程也在第一时间更新为了swift3版本。</p>
@@ -1498,8 +1496,6 @@ dtype: int64
 <li>图形素材：<a href="http://www.dribbble.com/" target="_blank" rel="noopener">dribbble(寻找创意)</a>、<a href="http://www.easyicon.net/" target="_blank" rel="noopener">easyicon(图标)</a>、<a href="http://makeappicon.com/" target="_blank" rel="noopener">MakeAppIcon(iPhone App图标与watch App图标生成)</a></li>
 </ul>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>Focus会持续更新，目前主要解决了我自己的一些痛点，希望她也能够帮助到你。如果有什么好的建议欢迎留言讨论。Watch中的App种类确实很有限，不像iOS的这么丰富，有好的产品创意也欢迎一起讨论。watchOS 3.0的更新让Apple Watch焕发了新的生机，有了不少新的可能，让我们一起把我们的Apple Watch丰富起来吧^_^。</p>
-<p>最后附上50个促销代码，感兴趣的同学可以下载使用。</p>
-<p><a href="http://of71dfqgz.bkt.clouddn.com/Focus%E5%85%8D%E8%B4%B9%E7%A0%81.txt" target="_blank" rel="noopener">促销码传送门</a></p>
 ]]></content>
       
         <categories>
@@ -1552,7 +1548,7 @@ dtype: int64
 <p>公司的产品兄弟走了，有需求，只能自己操刀了。</p>
 <p>Sketch的综合体验还是很不错的，功能发现自然流畅，没有看过教程，也能无阻碍的进行设计。</p>
 </blockquote>
-<h3 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h3><p><img src="http://of71dfqgz.bkt.clouddn.com/1111small.png" alt="双十一"></p>
+<h3 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h3><p><img src="https://i.loli.net/2018/12/21/5c1cabc060f60.png" alt="1111smal"></p>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
 <li>大致划分展示区域：上部为纯数据点展示；下部为图形图表。</li>
 <li>背景高斯模糊用于进行模块划分。</li>

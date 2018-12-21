@@ -14,13 +14,13 @@
 ">
 <meta property="og:description" content="智子 - 韩都衣舍机器学习平台代号😋  一、spark流派1.1 hadoop 起初选择使用CDH安装（原因：老环境就用的这个，据说比较稳定），然而在双节点情况下总是出现莫名问题。磕磕绊绊安装好了，实际用起来还是有不少问题（集成环境问题定位好麻烦。。），在尝试几波之后最终选择放弃（期间还麻烦运维妹子重做了系统😂）。想到实际需要的功能并不太多，果断转为人工安装部署。CDH的安装部署过程作为番外">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://of71dfqgz.bkt.clouddn.com/15194416883439.jpg">
-<meta property="og:image" content="http://of71dfqgz.bkt.clouddn.com/15180588854980.jpg">
-<meta property="og:updated_time" content="2018-11-12T09:14:46.988Z">
+<meta property="og:image" content="https://i.loli.net/2018/12/21/5c1caba11079c.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/12/21/5c1caba0b8bb0.jpg">
+<meta property="og:updated_time" content="2018-12-21T09:09:58.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="智子环境搭建历程">
 <meta name="twitter:description" content="智子 - 韩都衣舍机器学习平台代号😋  一、spark流派1.1 hadoop 起初选择使用CDH安装（原因：老环境就用的这个，据说比较稳定），然而在双节点情况下总是出现莫名问题。磕磕绊绊安装好了，实际用起来还是有不少问题（集成环境问题定位好麻烦。。），在尝试几波之后最终选择放弃（期间还麻烦运维妹子重做了系统😂）。想到实际需要的功能并不太多，果断转为人工安装部署。CDH的安装部署过程作为番外">
-<meta name="twitter:image" content="http://of71dfqgz.bkt.clouddn.com/15194416883439.jpg">
+<meta name="twitter:image" content="https://i.loli.net/2018/12/21/5c1caba11079c.jpg">
     
     
         
@@ -270,7 +270,7 @@
 <h3 id="坑位介绍-4"><a href="#坑位介绍-4" class="headerlink" title="坑位介绍"></a>坑位介绍</h3><blockquote>
 <p>此处应该有掌声，配置太简单了，与spark流派形成鲜明的对比。<br>没啥特别的坑位需要备忘，一切都水到渠成。</p>
 </blockquote>
-<h1 id="三、数据同步策略"><a href="#三、数据同步策略" class="headerlink" title="三、数据同步策略"></a>三、数据同步策略</h1><h2 id="3-1-sqoop同步策略"><a href="#3-1-sqoop同步策略" class="headerlink" title="3.1 sqoop同步策略"></a>3.1 sqoop同步策略</h2><p><img src="http://of71dfqgz.bkt.clouddn.com/15194416883439.jpg" alt=""></p>
+<h1 id="三、数据同步策略"><a href="#三、数据同步策略" class="headerlink" title="三、数据同步策略"></a>三、数据同步策略</h1><h2 id="3-1-sqoop同步策略"><a href="#3-1-sqoop同步策略" class="headerlink" title="3.1 sqoop同步策略"></a>3.1 sqoop同步策略</h2><p><img src="https://i.loli.net/2018/12/21/5c1caba11079c.jpg" alt="15194416883439"></p>
 <h3 id="具体sqoop同步示例"><a href="#具体sqoop同步示例" class="headerlink" title="具体sqoop同步示例"></a>具体sqoop同步示例</h3><blockquote>
 <p>sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true –connect jdbc:mysql://xx.xx.xx.xx/数据库名?characterEncoding=utf-8 –username 数据库用户名 –password 数据库密码 –num-mappers 4 –table 源表名 –hive-import –hive-overwrite –hive-table hive表名 –split-by 切分字段（如果有主键默认使用主键）</p>
 </blockquote>
@@ -333,7 +333,7 @@
 </ul>
 </li>
 <li>消除警告：<ul>
-<li><img src="http://of71dfqgz.bkt.clouddn.com/15180588854980.jpg" alt=""></li>
+<li><img src="https://i.loli.net/2018/12/21/5c1caba0b8bb0.jpg" alt="15180588854980"></li>
 <li>echo 0 &gt; /proc/sys/vm/swappiness</li>
 <li>echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</li>
 <li>echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</li>
