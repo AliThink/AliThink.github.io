@@ -7,7 +7,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2018-12-21T10:03:38.179Z</updated>
+  <updated>2018-12-25T10:49:44.020Z</updated>
   <id>/</id>
   
   <author>
@@ -16,6 +16,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>正确使用交叉验证</title>
+    <link href="/2018/12/25/%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81/"/>
+    <id>/2018/12/25/正确使用交叉验证/</id>
+    <published>2018-12-25T10:48:33.000Z</published>
+    <updated>2018-12-25T10:49:44.020Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>引子：在封装cell预测模块的交叉验证功能时想到，到底是应该直接把交叉验证中效果较好的模型持久化下来用于预测？还是像现在这样子，用全部数据集重新训练一个模型用于后期的预测？</p></blockquote><h2 id="原文"><a href="#原文" class="headerlink" title="原文"></a>原文</h2><p>You do cross-validation when you want to do any of these two things:</p><ul><li>Model Selection</li><li>Error Estimation of a Model</li></ul><p>Model selection can come in different scenarios:</p><p>Selecting one algorithm vs others for a particular problem/dataset<br>Selecting hyper-parameters of a particular algorithm for a particular problem/dataset<br>(please notice that if you are both selecting an algorithm - better to call it model - and also doing hyper-parameters search, you need to do Nested Cross Validation . Is Nested-CV really necessary?)</p><p>Cross-validation ensures up to some degree that the error estimate is the closest possible as generalization error for that model (although this is very hard to approximate). When observing the average error among folds you can have a good projection of the expected error for a model built on the full dataset. Also is importance to observe the variance of the prediction, this is, how much the error varies from fold to fold. If the variation is too high (considerably different values) then the model will tend to be unstable. Bootstrapping is the other method providing good approximation in this sense. I suggest to read carefully the section 7 on “Elements of Statistical Learning” Book, freely available at: <a href="https://web.stanford.edu/~hastie/ElemStatLearn//printings/ESLII_print12.pdf" target="_blank" rel="noopener">ELS-Standford</a></p><p>As it has been mentioned before you must not take the built model in none of the folds. Instead, you have to rebuild the model with the full dataset (the one that was split into folds). If you have a separated test set, you can use it to try this final model, obtaining a similar (and must surely higher) error than the one obtained by CV. You should, however, rely on the estimated error given by the CV procedure.</p><p>After performing CV with different models (algorithm combination, etc) chose the one that performed better regarding error and its variance among folds. You will need to rebuild the model with the whole dataset. Here comes a common confusion in terms: we commongly refer to model selection, thinking that the model is the ready-to-predict model built on data, but in this case it refers to the combination of algorithm+preprocesing procedures you apply. So, to obtain the actual model you need for making predictions/classification you need to build it using the winner combination on the whole dataset.</p><p>Last thing to note is that if you are applying any kind of preprocessing the uses the class information (feature selection, LDA dimensionality reduction, etc) this must be performed in every fold, and not previously on data. This is a critical aspect. Should do the same thing if you are applying preprocessing methods that involve direct information of data (PCA, normalization, standardization, etc). You can, however, apply preprocessing that is not depend from data (deleting a variable following expert opinion, but this is kinda obvious). This video can help you in that direction: <a href="https://www.youtube.com/watch?v=S06JpVoNaA0" target="_blank" rel="noopener">CV the right and the wrong way</a></p><p>Here, a final nice explanation regarding the subject: <a href="https://stats.stackexchange.com/questions/2306/feature-selection-for-final-model-when-performing-cross-validation-in-machine" target="_blank" rel="noopener">CV and model selection</a></p><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><ol><li>在什么时候需要使用交叉验证：<ul><li>做模型选择的时候</li><li>需要评估模型误差的时候</li></ul></li><li>做模型选择又分两种：<ul><li>算法选择 - 普通cv</li><li>算法超参选择 - 格搜索等针对超参优化</li></ul></li><li>交叉验证能看出什么：<ul><li>较为接近的衡量一个模型的误差表现</li><li>观察方差，判断模型的稳定性</li></ul></li></ol><p><strong>重点来了：不要将交叉验证中效果最好的模型直接作最终预测使用，而应该用全部数据集重新训练一个模型。</strong>（看来没用错，这也是探索这一波的起因 =。=）</p><h2 id="意外收获：重大附加发现"><a href="#意外收获：重大附加发现" class="headerlink" title="意外收获：重大附加发现"></a>意外收获：重大附加发现</h2><p>如果数据集需要进行下来动作，请在交叉验证切分完数据集后进行：</p><ul><li>标准化、MinMax等结合数据规模的数据预处理手段。</li><li>特征选择、LDA等结合类标的相关处理。</li></ul><p>但是cross_val_score如何对切分后的数据集做处理呢？<br>官方文档给出了答案：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> make_pipeline</span><br><span class="line">clf = make_pipeline(preprocessing.StandardScaler(), svm.SVC(C=<span class="number">1</span>))</span><br><span class="line">cross_val_score(clf, iris.data, iris.target, cv=cv)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;引子：在封装cell预测模块的交叉验证功能时想到，到底是应该直接把交叉验证中效果较好的模型持久化下来用于预测？还是像现在这样子，用全部数据集重新训练一个模型用于后期的预测？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;原文&quot;&gt;&lt;a href
+      
+    
+    </summary>
+    
+      <category term="ML" scheme="/categories/ML/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Gratitude</title>
@@ -484,33 +510,6 @@
     </summary>
     
       <category term="疑难杂症" scheme="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>小试设计</title>
-    <link href="/2016/10/17/%E5%B0%8F%E8%AF%95%E8%AE%BE%E8%AE%A1/"/>
-    <id>/2016/10/17/小试设计/</id>
-    <published>2016-10-17T13:34:27.000Z</published>
-    <updated>2018-12-21T09:08:03.713Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>公司的产品兄弟走了，有需求，只能自己操刀了。</p><p>Sketch的综合体验还是很不错的，功能发现自然流畅，没有看过教程，也能无阻碍的进行设计。</p></blockquote><h3 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h3><p><img src="https://i.loli.net/2018/12/21/5c1cabc060f60.png" alt="1111smal"></p><h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul><li>大致划分展示区域：上部为纯数据点展示；下部为图形图表。</li><li>背景高斯模糊用于进行模块划分。</li><li>对于基础色的选择，以及字号的梳理，让页面不会显得特别凌乱。</li><li>PC端、移动端的风格统一化。</li><li>内容导向，拒绝杂乱的背景。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;公司的产品兄弟走了，有需求，只能自己操刀了。&lt;/p&gt;
-&lt;p&gt;Sketch的综合体验还是很不错的，功能发现自然流畅，没有看过教程，也能无阻碍的进行设计。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;成果&quot;&gt;&lt;a href=&quot;#成果&quot; clas
-      
-    
-    </summary>
-    
-      <category term="sketch" scheme="/categories/sketch/"/>
     
     
   </entry>
