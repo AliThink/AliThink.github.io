@@ -4,6 +4,69 @@
   
     
     <entry>
+      <title><![CDATA[机器学习从业者们的那些事儿]]></title>
+      <url>/2019/01/31/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BB%8E%E4%B8%9A%E8%80%85%E4%BB%AC%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</url>
+      <content type="html"><![CDATA[<p><strong>明确工作问题</strong>、收集并清洗数据、搭建模型、得出结果并<strong>监测变化</strong>，这些过程通常会以不同形式相互连接，很难单独拿出来作为研究对象。</p>
+<h2 id="当机器学习项目失败时"><a href="#当机器学习项目失败时" class="headerlink" title="当机器学习项目失败时"></a>当机器学习项目失败时</h2><p>机器学习项目失败的情况有以下这么几种：</p>
+<ul>
+<li>当数据科学团队搭建了一个从未用过的工具。但是公司的其他部门并不知道他们做了什么，有些数据科学家也并不清楚这些成果能否用于实际生产中。</li>
+<li>当数据科学家们创造模型的速度快于将其投入生产的速度，就会产生积压。</li>
+<li>数据基础架构工程师和数据科学家是分开的。通道中没有数据时，数据科学家会要求数据基础架构工程师获取。</li>
+<li>当公司最终确定产品X的功能后，他们需要数据科学家收集支持这项决策的数据。数据科学家认为产品经理会忽略那些与决定相反的数据，而产品经理会认为数据科学家忽略商业逻辑。</li>
+<li>数据科学团队面试了一位数学建模、工程技术能力都很好的候选人。确定录用后加入到垂直应用产品团队，并需要简单的商业分析。数据科学家感到很无聊，所学技能根本用不上。</li>
+</ul>
+<p>问题在于数据产品之间缺少沟通并且没有目标。单独割裂的职位划分与工作协同，将影响目标的推进。</p>
+<blockquote>
+<p>将来会不会诞生一个职业：数据全栈工程师 =&gt; 数据产品思维 + 机器学习技能 + 大数据工程化技能 + 数据前端可视化技能</p>
+</blockquote>
+<h2 id="要做些什么"><a href="#要做些什么" class="headerlink" title="要做些什么"></a>要做些什么</h2><h3 id="理解语境"><a href="#理解语境" class="headerlink" title="理解语境"></a>理解语境</h3><ul>
+<li>找准能从机器学习中受益的区域</li>
+<li>与其他相关人员讨论机器学习能做什么、不能做什么</li>
+<li>让每个人都了解商业策略、风险和目标</li>
+<li>明确目前公司有什么类型的数据</li>
+<li>对任务制定合适的框架</li>
+<li>了解操作限制</li>
+<li>提前确定可能的道德风险，例如你的成果有可能被滥用、或被用于宣传</li>
+<li>确定潜在的偏见和潜在的负面反馈</li>
+</ul>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul>
+<li>制作能收集更多不同数据的计划</li>
+<li>将不同来源的数据汇总</li>
+<li>处理缺失的或被污染的数据</li>
+<li>数据可视化</li>
+<li>建立合适的训练集、验证集和测试集</li>
+</ul>
+<h3 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h3><ul>
+<li>选择使用哪个模型</li>
+<li>将资源模型纳入约束条件（即最终模型需要在顶尖设备运行，内存少、延长时间长等等）</li>
+<li>选择超参数（包括架构、损失函数、优化器）</li>
+<li>训练模型，并进行debug。其中包括调参、查看损失函数、训练错误、验证错误是否有改变、监测模型数据、确定错误来源、改变数据清洗和处理的方式、改变数据增强方式、添加更多数据、尝试不同模型、是否过度拟合。</li>
+</ul>
+<h3 id="模型生成"><a href="#模型生成" class="headerlink" title="模型生成"></a>模型生成</h3><ul>
+<li>创建一个API或网页app</li>
+<li>将模型输出成想要的格式</li>
+<li>计划模型多久需要重新训练一次并更新数据</li>
+</ul>
+<h3 id="监测"><a href="#监测" class="headerlink" title="监测"></a>监测</h3><ul>
+<li>追踪模型性能</li>
+<li>监测输入数据，确定数据是否会随时间使得模型失效</li>
+<li>与其他人员交流结果</li>
+<li>制定计划，如何监测和应对意外结果</li>
+</ul>
+<h2 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h2><h3 id="处理数据格式、不兼容和报错"><a href="#处理数据格式、不兼容和报错" class="headerlink" title="处理数据格式、不兼容和报错"></a>处理数据格式、不兼容和报错</h3><p>处理数据的不一致和报错经常是混乱费力的过程。人们有时会将机器学习和数据科学分开，因为对机器学习来说，有时会直接用清洗过的数据进行训练。然而在我的经验中，数据集清洗和训练模型是相关的：我经常会在训练模型的时候发现问题，只能改变输入数据的预处理方法。</p>
+<p>### </p>
+]]></content>
+      
+        <categories>
+            
+            <category> ML </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[试爱neo4j]]></title>
       <url>/2019/01/31/%E8%AF%95%E7%88%B1neo4j/</url>
       <content type="html"><![CDATA[<h2 id="1-导入demo数据"><a href="#1-导入demo数据" class="headerlink" title="1. 导入demo数据"></a>1. 导入demo数据</h2><h3 id="load-csv方式（适合热更新，无需停服务）"><a href="#load-csv方式（适合热更新，无需停服务）" class="headerlink" title="load csv方式（适合热更新，无需停服务）"></a>load csv方式（适合热更新，无需停服务）</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// demo数据的导入例子</span><br><span class="line"></span><br><span class="line"><span class="keyword">LOAD</span> CSV <span class="keyword">WITH</span> HEADERS <span class="keyword">FROM</span> <span class="string">"file:///RetailRecommendationsDemoDataProduct.csv"</span> <span class="keyword">AS</span> <span class="keyword">row</span></span><br><span class="line"><span class="keyword">MERGE</span> (parent_category:<span class="keyword">Category</span> &#123;<span class="keyword">name</span>: row.parent_category&#125;)</span><br><span class="line"><span class="keyword">MERGE</span> (<span class="keyword">category</span>:<span class="keyword">Category</span> &#123;<span class="keyword">name</span>: row.category&#125;)</span><br><span class="line"><span class="keyword">MERGE</span> (<span class="keyword">category</span>)-[:PARENT_CATEGORY]-&gt;(parent_category)</span><br><span class="line"><span class="keyword">MERGE</span> (p:Product &#123;sku: toString(row.sku)&#125;)</span><br><span class="line"><span class="keyword">SET</span> p.name  = row.name,</span><br><span class="line">    p.price = toFloat(row.price)</span><br><span class="line"><span class="keyword">MERGE</span> (p)-[:IN_CATEGORY]-&gt;(<span class="keyword">category</span>)</span><br><span class="line"><span class="keyword">MERGE</span> (d:Designer &#123;<span class="keyword">name</span>: row.designer&#125;)</span><br><span class="line"><span class="keyword">MERGE</span> (p)-[:DESIGNED_BY]-(d)</span><br><span class="line"><span class="keyword">RETURN</span> *;</span><br></pre></td></tr></table></figure>

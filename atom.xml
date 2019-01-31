@@ -7,7 +7,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-01-31T01:45:14.059Z</updated>
+  <updated>2019-01-31T01:49:26.019Z</updated>
   <id>/</id>
   
   <author>
@@ -16,6 +16,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习从业者们的那些事儿</title>
+    <link href="/2019/01/31/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BB%8E%E4%B8%9A%E8%80%85%E4%BB%AC%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/"/>
+    <id>/2019/01/31/机器学习从业者们的那些事儿/</id>
+    <published>2019-01-31T01:48:45.000Z</published>
+    <updated>2019-01-31T01:49:26.019Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>明确工作问题</strong>、收集并清洗数据、搭建模型、得出结果并<strong>监测变化</strong>，这些过程通常会以不同形式相互连接，很难单独拿出来作为研究对象。</p><h2 id="当机器学习项目失败时"><a href="#当机器学习项目失败时" class="headerlink" title="当机器学习项目失败时"></a>当机器学习项目失败时</h2><p>机器学习项目失败的情况有以下这么几种：</p><ul><li>当数据科学团队搭建了一个从未用过的工具。但是公司的其他部门并不知道他们做了什么，有些数据科学家也并不清楚这些成果能否用于实际生产中。</li><li>当数据科学家们创造模型的速度快于将其投入生产的速度，就会产生积压。</li><li>数据基础架构工程师和数据科学家是分开的。通道中没有数据时，数据科学家会要求数据基础架构工程师获取。</li><li>当公司最终确定产品X的功能后，他们需要数据科学家收集支持这项决策的数据。数据科学家认为产品经理会忽略那些与决定相反的数据，而产品经理会认为数据科学家忽略商业逻辑。</li><li>数据科学团队面试了一位数学建模、工程技术能力都很好的候选人。确定录用后加入到垂直应用产品团队，并需要简单的商业分析。数据科学家感到很无聊，所学技能根本用不上。</li></ul><p>问题在于数据产品之间缺少沟通并且没有目标。单独割裂的职位划分与工作协同，将影响目标的推进。</p><blockquote><p>将来会不会诞生一个职业：数据全栈工程师 =&gt; 数据产品思维 + 机器学习技能 + 大数据工程化技能 + 数据前端可视化技能</p></blockquote><h2 id="要做些什么"><a href="#要做些什么" class="headerlink" title="要做些什么"></a>要做些什么</h2><h3 id="理解语境"><a href="#理解语境" class="headerlink" title="理解语境"></a>理解语境</h3><ul><li>找准能从机器学习中受益的区域</li><li>与其他相关人员讨论机器学习能做什么、不能做什么</li><li>让每个人都了解商业策略、风险和目标</li><li>明确目前公司有什么类型的数据</li><li>对任务制定合适的框架</li><li>了解操作限制</li><li>提前确定可能的道德风险，例如你的成果有可能被滥用、或被用于宣传</li><li>确定潜在的偏见和潜在的负面反馈</li></ul><h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul><li>制作能收集更多不同数据的计划</li><li>将不同来源的数据汇总</li><li>处理缺失的或被污染的数据</li><li>数据可视化</li><li>建立合适的训练集、验证集和测试集</li></ul><h3 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h3><ul><li>选择使用哪个模型</li><li>将资源模型纳入约束条件（即最终模型需要在顶尖设备运行，内存少、延长时间长等等）</li><li>选择超参数（包括架构、损失函数、优化器）</li><li>训练模型，并进行debug。其中包括调参、查看损失函数、训练错误、验证错误是否有改变、监测模型数据、确定错误来源、改变数据清洗和处理的方式、改变数据增强方式、添加更多数据、尝试不同模型、是否过度拟合。</li></ul><h3 id="模型生成"><a href="#模型生成" class="headerlink" title="模型生成"></a>模型生成</h3><ul><li>创建一个API或网页app</li><li>将模型输出成想要的格式</li><li>计划模型多久需要重新训练一次并更新数据</li></ul><h3 id="监测"><a href="#监测" class="headerlink" title="监测"></a>监测</h3><ul><li>追踪模型性能</li><li>监测输入数据，确定数据是否会随时间使得模型失效</li><li>与其他人员交流结果</li><li>制定计划，如何监测和应对意外结果</li></ul><h2 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h2><h3 id="处理数据格式、不兼容和报错"><a href="#处理数据格式、不兼容和报错" class="headerlink" title="处理数据格式、不兼容和报错"></a>处理数据格式、不兼容和报错</h3><p>处理数据的不一致和报错经常是混乱费力的过程。人们有时会将机器学习和数据科学分开，因为对机器学习来说，有时会直接用清洗过的数据进行训练。然而在我的经验中，数据集清洗和训练模型是相关的：我经常会在训练模型的时候发现问题，只能改变输入数据的预处理方法。</p><p>### </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;明确工作问题&lt;/strong&gt;、收集并清洗数据、搭建模型、得出结果并&lt;strong&gt;监测变化&lt;/strong&gt;，这些过程通常会以不同形式相互连接，很难单独拿出来作为研究对象。&lt;/p&gt;
+&lt;h2 id=&quot;当机器学习项目失败时&quot;&gt;&lt;a href=&quot;#当机器学习项目
+      
+    
+    </summary>
+    
+      <category term="ML" scheme="/categories/ML/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>试爱neo4j</title>
@@ -481,32 +505,6 @@
     </summary>
     
       <category term="回忆录" scheme="/categories/%E5%9B%9E%E5%BF%86%E5%BD%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Focus</title>
-    <link href="/2016/11/15/Focus/"/>
-    <id>/2016/11/15/Focus/</id>
-    <published>2016-11-15T03:15:14.000Z</published>
-    <updated>2018-12-21T09:04:19.944Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Focus一次探索watchOS的实践。再次慨叹下Apple的审核速度，just one day…</p></blockquote><h2 id="Focus-有些事情需要这份执着"><a href="#Focus-有些事情需要这份执着" class="headerlink" title="Focus - 有些事情需要这份执着"></a>Focus - 有些事情需要这份执着</h2><p>人这一辈子总有一些一定要去做必须要去体验的东西。</p><p>对于这些事物的追求需要这份执念。</p><p>Focus帮助我们专注于做最重要的事情，给她一个期限，可能是一两年，也可能只有几天或者几小时，总之一旦决定拥有她，那么中途就不要背弃她。</p><p>人这一辈子不要过得太复杂，专注于现在，执着于每次的努力，当回看过往，必将为自己而骄傲。</p><blockquote><p>Focus App Store：<a href="https://itunes.apple.com/us/app/focus-concentrate-on-one-task/id1169917639" target="_blank" rel="noopener">传送门</a></p></blockquote><h2 id="Focus长什么样"><a href="#Focus长什么样" class="headerlink" title="Focus长什么样"></a>Focus长什么样</h2><p><img src="https://i.loli.net/2018/12/21/5c1cabba4e5e2.png" alt="focus_appstore"></p><h2 id="Focus参数"><a href="#Focus参数" class="headerlink" title="Focus参数"></a>Focus参数</h2><ul><li>Language: pure Swift3</li><li>Support: iOS9+、watchOS3.0+（包含Complication、WatchConnectivity）</li><li>Vender: Realm(iOS、watchOS)、DCPathButton、IQKeyboardManagerSwift、SCLAlertView、SnapKit</li><li>OpenSource：梳理完毕后开源</li></ul><h2 id="为什么要做这么个App"><a href="#为什么要做这么个App" class="headerlink" title="为什么要做这么个App"></a>为什么要做这么个App</h2><p>Apple发布了新款的Apple Watch Series2，之前一直想涉足watchOS的领域，一看设备更新了就赶紧入手了一款。这么贵的东东，不开发点东西感觉对不起自己花出去的银子。于是在认真体验了一段时间后，进行了以下产品思考:</p><p><img src="https://i.loli.net/2018/12/21/5c1cabbaa1136.png" alt="aw_mind"></p><p>最后决定先尝试制作一款GTD类APP，跟其它同质App的区别呢就在于只关注于一件事情的实现引导。提供的Apple Watch端App包含了几乎所有iOS端的功能，同时结合Complication可以将Focus的精简信息展现到表盘中。利用Apple Watch的贴近特点，进行一些轻度提醒。（说不定过段时间可能会搞一下那个偷偷录音的APP ^_^）</p><h2 id="Focus让我了解了什么"><a href="#Focus让我了解了什么" class="headerlink" title="Focus让我了解了什么"></a>Focus让我了解了什么</h2><h3 id="1-Swift3"><a href="#1-Swift3" class="headerlink" title="1. Swift3"></a>1. Swift3</h3><p>Swift3更新以来，还没有将原有的swift2项目进行迁移，正好拿个人项目进行了实践。</p><p>综合体会就是更加优雅简洁了，这里就不展开描述了。推荐几个不错的教程，首先是官方文档，然后有猫神的《Swifter - <em>100</em> 个 <em>Swift</em> 必备 <em>tips</em>》（买的正版，动态更新为了swift3的版本）,还有raywenderlich swift相关教程也在第一时间更新为了swift3版本。</p><h3 id="2-watchOS-3-0"><a href="#2-watchOS-3-0" class="headerlink" title="2. watchOS 3.0"></a>2. watchOS 3.0</h3><p>初涉watch SDK，现在的感觉是相较iOS SDK各有优劣，不过watch SDK的劣势多了一些。</p><h4 id="几个小例子："><a href="#几个小例子：" class="headerlink" title="几个小例子："></a>几个小例子：</h4><ul><li>table这一块，watchOS的处理会更“简约”一些，没有这么多的数据代理，转而采用了配置方法的调用，初始化配置更集中了。这里也是针对watch的使用场景进行了SDK层面的精简优化。</li><li>自带一个计时性质的文本控件date、timer，一般的场景只需要简单配置就可以使用了（不过可定制项比较有限，Focus中为了统一，还是改为自己实现一个倒计时）</li><li>感觉watchOS中的picker就是一个噩梦。。。，官方是没有提供watchOS版本的日期选择器的，所以需要自己用picker进行组装，里面好多坑，这块等开源后感兴趣的同学可以参考下。</li><li>关于控件封装，原本搞完了watchOS版本的日期选择器是打算抽离封装一下的，但是发现watchOS的控件封装真的没有太好的途径，总不能把一个controller分享出来吧。。。（虽然github上有人这么搞）</li></ul><h4 id="几个建议："><a href="#几个建议：" class="headerlink" title="几个建议："></a>几个建议：</h4><ul><li><p>将iOS与watchOS的公用模块提取为单独的framework方便复用。</p></li><li><p>iOS与watchOS的数据同步通过WatchConnectivity，由于一些技术文章的更新缓慢，其中介绍的appgroup方式其实已经不适用了（被坑了一轮）。</p><p>同时建议除了配置自动的同步机制外，添加一个按钮触发的同步操作，以方便用户及时进行同步。例如Focus中当点击iPhone或者watch主页面中央的小漏斗时，会弹出同步提示窗口：</p><p><img src="http://of71dfqgz.bkt.clouddn.com/sync.PNG" alt="sync.PNG"></p></li><li><p>关于文本录入这块watchOS3已经可以使用presentTextInputController(withSuggestions:allowedInputMode:)了，弹出的输入模块可以进行语音录入，建议选择以及新更新的Scribble，也建议大家使用。（虽然中文的录入还是有点难用）</p></li></ul><h3 id="3-Realm"><a href="#3-Realm" class="headerlink" title="3. Realm"></a>3. Realm</h3><p>早就听说了realm的大名，一直想尝试一下，正好借助这个机会集成了进去。不过得出的结论是，其实就目前的realm而言，个人感觉不太适合用于watch相关的应用。主要原因就是库文件略大，watch应用四五十兆的应用大小限制，使得每一寸空间都显得特别珍贵（App Store审核的限制，其实相较Apple Watch的存储来说集成realm造成的空间占用还是可以接受的）。</p><h4 id="说说使用realm的几点感受"><a href="#说说使用realm的几点感受" class="headerlink" title="说说使用realm的几点感受:"></a>说说使用realm的几点感受:</h4><ul><li><p>用起来确实很爽，很容易上手，基本就是在操作对象，用过coredata的同学应该很习惯这种方式。</p></li><li><p>数据库版本迁移这块仔细一点也很容易搞定。</p></li><li><p>因为要同时集成iOS跟watchOS两个版本的realm所以不要将他们放在同一个项目文件夹下，分别创建文件夹添加引用。</p></li><li><p>官方的提供的run script：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash "$&#123;BUILT_PRODUCTS_DIR&#125;/$&#123;FRAMEWORKS_FOLDER_PATH&#125;/Realm.framework/strip-frameworks.sh"</span><br></pre></td></tr></table></figure><p>需要在iOS和watch extension的Build Phases中都要进行添加调用。（我就是因为没有在extension中添加调用导致模拟器真机运行正常，上传App Store却总是验证报错…）</p></li><li><p>对于添加了realm的watchOS项目建议打开bitcode，也是为了优化watch APP的体积。</p></li></ul><h3 id="4-“新”产品上线"><a href="#4-“新”产品上线" class="headerlink" title="4. “新”产品上线"></a>4. “新”产品上线</h3><p>好久没有完整的操作一遍应用的上线流程了，体会有几点：</p><ul><li>Xcode8.1的自动管理签名还是挺好用的，尚未发现问题。使用该配置后，记得Build Settings中Code Signing Identity的子选项都要配置为iOS Developer。</li><li>发现Certificate中添加了专门用于生成服务器推送证书的功能。（估计早就更新了，之前没在意）</li><li>新的itunes connect功能真的挺好用，相较原来的版本慢慢的幸福感。</li><li>慨叹下目前Apple的审核速度，真实快啊，上传到上架one day。</li></ul><h2 id="可利用的资源"><a href="#可利用的资源" class="headerlink" title="可利用的资源"></a>可利用的资源</h2><ul><li><a href="https://developer.apple.com/watchos/resources/" target="_blank" rel="noopener">watchOS官方资源（包括Human Interface Guidelines、App Programming Guide for watchOS 等)</a></li><li><a href="https://developer.apple.com/swift/resources/" target="_blank" rel="noopener">swift官方资源</a></li><li><a href="https://www.raywenderlich.com/" target="_blank" rel="noopener">Raywenderlich</a></li><li><a href="https://onevcat.com/2015/08/watchos2/" target="_blank" rel="noopener">猫神相关文章(虽然是watchOS 2的，但是很受用)</a></li><li>图形素材：<a href="http://www.dribbble.com/" target="_blank" rel="noopener">dribbble(寻找创意)</a>、<a href="http://www.easyicon.net/" target="_blank" rel="noopener">easyicon(图标)</a>、<a href="http://makeappicon.com/" target="_blank" rel="noopener">MakeAppIcon(iPhone App图标与watch App图标生成)</a></li></ul><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>Focus会持续更新，目前主要解决了我自己的一些痛点，希望她也能够帮助到你。如果有什么好的建议欢迎留言讨论。Watch中的App种类确实很有限，不像iOS的这么丰富，有好的产品创意也欢迎一起讨论。watchOS 3.0的更新让Apple Watch焕发了新的生机，有了不少新的可能，让我们一起把我们的Apple Watch丰富起来吧^_^。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;Focus一次探索watchOS的实践。再次慨叹下Apple的审核速度，just one day…&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Focus-有些事情需要这份执着&quot;&gt;&lt;a href=&quot;#Focus-有些事情需要这份执着&quot; cl
-      
-    
-    </summary>
-    
-      <category term="个人作品" scheme="/categories/%E4%B8%AA%E4%BA%BA%E4%BD%9C%E5%93%81/"/>
     
     
   </entry>
