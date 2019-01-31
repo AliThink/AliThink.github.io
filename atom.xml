@@ -7,7 +7,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-01-31T01:49:26.019Z</updated>
+  <updated>2019-01-31T01:53:13.129Z</updated>
   <id>/</id>
   
   <author>
@@ -18,13 +18,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《零售新科学》读书笔记</title>
+    <link href="/2019/01/31/%E3%80%8A%E9%9B%B6%E5%94%AE%E6%96%B0%E7%A7%91%E5%AD%A6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>/2019/01/31/《零售新科学》读书笔记/</id>
+    <published>2019-01-31T01:52:22.000Z</published>
+    <updated>2019-01-31T01:53:13.129Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前三章讲述了数据决策的工具方法。后面则更多的是讲述如何让这些科学决策方法在企业中顺畅的落地实施。<br>（如果有个电商案例的讲解就更好了。。而且很多工具方法，书中也说了更适用于用户需求相对稳定的品类，不适用于鞋服这类用户需求变化较频繁的品类🤣。同时深感线下零售商的不易，像是店铺分货、本地化等场景线上是无需涉及的。）</p><h2 id="笔记随想"><a href="#笔记随想" class="headerlink" title="笔记随想"></a>笔记随想</h2><ul><li>现货率对毛利净利的影响。<blockquote><p>缺货利润损失的考量，这块线上能好一些，比如大活动的缺货预售，能起到一定缓冲作用，但仍会面临用户因时间成本造成流失的利润损失。</p></blockquote></li></ul><ul><li><p>供需匹配能力。</p></li><li><p>较稳定的需求影响因素: 季节性，尺码组合，特定店铺的畅销产品类型，价格弹性，品类增长趋势。</p></li><li><p>单品月销较少，聚合相似店铺相似单品。</p><blockquote><p>品类预测要跟进，作为单品预测的重要特征。</p></blockquote></li></ul><ul><li>数据形成背后的根源和成因(销售条件)<blockquote><p>记录跟丰富的销售动作数据，比如打折促销、广告投放等。<br><br>价格，现货率，天气，竞争对手活动，理解每个因素是如何影响历史销量的以及影响的程度，并对因素未来影响销量进行预判和作出合理假设。</p></blockquote></li></ul><ul><li>库存增长对销售的正相关<blockquote><p>库存增长会减少缺货利润的损失，但会增加清仓的成本。</p></blockquote></li></ul><ul><li><p>销售成本</p></li><li><p>修正库存周转率AIT</p><blockquote><p>公式略复杂，由最小二乘法推出系数，据说效果比较好，增加一些影响库存水平的因变量。</p></blockquote></li></ul><ul><li>品类规划:战略层，战术层<blockquote><p>战略层：结合趋势，预测品类未来表现。<br><br>战术层：选品。</p></blockquote></li></ul><ul><li><p>销存比RST分段 划分高中低</p></li><li><p>考虑高频用户感受</p></li><li><p>将商品看作是属性的集合体，观察这些属性在历史的表现，占比等</p><blockquote><p>单一属性历史表现的参考意义，组合情况在历史数据中的缺失。<br><br>丰富的属性利于相似品的圈定，进而便于为新品寻求近似历史数据参考。</p></blockquote></li></ul><ul><li>新sku 需求预估<blockquote><p>需求份额估算用在电商类目需求估算中，缺失类目的需求估算。</p></blockquote></li></ul><ul><li>本地化策略运用于排除主力sku后的剩余收益提升空间<blockquote><p>主力款头部款，采用本地化策略效果甚微。反观电商，地域上的限制被打破了。</p></blockquote></li></ul><ul><li><p>基于概率加权需求的风险对冲模型，计算折扣与缺货利润损失，追求最大化</p></li><li><p>伽马分布 拓展到近似正则的范围</p></li><li><p>开季两周更新预测</p><blockquote><p>新品预测的误差率基本在50%以上，但稍微结合一些开季后的数据（结合补货提前期）即可大幅降低误差率。（开季时间是否有所留存，还是只能从销量表中进行推算）</p></blockquote></li></ul><ul><li><p>降价 销售提升系数</p></li><li><p>每个品类适合用于做预测的时间段</p><blockquote><p>韩都每个品类的补货提前期</p></blockquote></li></ul><ul><li>寻找推拉边界，预测那些提前期长，可预测的部分<blockquote><p>例如储备一些未上色的基础面料（提前期长，可预测性强），将上色流程放到定制化中，可以更快的结合当季需求的变化，进行快速生产。（不过仅限于有生产加工能力的厂商，全走供应商模式的厂商边界可调节程度有限）</p></blockquote></li></ul><ul><li>充分授权，较少沟通成本<blockquote><p>目前韩都的补货决策流程是怎样的，小组是否可以高效决策货品的返单。</p></blockquote></li></ul><ul><li>员工工资作为能力的一种划分标准<blockquote><p>员工工资提升与销售额提升的相关性曲线</p></blockquote></li></ul><ul><li><p>RFID溯源</p></li><li><p>对预测结果进行量化提升实施信心</p><blockquote><p>给出合理量化后结果的方案更容易推进，比如执行这个方案后，销售额会提升xx。<br><br>如何进行结果量化是一门学问，也可以作为模型最终效果评估的一个指标。<br><br>随着量化结果的达成，也会逐渐建立方案实施的信心。</p></blockquote></li></ul><ul><li>从专家们不乐意乏味的工作入手，比如尺码优化<blockquote><p>直接跟业务专家竞争关系的介入，可能会引起方案推进的阻力。不如挑选一些小的点，专家们比较『厌烦』去做的点，从这些点开始实践。成功了，建立下一步实践的信心；失败了，还可以失败于无声（毕竟没人关注这块🤪）。</p></blockquote></li></ul><h2 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h2><ul><li>各种数据决策分析方法。</li><li>库存的重要意义。大量备货是销量预测、柔性供应链之后保障销售的最后防线，但也是风险最高不得已的手段。。</li><li>方案推进远比掌握这些数据决策方法要难得多得多。</li><li>学会用量化的思维去推进。</li><li>要做品类预测了</li><li>。。。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;前三章讲述了数据决策的工具方法。后面则更多的是讲述如何让这些科学决策方法在企业中顺畅的落地实施。&lt;br&gt;（如果有个电商案例的讲解就更好了。。
+      
+    
+    </summary>
+    
+      <category term="读过的书" scheme="/categories/%E8%AF%BB%E8%BF%87%E7%9A%84%E4%B9%A6/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>机器学习从业者们的那些事儿</title>
     <link href="/2019/01/31/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BB%8E%E4%B8%9A%E8%80%85%E4%BB%AC%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/"/>
     <id>/2019/01/31/机器学习从业者们的那些事儿/</id>
     <published>2019-01-31T01:48:45.000Z</published>
-    <updated>2019-01-31T01:49:26.019Z</updated>
+    <updated>2019-01-31T01:51:26.055Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>明确工作问题</strong>、收集并清洗数据、搭建模型、得出结果并<strong>监测变化</strong>，这些过程通常会以不同形式相互连接，很难单独拿出来作为研究对象。</p><h2 id="当机器学习项目失败时"><a href="#当机器学习项目失败时" class="headerlink" title="当机器学习项目失败时"></a>当机器学习项目失败时</h2><p>机器学习项目失败的情况有以下这么几种：</p><ul><li>当数据科学团队搭建了一个从未用过的工具。但是公司的其他部门并不知道他们做了什么，有些数据科学家也并不清楚这些成果能否用于实际生产中。</li><li>当数据科学家们创造模型的速度快于将其投入生产的速度，就会产生积压。</li><li>数据基础架构工程师和数据科学家是分开的。通道中没有数据时，数据科学家会要求数据基础架构工程师获取。</li><li>当公司最终确定产品X的功能后，他们需要数据科学家收集支持这项决策的数据。数据科学家认为产品经理会忽略那些与决定相反的数据，而产品经理会认为数据科学家忽略商业逻辑。</li><li>数据科学团队面试了一位数学建模、工程技术能力都很好的候选人。确定录用后加入到垂直应用产品团队，并需要简单的商业分析。数据科学家感到很无聊，所学技能根本用不上。</li></ul><p>问题在于数据产品之间缺少沟通并且没有目标。单独割裂的职位划分与工作协同，将影响目标的推进。</p><blockquote><p>将来会不会诞生一个职业：数据全栈工程师 =&gt; 数据产品思维 + 机器学习技能 + 大数据工程化技能 + 数据前端可视化技能</p></blockquote><h2 id="要做些什么"><a href="#要做些什么" class="headerlink" title="要做些什么"></a>要做些什么</h2><h3 id="理解语境"><a href="#理解语境" class="headerlink" title="理解语境"></a>理解语境</h3><ul><li>找准能从机器学习中受益的区域</li><li>与其他相关人员讨论机器学习能做什么、不能做什么</li><li>让每个人都了解商业策略、风险和目标</li><li>明确目前公司有什么类型的数据</li><li>对任务制定合适的框架</li><li>了解操作限制</li><li>提前确定可能的道德风险，例如你的成果有可能被滥用、或被用于宣传</li><li>确定潜在的偏见和潜在的负面反馈</li></ul><h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul><li>制作能收集更多不同数据的计划</li><li>将不同来源的数据汇总</li><li>处理缺失的或被污染的数据</li><li>数据可视化</li><li>建立合适的训练集、验证集和测试集</li></ul><h3 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h3><ul><li>选择使用哪个模型</li><li>将资源模型纳入约束条件（即最终模型需要在顶尖设备运行，内存少、延长时间长等等）</li><li>选择超参数（包括架构、损失函数、优化器）</li><li>训练模型，并进行debug。其中包括调参、查看损失函数、训练错误、验证错误是否有改变、监测模型数据、确定错误来源、改变数据清洗和处理的方式、改变数据增强方式、添加更多数据、尝试不同模型、是否过度拟合。</li></ul><h3 id="模型生成"><a href="#模型生成" class="headerlink" title="模型生成"></a>模型生成</h3><ul><li>创建一个API或网页app</li><li>将模型输出成想要的格式</li><li>计划模型多久需要重新训练一次并更新数据</li></ul><h3 id="监测"><a href="#监测" class="headerlink" title="监测"></a>监测</h3><ul><li>追踪模型性能</li><li>监测输入数据，确定数据是否会随时间使得模型失效</li><li>与其他人员交流结果</li><li>制定计划，如何监测和应对意外结果</li></ul><h2 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h2><h3 id="处理数据格式、不兼容和报错"><a href="#处理数据格式、不兼容和报错" class="headerlink" title="处理数据格式、不兼容和报错"></a>处理数据格式、不兼容和报错</h3><p>处理数据的不一致和报错经常是混乱费力的过程。人们有时会将机器学习和数据科学分开，因为对机器学习来说，有时会直接用清洗过的数据进行训练。然而在我的经验中，数据集清洗和训练模型是相关的：我经常会在训练模型的时候发现问题，只能改变输入数据的预处理方法。</p><p>### </p>]]></content>
+    <content type="html"><![CDATA[<p><strong>明确工作问题</strong>、收集并清洗数据、搭建模型、得出结果并<strong>监测变化</strong>，这些过程通常会以不同形式相互连接，很难单独拿出来作为研究对象。</p><h2 id="当机器学习项目失败时"><a href="#当机器学习项目失败时" class="headerlink" title="当机器学习项目失败时"></a>当机器学习项目失败时</h2><p>机器学习项目失败的情况有以下这么几种：</p><ul><li>当数据科学团队搭建了一个从未用过的工具。但是公司的其他部门并不知道他们做了什么，有些数据科学家也并不清楚这些成果能否用于实际生产中。</li><li>当数据科学家们创造模型的速度快于将其投入生产的速度，就会产生积压。</li><li>数据基础架构工程师和数据科学家是分开的。通道中没有数据时，数据科学家会要求数据基础架构工程师获取。</li><li>当公司最终确定产品X的功能后，他们需要数据科学家收集支持这项决策的数据。数据科学家认为产品经理会忽略那些与决定相反的数据，而产品经理会认为数据科学家忽略商业逻辑。</li><li>数据科学团队面试了一位数学建模、工程技术能力都很好的候选人。确定录用后加入到垂直应用产品团队，并需要简单的商业分析。数据科学家感到很无聊，所学技能根本用不上。</li></ul><p>问题在于数据产品之间缺少沟通并且没有目标。单独割裂的职位划分与工作协同，将影响目标的推进。</p><blockquote><p>将来会不会诞生一个职业：数据全栈工程师 =&gt; 数据产品思维 + 机器学习技能 + 大数据工程化技能 + 数据前端可视化技能</p></blockquote><h2 id="要做些什么"><a href="#要做些什么" class="headerlink" title="要做些什么"></a>要做些什么</h2><h3 id="理解语境"><a href="#理解语境" class="headerlink" title="理解语境"></a>理解语境</h3><ul><li>找准能从机器学习中受益的区域</li><li>与其他相关人员讨论机器学习能做什么、不能做什么</li><li>让每个人都了解商业策略、风险和目标</li><li>明确目前公司有什么类型的数据</li><li>对任务制定合适的框架</li><li>了解操作限制</li><li>提前确定可能的道德风险，例如你的成果有可能被滥用、或被用于宣传</li><li>确定潜在的偏见和潜在的负面反馈</li></ul><h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul><li>制作能收集更多不同数据的计划</li><li>将不同来源的数据汇总</li><li>处理缺失的或被污染的数据</li><li>数据可视化</li><li>建立合适的训练集、验证集和测试集</li></ul><h3 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h3><ul><li>选择使用哪个模型</li><li>将资源模型纳入约束条件（即最终模型需要在顶尖设备运行，内存少、延长时间长等等）</li><li>选择超参数（包括架构、损失函数、优化器）</li><li>训练模型，并进行debug。其中包括调参、查看损失函数、训练错误、验证错误是否有改变、监测模型数据、确定错误来源、改变数据清洗和处理的方式、改变数据增强方式、添加更多数据、尝试不同模型、是否过度拟合。</li></ul><h3 id="模型生成"><a href="#模型生成" class="headerlink" title="模型生成"></a>模型生成</h3><ul><li>创建一个API或网页app</li><li>将模型输出成想要的格式</li><li>计划模型多久需要重新训练一次并更新数据</li></ul><h3 id="监测"><a href="#监测" class="headerlink" title="监测"></a>监测</h3><ul><li>追踪模型性能</li><li>监测输入数据，确定数据是否会随时间使得模型失效</li><li>与其他人员交流结果</li><li>制定计划，如何监测和应对意外结果</li></ul><h2 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h2><h3 id="处理数据格式、不兼容和报错"><a href="#处理数据格式、不兼容和报错" class="headerlink" title="处理数据格式、不兼容和报错"></a>处理数据格式、不兼容和报错</h3><p>处理数据的不一致和报错经常是混乱费力的过程。人们有时会将机器学习和数据科学分开，因为对机器学习来说，有时会直接用清洗过的数据进行训练。然而在我的经验中，数据集清洗和训练模型是相关的：我经常会在训练模型的时候发现问题，只能改变输入数据的预处理方法。</p>]]></content>
     
     <summary type="html">
     
@@ -478,33 +501,6 @@
     </summary>
     
       <category term="iOS" scheme="/categories/iOS/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>2016</title>
-    <link href="/2016/12/30/2016/"/>
-    <id>/2016/12/30/2016/</id>
-    <published>2016-12-30T07:24:57.000Z</published>
-    <updated>2017-11-10T01:18:12.432Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>眼睛一闭一睁，2016就这样过去了</p></blockquote><h3 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h3><ul><li>私有pod库封装实践<ul><li>简介：<a href="http://alithink.com/2016/06/04/cocoapods%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E5%B0%81%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/" target="_blank" rel="noopener">cocoapods私有仓库封装过程中的思考</a></li><li>功能性封装</li><li>业务型封装</li></ul></li><li>纯Swift开发项目<ul><li>入门：<ul><li>猫神的swift 100 tips</li><li>raywenderlich的swift 学徒</li></ul></li><li>进阶：swift进阶</li><li>实践：TFA、HBI企业项目实践<ul><li><a href="http://alithink.com/2016/06/28/BI%20APP%E5%9B%BE%E5%BD%A2%E5%BA%93%E9%80%89%E5%9E%8B/" target="_blank" rel="noopener">BI App图形库选型</a></li><li><a href="http://alithink.com/2016/07/25/Charts%E8%AF%8A%E7%96%97%E6%97%A5%E5%BF%97/" target="_blank" rel="noopener">Charts诊疗日志</a></li></ul></li></ul></li><li>体验watchOS开发<ul><li>简介：<a href="http://alithink.com/2016/11/15/Focus/" target="_blank" rel="noopener">Focus</a></li><li>成果：Focus App开发与上线</li></ul></li><li>认真梳理了iOS的知识体系<ul><li>额。。发现打印出来可以当桌布或者鼠标垫了。。略大</li></ul></li><li>探索的方向：<ul><li>前端<ul><li>vuejs =&gt; weex<ul><li>个人观点仅从语言层面来说感觉weex有点滞后了</li></ul></li><li>认认真真从基础梳理下前端知识<ul><li>推荐书籍：The Big Nerd Ranch的Front-End Web Development</li></ul></li></ul></li><li>微信小程序<ul><li>早期实践了一波</li><li>1月9日正式上线敬请期待</li></ul></li></ul></li></ul><blockquote><p>2017：</p><ul><li>iOS技术深入，探求世界的真相（OC + Swift）</li><li>看好前端方向，持续学习</li></ul></blockquote><h3 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h3><ul><li>认认真真的重新搞起了博客<ul><li>hexo + next + (github &amp;&amp; coding)</li></ul></li><li>从今年5月份开始共计18篇文章</li><li>有几篇同步到简书和CocoaChina，有幸得到推荐^_^</li></ul><blockquote><p>2017：先立一个flag，保证平均一周一篇吧</p></blockquote><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul><li>自学：没人能控制得了你，除了你自己</li><li>学习路径：（以iOS为例）<ul><li>官方资源：<ul><li>开发文档与设计指南</li><li>WWDC</li><li>demo</li></ul></li><li>优秀三方：<ul><li>书籍：钟爱于以实例为引导的阅读方式<ul><li>objc相关（中文翻译水准不错）</li><li>Raywenderlich</li><li>the big nerd ranch</li><li>相关优秀源码</li></ul></li></ul></li><li>Feeds：<ul><li>大牛们的精品博客文章</li><li>社区的技术分享：最近比较多的微信分享效果也还是不错的</li></ul></li><li>分享：<ul><li>写博客</li><li>开源社区分享</li></ul></li><li>实践：<ul><li>开源小项目</li><li>上架小App（不求money，但求memory）</li></ul></li><li>学习小技巧<ul><li>遵从记忆曲线，时而停下来，闭上眼睛，回忆一下，效果更佳</li><li>擅用思维导图：<ul><li>越是一头雾水，越能拨云见日</li><li>知识串起来，更利于关联记忆</li></ul></li><li>学习没动力的时候怎么办？<ul><li>如何为家人带来更好的生活，只能自己更加的努力。（想一下自己闺女那可爱的脸庞^_^）</li><li>培养兴趣，建立成长的信心</li><li>推荐一个视频课程：网易公开课《哈弗幸福课》</li><li>其他各种鸡汤，ted啥的</li></ul></li><li>好好锻炼身体</li></ul></li></ul></li></ul><h3 id="败家"><a href="#败家" class="headerlink" title="败家"></a>败家</h3><ul><li>2016 MacBook Pro 13 with touchbar</li><li>Apple Watch Series2</li><li>v500 =&gt; ikbc</li><li>小米全家桶（箱包、移动电源、插排、路由器、净化器、手环、耳机、电池、口罩、笔、各种线材…）</li><li>手串（小叶紫檀、白玉菩提、黄檀、黑檀、金丝楠…）</li><li>其他各种乱七八糟落地吃灰的东东</li></ul><blockquote><p>PS：兴奋之余需节制，节制，节制，节制。。。</p><p>2017：极简消费，东西在精不在多。。。</p></blockquote><h3 id="家人"><a href="#家人" class="headerlink" title="家人"></a>家人</h3><p>最后也是最重要的，感谢家人这一年对我工作学习的支持。</p><p>家人的支持是男人前行的永恒动力。</p><blockquote><p>2017：认认真真工作，好好锻炼身体，结识各路朋友，悉心珍爱家人</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;眼睛一闭一睁，2016就这样过去了&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;技术&quot;&gt;&lt;a href=&quot;#技术&quot; class=&quot;headerlink&quot; title=&quot;技术&quot;&gt;&lt;/a&gt;技术&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;私有pod库封装实践&lt;u
-      
-    
-    </summary>
-    
-      <category term="回忆录" scheme="/categories/%E5%9B%9E%E5%BF%86%E5%BD%95/"/>
     
     
   </entry>

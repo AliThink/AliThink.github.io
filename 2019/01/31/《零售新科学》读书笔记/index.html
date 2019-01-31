@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="概述前三章讲述了数据决策的工具方法。后面则更多的是讲述如何让这些科学决策方法在企业中顺畅的落地实施。（如果有个电商案例的讲解就更好了。。而且很多工具方法，书中也说了更适用于用户需求相对稳定的品类，不适用于鞋服这类用户需求变化较频繁的品类🤣。同时深感线下零售商的不易，像是店铺分货、本地化等场景线上是无需涉及的。） 笔记随想 现货率对毛利净利的影响。 缺货利润损失的考量，这块线上能好一些，比如大活动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《零售新科学》读书笔记">
+<meta property="og:url" content="/2019/01/31/《零售新科学》读书笔记/index.html">
+<meta property="og:site_name" content="The  Force  Awakens
+">
+<meta property="og:description" content="概述前三章讲述了数据决策的工具方法。后面则更多的是讲述如何让这些科学决策方法在企业中顺畅的落地实施。（如果有个电商案例的讲解就更好了。。而且很多工具方法，书中也说了更适用于用户需求相对稳定的品类，不适用于鞋服这类用户需求变化较频繁的品类🤣。同时深感线下零售商的不易，像是店铺分货、本地化等场景线上是无需涉及的。） 笔记随想 现货率对毛利净利的影响。 缺货利润损失的考量，这块线上能好一些，比如大活动">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-31T01:53:13.129Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《零售新科学》读书笔记">
+<meta name="twitter:description" content="概述前三章讲述了数据决策的工具方法。后面则更多的是讲述如何让这些科学决策方法在企业中顺畅的落地实施。（如果有个电商案例的讲解就更好了。。而且很多工具方法，书中也说了更适用于用户需求相对稳定的品类，不适用于鞋服这类用户需求变化较频繁的品类🤣。同时深感线下零售商的不易，像是店铺分货、本地化等场景线上是无需涉及的。） 笔记随想 现货率对毛利净利的影响。 缺货利润损失的考量，这块线上能好一些，比如大活动">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/img/favicon.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.png">
+          
+        
+    
+    <!-- title -->
+    <title>《零售新科学》读书笔记</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/archives">Writing</a></li>
+         
+          <li><a href="/categories">categories</a></li>
+         
+          <li><a href="https://github.com/AliThink">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/01/31/机器学习从业者们的那些事儿/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=/2019/01/31/《零售新科学》读书笔记/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=/2019/01/31/《零售新科学》读书笔记/&text=《零售新科学》读书笔记"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=/2019/01/31/《零售新科学》读书笔记/&title=《零售新科学》读书笔记"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=/2019/01/31/《零售新科学》读书笔记/&is_video=false&description=《零售新科学》读书笔记"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=《零售新科学》读书笔记&body=Check out this article: /2019/01/31/《零售新科学》读书笔记/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=/2019/01/31/《零售新科学》读书笔记/&title=《零售新科学》读书笔记"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=/2019/01/31/《零售新科学》读书笔记/&title=《零售新科学》读书笔记"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=/2019/01/31/《零售新科学》读书笔记/&title=《零售新科学》读书笔记"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=/2019/01/31/《零售新科学》读书笔记/&title=《零售新科学》读书笔记"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=/2019/01/31/《零售新科学》读书笔记/&name=《零售新科学》读书笔记&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#笔记随想"><span class="toc-number">2.</span> <span class="toc-text">笔记随想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Get"><span class="toc-number">3.</span> <span class="toc-text">Get</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        《零售新科学》读书笔记
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">The  Force  Awakens
+</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-01-31T01:52:22.000Z" itemprop="datePublished">2019-01-31</time>
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/读过的书/">读过的书</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前三章讲述了数据决策的工具方法。后面则更多的是讲述如何让这些科学决策方法在企业中顺畅的落地实施。<br>（如果有个电商案例的讲解就更好了。。而且很多工具方法，书中也说了更适用于用户需求相对稳定的品类，不适用于鞋服这类用户需求变化较频繁的品类🤣。同时深感线下零售商的不易，像是店铺分货、本地化等场景线上是无需涉及的。）</p>
+<h2 id="笔记随想"><a href="#笔记随想" class="headerlink" title="笔记随想"></a>笔记随想</h2><ul>
+<li>现货率对毛利净利的影响。<blockquote>
+<p>缺货利润损失的考量，这块线上能好一些，比如大活动的缺货预售，能起到一定缓冲作用，但仍会面临用户因时间成本造成流失的利润损失。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>供需匹配能力。</p>
+</li>
+<li><p>较稳定的需求影响因素: 季节性，尺码组合，特定店铺的畅销产品类型，价格弹性，品类增长趋势。</p>
+</li>
+<li><p>单品月销较少，聚合相似店铺相似单品。</p>
+<blockquote>
+<p>品类预测要跟进，作为单品预测的重要特征。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>数据形成背后的根源和成因(销售条件)<blockquote>
+<p>记录跟丰富的销售动作数据，比如打折促销、广告投放等。<br><br>价格，现货率，天气，竞争对手活动，理解每个因素是如何影响历史销量的以及影响的程度，并对因素未来影响销量进行预判和作出合理假设。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>库存增长对销售的正相关<blockquote>
+<p>库存增长会减少缺货利润的损失，但会增加清仓的成本。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>销售成本</p>
+</li>
+<li><p>修正库存周转率AIT</p>
+<blockquote>
+<p>公式略复杂，由最小二乘法推出系数，据说效果比较好，增加一些影响库存水平的因变量。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>品类规划:战略层，战术层<blockquote>
+<p>战略层：结合趋势，预测品类未来表现。<br><br>战术层：选品。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>销存比RST分段 划分高中低</p>
+</li>
+<li><p>考虑高频用户感受</p>
+</li>
+<li><p>将商品看作是属性的集合体，观察这些属性在历史的表现，占比等</p>
+<blockquote>
+<p>单一属性历史表现的参考意义，组合情况在历史数据中的缺失。<br><br>丰富的属性利于相似品的圈定，进而便于为新品寻求近似历史数据参考。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>新sku 需求预估<blockquote>
+<p>需求份额估算用在电商类目需求估算中，缺失类目的需求估算。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>本地化策略运用于排除主力sku后的剩余收益提升空间<blockquote>
+<p>主力款头部款，采用本地化策略效果甚微。反观电商，地域上的限制被打破了。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>基于概率加权需求的风险对冲模型，计算折扣与缺货利润损失，追求最大化</p>
+</li>
+<li><p>伽马分布 拓展到近似正则的范围</p>
+</li>
+<li><p>开季两周更新预测</p>
+<blockquote>
+<p>新品预测的误差率基本在50%以上，但稍微结合一些开季后的数据（结合补货提前期）即可大幅降低误差率。（开季时间是否有所留存，还是只能从销量表中进行推算）</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>降价 销售提升系数</p>
+</li>
+<li><p>每个品类适合用于做预测的时间段</p>
+<blockquote>
+<p>韩都每个品类的补货提前期</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>寻找推拉边界，预测那些提前期长，可预测的部分<blockquote>
+<p>例如储备一些未上色的基础面料（提前期长，可预测性强），将上色流程放到定制化中，可以更快的结合当季需求的变化，进行快速生产。（不过仅限于有生产加工能力的厂商，全走供应商模式的厂商边界可调节程度有限）</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>充分授权，较少沟通成本<blockquote>
+<p>目前韩都的补货决策流程是怎样的，小组是否可以高效决策货品的返单。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>员工工资作为能力的一种划分标准<blockquote>
+<p>员工工资提升与销售额提升的相关性曲线</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>RFID溯源</p>
+</li>
+<li><p>对预测结果进行量化提升实施信心</p>
+<blockquote>
+<p>给出合理量化后结果的方案更容易推进，比如执行这个方案后，销售额会提升xx。<br><br>如何进行结果量化是一门学问，也可以作为模型最终效果评估的一个指标。<br><br>随着量化结果的达成，也会逐渐建立方案实施的信心。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>从专家们不乐意乏味的工作入手，比如尺码优化<blockquote>
+<p>直接跟业务专家竞争关系的介入，可能会引起方案推进的阻力。不如挑选一些小的点，专家们比较『厌烦』去做的点，从这些点开始实践。成功了，建立下一步实践的信心；失败了，还可以失败于无声（毕竟没人关注这块🤪）。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h2><ul>
+<li>各种数据决策分析方法。</li>
+<li>库存的重要意义。大量备货是销量预测、柔性供应链之后保障销售的最后防线，但也是风险最高不得已的手段。。</li>
+<li>方案推进远比掌握这些数据决策方法要难得多得多。</li>
+<li>学会用量化的思维去推进。</li>
+<li>要做品类预测了</li>
+<li>。。。</li>
+</ul>
+
+  </div>
+</article>
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <!--<script src="//cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script>
+    <script src='//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js'></script>-->
+    <div class="blog-post-comments">
+        <div id="vcomments"></div>
+        <script>
+          var notify = false == true ? true : false;
+          var verify = false == true ? true : false;
+          var visitor = true == true ? true : false;
+          new Valine({
+            el: '#vcomments',
+              notify: notify,
+              verify: verify,
+            app_id: 'UDE2tWFJX1om8cC7yKjgWA9r-gzGzoHsz',
+            app_key: 'iugcsrMhVBXsIqhhhWHAdgr1',
+            lang: 'en',
+            placeholder: 'ヾﾉ≧∀≦)o快来评论一下吧!',
+            avatar: 'monsterid',
+            pageSize: 10,
+            visitor: visitor
+          });
+          </script>
+      </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/archives">Writing</a></li>
+         
+          <li><a href="/categories">categories</a></li>
+         
+          <li><a href="https://github.com/AliThink">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#笔记随想"><span class="toc-number">2.</span> <span class="toc-text">笔记随想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Get"><span class="toc-number">3.</span> <span class="toc-text">Get</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=/2019/01/31/《零售新科学》读书笔记/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=/2019/01/31/《零售新科学》读书笔记/&text=《零售新科学》读书笔记"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=/2019/01/31/《零售新科学》读书笔记/&title=《零售新科学》读书笔记"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=/2019/01/31/《零售新科学》读书笔记/&is_video=false&description=《零售新科学》读书笔记"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=《零售新科学》读书笔记&body=Check out this article: /2019/01/31/《零售新科学》读书笔记/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=/2019/01/31/《零售新科学》读书笔记/&title=《零售新科学》读书笔记"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=/2019/01/31/《零售新科学》读书笔记/&title=《零售新科学》读书笔记"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=/2019/01/31/《零售新科学》读书笔记/&title=《零售新科学》读书笔记"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=/2019/01/31/《零售新科学》读书笔记/&title=《零售新科学》读书笔记"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=/2019/01/31/《零售新科学》读书笔记/&name=《零售新科学》读书笔记&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">  
+    Copyright &copy; 2019 AliThink
+  </div>
+  <div class="footer-right">
+    
+    <div class="busuanzi-count">
+      <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+      
+        <span class="site-uv">
+          <i class="fa fa-child"></i> uv total
+          <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+          
+        </span>
+      
+      
+      
+        <span class="site-pv">
+          <i class="fa fa-eye"></i> pv total
+          <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+          
+        </span>
+      
+    </div>
+
+
+  </div>
+  
+</footer>
+
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?ddd5ea8fb6af25af228cf11a240076e8";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+<!-- Disqus Comments -->
+
+
