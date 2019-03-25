@@ -4,6 +4,24 @@
   
     
     <entry>
+      <title><![CDATA[机器学习问题决策flow]]></title>
+      <url>/2019/03/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%97%AE%E9%A2%98%E5%86%B3%E7%AD%96flow/</url>
+      <content type="html"><![CDATA[<h2 id="1-流程概述"><a href="#1-流程概述" class="headerlink" title="1.流程概述"></a>1.流程概述</h2><p><img src="https://i.loli.net/2019/03/25/5c9892d824801.png" alt="机器学习flo"></p>
+<h2 id="2-图片引用"><a href="#2-图片引用" class="headerlink" title="2. 图片引用"></a>2. 图片引用</h2><p><img src="https://i.loli.net/2019/03/25/5c9892d778c5b.png" alt="1"></p>
+<p><img src="https://i.loli.net/2019/03/25/5c9892d7e4943.png" alt="2"></p>
+<p><img src="https://i.loli.net/2019/03/25/5c9892d763067.png" alt="3"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> ML </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[《零售新科学》读书笔记]]></title>
       <url>/2019/01/31/%E3%80%8A%E9%9B%B6%E5%94%AE%E6%96%B0%E7%A7%91%E5%AD%A6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
       <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前三章讲述了数据决策的工具方法。后面则更多的是讲述如何让这些科学决策方法在企业中顺畅的落地实施。<br>（如果有个电商案例的讲解就更好了。。而且很多工具方法，书中也说了更适用于用户需求相对稳定的品类，不适用于鞋服这类用户需求变化较频繁的品类🤣。同时深感线下零售商的不易，像是店铺分货、本地化等场景线上是无需涉及的。）</p>

@@ -7,7 +7,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-01-31T01:53:13.129Z</updated>
+  <updated>2019-03-25T08:36:14.005Z</updated>
   <id>/</id>
   
   <author>
@@ -16,6 +16,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习问题决策flow</title>
+    <link href="/2019/03/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%97%AE%E9%A2%98%E5%86%B3%E7%AD%96flow/"/>
+    <id>/2019/03/25/机器学习问题决策flow/</id>
+    <published>2019-03-25T08:29:32.000Z</published>
+    <updated>2019-03-25T08:36:14.005Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-流程概述"><a href="#1-流程概述" class="headerlink" title="1.流程概述"></a>1.流程概述</h2><p><img src="https://i.loli.net/2019/03/25/5c9892d824801.png" alt="机器学习flo"></p><h2 id="2-图片引用"><a href="#2-图片引用" class="headerlink" title="2. 图片引用"></a>2. 图片引用</h2><p><img src="https://i.loli.net/2019/03/25/5c9892d778c5b.png" alt="1"></p><p><img src="https://i.loli.net/2019/03/25/5c9892d7e4943.png" alt="2"></p><p><img src="https://i.loli.net/2019/03/25/5c9892d763067.png" alt="3"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-流程概述&quot;&gt;&lt;a href=&quot;#1-流程概述&quot; class=&quot;headerlink&quot; title=&quot;1.流程概述&quot;&gt;&lt;/a&gt;1.流程概述&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/03/25/5c9892d824801.
+      
+    
+    </summary>
+    
+      <category term="ML" scheme="/categories/ML/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>《零售新科学》读书笔记</title>
@@ -475,32 +498,6 @@
     </summary>
     
       <category term="鸡汤乱炖" scheme="/categories/%E9%B8%A1%E6%B1%A4%E4%B9%B1%E7%82%96/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>关于未来的一些梳理</title>
-    <link href="/2017/02/12/%E5%85%B3%E4%BA%8E%E6%9C%AA%E6%9D%A5%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A2%B3%E7%90%86/"/>
-    <id>/2017/02/12/关于未来的一些梳理/</id>
-    <published>2017-02-12T12:08:20.000Z</published>
-    <updated>2018-12-21T09:07:39.472Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>家人与朋友的支持是男人前行的永恒动力。新起点，新方向，杭州我来了。</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;家人与朋友的支持是男人前行的永恒动力。新起点，新方向，杭州我来了。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-      
-    
-    </summary>
-    
-      <category term="iOS" scheme="/categories/iOS/"/>
     
     
   </entry>
